@@ -1,0 +1,4 @@
+.page-section {
+    margin-bottom: 20rpx;
+}
+.weui-select { padding-left: 0; border-right: 0; }

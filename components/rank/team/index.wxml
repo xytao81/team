@@ -1,0 +1,29 @@
+<view class="table f-small" wx:if="{{list.length>0}}">
+  <view class="table-head">
+    <view class="column1"></view>
+    <view class="column2"></view>
+    <view class="column3">球队</view>
+    <view class="column4">赛</view>
+    <view class="column5">进/失</view>
+    <view class="column6">胜/平/负</view>
+    <view class="column7">助攻</view>
+    <view class="column8">红/黄</view>
+  </view>
+  <view wx:for="{{list}}" wx:key="id" data-item="{{item}}" class="tr {{(index%2 == 0) ?'':'stripe'}}">
+    <view class="column1">{{index + 1}}</view>
+    <view class="column2">
+      <image class="rank-logo" wx:if="{{item.team_logo}}" src="{{item.team_logo}}" />
+      <image class="rank-logo" wx:else src="../../../images/league/team_logo.png" />
+    </view>
+    <view class="item-team column3">{{item.team_name}}</view>
+    <view class="column4">{{item.num}}</view>
+    <view class="column5">{{item.in_goal}}/{{item.out_goal}}</view>
+    <view class="column6">{{item.win}}/{{item.draw}}/{{item.lose}}</view>
+    <view class="column7">{{item.assist}}</view>
+    <view class="column8">{{item.red_card_count}}/{{item.yellow_card_count}}</view>
+  </view>
+</view>
+<view wx:else class="no-data f-title">
+  <image src="../../../images/league/no-data.png" />
+  <view>暂无数据</view>
+</view>

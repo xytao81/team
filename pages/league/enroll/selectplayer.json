@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "选择人员",
+  "usingComponents": {
+    "positionpicker": "../../../components/positionpicker/positionpicker",
+    "jobpicker": "../../../components/jobpicker/jobpicker",
+    "subjobpicker": "../../../components/subjobpicker/subjobpicker"
+  }
+}

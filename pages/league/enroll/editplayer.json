@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "编辑队员资料",
+  "usingComponents": {
+    "useredit": "../../../components/user/useredit"
+  }
+}

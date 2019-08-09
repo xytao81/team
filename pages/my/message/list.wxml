@@ -1,0 +1,1 @@
+<mList list="{{info.list}}" isHideLoadMore="{{info.isHideLoadMore}}" bind:onClickDetail="onClickDetail" isTeam="{{isTeam}}"></mList>

@@ -1,0 +1,37 @@
+
+<view class="page">
+
+    <!-- 球队信息 -->
+    <view class="team-div">
+      <view class="t-img-div">
+        <image src="{{ team.logo }}"></image>
+      </view>
+      <view class="t-name">{{ team.name }}</view>
+      <view class="t-info">主场：{{team.city_name}}</view>
+      <view class="t-info">超级管理员：{{team.super_admin_name}}</view>
+      <view class='foorball-num'>
+        <view>球队人数：{{team.player_count}}人</view>
+      </view>
+      <!-- 球衣颜色 -->
+      <view class="t-color clearfix">
+        <view class="color-t">主颜色</view>
+        <view class="bg-color" style="background:{{'url('+ team.color[0].player.shirt.color +') no-repeat'}}"><image src="../../../../images/shirts_color.png"></image></view>
+        <view class="bg-color" style="background:{{'url('+ team.color[0].player.shorts.color +') no-repeat'}}"><image src="../../../../images/shorts_color.png"></image></view>
+        <view class="bg-color" style="background:{{'url('+ team.color[0].player.shoes.color +') no-repeat'}}"><image src="../../../../images/socks_color.png"></image></view>
+        <view class="color-t">副颜色</view>
+        <view class="bg-color" style="background:{{'url('+ team.color[1].player.shirt.color +') no-repeat'}}"><image src="../../../../images/shirts_color.png"></image></view>
+        <view class="bg-color" style="background:{{'url('+ team.color[1].player.shorts.color +') no-repeat'}}"><image src="../../../../images/shorts_color.png"></image></view>
+        <view class="bg-color" style="background:{{'url('+ team.color[1].player.shoes.color +') no-repeat'}}"><image src="../../../../images/socks_color.png"></image></view>
+      </view>
+      <!-- 立即加入按钮 -->
+      <form bindsubmit="formSubmit" report-submit >
+      <input name="phone"  class="join-btn" placeholder="请输入手机号" bindinput="inputPhoneNumber"></input>
+      <button type="button" class="join-btn f-white f-small" form-type="submit">立即加入</button>
+      </form>
+      <!-- 球队简介 -->
+      <view v-if="team.desc" class="t-intro f-small">{{team.desc}}</view>
+      <view v-if="team.photo" class="family-photo"><image :src="{{team.photo}}" alt=""></image></view>
+      <view class="footer f-small">爱球迷（北京）网络科技有限公司 版权所有</view>
+    </view>
+
+</view>

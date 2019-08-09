@@ -1,0 +1,48 @@
+<view wx:if="{{ list.length > 0 }}">
+  <view class="notices">
+    <view class="notice f-normal" wx:for="{{list}}" wx:key="id" data-item="{{item}}">
+      <view class="title f-title">{{item.title}}</view>
+      <view class="date">{{item.show_time}}</view>
+      <view class="data">
+        <view wx:if="{{item.type>100}}" class="row">
+          <text class="label">申请人</text>
+          <text class="content">{{item.user_info.realname}}</text>
+        </view>
+        <view class="row">
+          <text class="label">申请类别</text>
+          <text class="content">{{item.type_name}}</text>
+        </view>
+        <view class="row">
+          <text class="label">备注</text>
+          <text class="content">{{item.content}}</text>
+        </view>
+      </view>
+      <block wx:if="{{item.type>100}}">
+        <view wx:if="{{item.is_done==false}}" class="buttons">
+          <view data-type="2" bindtap='onClickButton' data-item="{{item}}" class="half-btn f-normal f-red" style="border-right: solid 1rpx #e0e0e0;">拒绝</view>
+          <view data-type="1" bindtap='onClickButton' data-item="{{item}}" class="half-btn f-normal f-blue">同意</view>
+        </view>
+        <view wx:else>
+          <view class="status f-normal">
+            <text class="gray">{{item.done_result==2?'已拒绝':'已通过'}}</text>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{item.type<100}}">
+        <view wx:if="{{item.is_done==false}}" class="buttons">
+          <view data-type="1" bindtap='onClickButton' data-item="{{item}}" class="full-btn f-blue">修改报名资料</view>
+        </view>
+        <view wx:else>
+          <view class="status">
+            <text class="gray">已处理</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="nomore f-normal" wx:if="{{ !info.isHideLoadMore }}">----- 我是有底线的 -----</view>
+</view>
+<view wx:else class="no-data f-title">
+  <view class="no-data-icon"></view>
+  <view class="no-data-text">暂无数据</view>
+</view>

@@ -1,0 +1,17 @@
+/* components/data/index.wxss */
+.data-container{}
+.tab-bar {
+  display: flex;
+  border-bottom: 1rpx solid #e0e0e0;
+  line-height: 80rpx;
+}
+
+.tab-item {
+  text-align: center;
+  flex: 1;
+  line-height: 64rpx;
+}
+
+.active {
+  color:rgb(0, 125, 54)!important;
+}

@@ -1,0 +1,27 @@
+
+<view class="page">
+  <view class="page__bd">
+    <view wx:if="{{ notices.length > 0 }}">
+      <view class="notices">
+        <navigator wx:for="{{ notices }}" wx:key="id" url="/pages/team/teamhome/notice/detail?team_id={{ teamId }}&id={{ item.id }}" class="notice f-small">
+          <view class="title f-title">{{ item.title }}</view>
+          <view class="date">{{ item.create_time }}</view>
+          <text class="content">{{ item.content }}</text>
+        </navigator>
+      </view>
+      <view class="nomore" wx:if="{{ !hasMore }}">----- 我是有底线的 -----</view>
+    </view>
+    <view wx:else class="no-data">
+      <view class="no-data-icon"></view>
+      <view class="no-data-text">暂无数据</view>
+    </view>
+  </view>
+  <block wx:if="{{teamRights!=0}}">
+    <view class="footer-buttons">
+        <navigator url="/pages/team/teamhome/notice/add?team_id={{ teamId }}">
+            <button class="footer-btn full-btn" type="primary">添加公告</button>
+        </navigator>
+    </view>
+  </block>
+</view>
+

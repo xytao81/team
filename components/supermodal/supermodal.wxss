@@ -1,0 +1,71 @@
+
+.supermodal__mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+}
+.supermodal__container {
+  position: fixed;
+  left: 90rpx;
+  top: 20%;
+  width: 570rpx;
+  background: white;
+  z-index: 1001;
+  display: none;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.supermodal--show .supermodal__container {
+  display: block;
+}
+.supermodal--show .supermodal__mask {
+  display: block;
+}
+
+/*模态框中的内容*/
+
+.supermodal__title { font-size:32rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #e0e0e0;
+  overflow: hidden;
+}
+.supermodal__title .tit { 
+  font-weight:bold;
+  width: 450rpx;
+  margin-left: 20rpx;
+  float: left;
+}
+.supermodal__title .cls { 
+  float: right;
+  width: 90rpx;
+  text-align: center;
+  font-size: 34rpx;
+}
+.supermodal__control {
+  border-top: 1rpx solid #e0e0e0;
+  background:#fff;
+}
+.supermodal-button {
+  padding: 20rpx 0;
+  width: 285rpx;
+  text-align: center;
+  display: inline-block;
+  font-size: 36rpx;
+  color:#707070;
+}
+.supermodal-submit{
+  float: right;
+  color:#00a7f2;
+}
+
+.b-l {
+  border-left: solid 1rpx #e0e0e0;
+}
+
+
+

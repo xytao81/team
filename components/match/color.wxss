@@ -1,0 +1,22 @@
+.match-color{
+  height:180rpx;
+  margin:0rpx 30rpx;
+}
+
+.match-color .content{
+  height:40rpx;
+  display:flex;
+  flex-direction:row;
+}
+
+.match-color .content .title{
+  width: 90rpx;
+  font-size: 28rpx;
+  line-height:40rpx;
+  color: #333333;
+}
+
+.match-color .content image{
+  width:40rpx;
+  height:40rpx;
+}

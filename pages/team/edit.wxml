@@ -1,0 +1,162 @@
+
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd" style="background: #fff;">
+
+    <view>
+      <view class="form-container" style="margin: 0 30rpx 0;">
+        <view class="form-row" style="">
+          <view class="form-label" style="line-height: 100rpx;">队徽</view>
+          <cropper config="{{ cropper1config }}" upload="{{ true }}" bindchange="bindLogoChange">
+          <view class="form-content lh-0">
+            <image src="{{ editData.logoUrl ? editData.logoUrl : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_100,w_100" style="width: 100rpx; height: 100rpx;"></image>
+          </view>
+          </cropper>
+        </view>
+        <view class="form-row">
+          <view class="form-label">名称</view>
+          <view class="form-content">
+            <input class="weui-input" placeholder="请输入名称" value="{{ editData.name }}" bindinput="bindNameChange" />
+          </view>
+        </view>
+        <view class="form-row">
+          <view class="form-label">类型</view>
+          <view class="form-content">
+            <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{types}}" range-key="name">
+              <view class="weui-select" style="padding-left: 0;border-right:0;">{{types[typeIndex].name ? types[typeIndex].name : ''}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="form-row">
+          <view class="form-label">所在地</view>
+          <view class="form-content">
+            <regionpicker checked="{{ editData.region }}" bindregionchange="bindRegionChange">
+              <view class="weui-select" style="padding-left: 0;border-right:0;">{{ editData.region[0].name ? editData.region[0].name+'-'+editData.region[1].name : '' }}</view>
+            </regionpicker>
+          </view>
+        </view>
+        <view class="form-row">
+          <view class="form-title gray">球衣主颜色</view>
+          <clothpicker checked="{{ editData.color[0] }}" bindclotheschange="bindClothesChange1">
+          <view class="o-h" style="display: flex; align-items: center; ">
+            <view class="f-l" style="line-height: 90rpx">
+              <view style="overflow:hidden; padding: 0;">
+                  <view style="float:left; width: 160rpx;">
+                      <view>队员</view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].player.shirt.color +') no-repeat'}}"><image src="../../images/icon_sy.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].player.shorts.color +') no-repeat'}}"><image src="../../images/icon_kz.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].player.shoes.color +') no-repeat'}}"><image src="../../images/icon_qw.png" /></view>
+                  </view>
+              </view>
+              <view style="overflow:hidden; padding: 0;">
+                  <view style="float:left; width: 160rpx;">
+                      <view>守门员</view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].goalkeeper.shirt.color +') no-repeat'}}"><image src="../../images/icon_sy.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].goalkeeper.shorts.color +') no-repeat'}}"><image src="../../images/icon_kz.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].goalkeeper.shoes.color +') no-repeat'}}"><image src="../../images/icon_qw.png" /></view>
+                  </view>
+              </view>
+            </view>
+            <view class="f-l settings-icon"></view>
+          </view>
+          </clothpicker>
+        </view>
+        <view class="form-row">
+          <view class="form-title gray">球衣副颜色</view>
+          <clothpicker checked="{{ editData.color[1] }}" bindclotheschange="bindClothesChange2">
+          <view class="o-h" style="display: flex; align-items: center; ">
+            <view class="f-l" style="line-height: 90rpx">
+              <view style="overflow:hidden; padding: 0;">
+                  <view style="float:left; width: 160rpx;">
+                      <view>队员</view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].player.shirt.color +') no-repeat'}}"><image src="../../images/icon_sy.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].player.shorts.color +') no-repeat'}}"><image src="../../images/icon_kz.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].player.shoes.color +') no-repeat'}}"><image src="../../images/icon_qw.png" /></view>
+                  </view>
+              </view>
+              <view style="overflow:hidden; padding: 0;">
+                  <view style="float:left; width: 160rpx;">
+                      <view>守门员</view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].goalkeeper.shirt.color +') no-repeat'}}"><image src="../../images/icon_sy.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].goalkeeper.shorts.color +') no-repeat'}}"><image src="../../images/icon_kz.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].goalkeeper.shoes.color +') no-repeat'}}"><image src="../../images/icon_qw.png" /></view>
+                  </view>
+              </view>
+            </view>
+            <view class="f-l settings-icon"></view>
+          </view>
+          </clothpicker>
+        </view>
+        <view class="form-row" style="">
+          <view class="form-label" style="line-height: 100rpx;">全家福</view>
+          <cropper config="{{ cropper2config }}" upload="{{ true }}" bindchange="bindFamilyChange">
+          <view class="form-content lh-0">
+            <image src="{{ editData.familyUrl ? editData.familyUrl : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_100,w_200" style="width: 200rpx; height: 100rpx;"></image>
+          </view>
+          </cropper>
+        </view>
+        <view class="form-row">
+          <view class="form-title gray">简介</view>
+          <view>
+            <textarea maxlength="1000" class="weui-textarea" placeholder="请输入简介" value="{{ editData.intro }}" bindinput="bindIntroChange" style="height: 150rpx;" hidden="{{ !focusOnIntro }}" focus="{{ focusOnIntro }}" bindblur="focusOutIntro"></textarea>
+            <view style="height: 150rpx;" hidden="{{ focusOnIntro }}" bindtap="focusOnIntro" class="{{ editData.intro=='' ? 'placeholder' : ''}}">{{ editData.intro ? editData.intro : '请输入简介' }}</view>
+          </view>
+        </view>
+        <view class="form-row">
+          <view class="form-label">球队联系人</view>
+          <view class="form-content">
+            <input class="weui-input" placeholder="请输入球队联系人" value="{{ editData.contact_name }}" bindinput="bindContactNameChange" />
+          </view>
+        </view>
+        <view class="form-row">
+          <view class="form-label">联系电话</view>
+          <view class="form-content">
+            <input class="weui-input" placeholder="请输入联系电话" value="{{ editData.contact_phone }}" bindinput="bindContactPhoneChange" />
+          </view>
+        </view>
+        <view class="form-row">
+          <view class="form-label">联系微信</view>
+          <view class="form-content">
+            <input class="weui-input" placeholder="请输入联系微信" value="{{ editData.contact_wx }}" bindinput="bindContactWXChange" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{teamRights}}" class="footer-buttons">
+        <button class="footer-btn full-btn" type="primary" bindtap="editTeamSubmit">保存</button>
+    </view>
+
+  </view>
+</view>
+
+<view class="cropper-wrapper" hidden="{{ !cropper1Visible }}">
+  <canvas class="cropper" disable-scroll="true" bindtouchstart="cropper1TouchStart" bindtouchmove="cropper1TouchMove" bindtouchend="cropper1TouchEnd" style="width:{{cropper1Opt.width}}px;height:{{cropper1Opt.height}}px;background-color: rgba(0, 0, 0, 0.8)" canvas-id="{{cropper1Opt.id}}"></canvas>
+  <canvas class="cropper" disable-scroll="true" style="position: fixed; top: -{{cropper1Opt.width * cropper1Opt.pixelRatio}}px; left: -{{cropper1Opt.height * cropper1Opt.pixelRatio}}px; width:{{cropper1Opt.width * cropper1Opt.pixelRatio}}px;height:{{cropper1Opt.height * cropper1Opt.pixelRatio}}px;" canvas-id="{{cropper1Opt.targetId}}"></canvas>
+  <view class="cropper-buttons">
+      <view class="btn" bindtap="cropper1GetImage">生成图片</view>
+  </view>
+</view>

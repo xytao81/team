@@ -1,0 +1,17 @@
+<view class="league">
+  <view class="top">
+    <view class="flag"></view>
+    <view class="title f-title">推荐活动</view>
+    <view class="btn" bindtap='handleClick'>
+      <view class="title f-small">更多</view>
+    </view>
+  </view>
+  <view class="content">
+    <view class="welcome">
+
+      <schedule_list schedules="{{ info.list }}"></schedule_list>
+
+    </view>
+
+  </view>
+</view>

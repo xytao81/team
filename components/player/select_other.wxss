@@ -1,0 +1,82 @@
+.select-other {
+  height: 164rpx;
+  width: 100%;
+  /* margin-top: 20rpx; */
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-other .content {
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  height: 104rpx;
+  width: 690rpx;
+  display: flex;
+  flex-direction: row;
+  
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.select-other .content .select-checked {
+  margin-top: 20rpx;
+}
+
+.select-other .content .info {
+  margin-left: 30rpx;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.select-other .content .info .name {
+  font-size: 24rpx;
+  color: #333;
+  height: 26rpx;
+  line-height: 26rpx;
+
+}
+
+
+.select-other .content .info .rights {
+  width: 100%;
+  height: 50rpx;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.select-other .content .info .rights .title {
+  font-size: 24rpx;
+  color: #808892;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+
+.select-other .content .info .rights .sub_rights {
+  margin-left: 30rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.select-other .content .info .rights .sub_rights .btn {
+  font-size: 24rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+  border-radius: 4rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border: 1rpx solid #00a7f2;
+  color: #00a7f2;
+}
+
+.select-other .content .info .rights .sub_rights .select {
+  background: #00a7f2;
+  color: white;
+}

@@ -1,0 +1,400 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.1",
+	"appid": "wx7b7cbd70512dfaff",
+	"projectname": "team_v2_mini",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 51,
+			"list": [
+				{
+					"id": 0,
+					"name": "login",
+					"pathName": "pages/index/index",
+					"query": "action=login&&token=9dbe08a4095d8675a35db0fb",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "teamCreate",
+					"pathName": "pages/team/create",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "teamPlayersEdit",
+					"pathName": "pages/team/players/edit",
+					"query": "team_id=13093&player_id=7"
+				},
+				{
+					"id": 3,
+					"name": "teamPlayersAdd",
+					"pathName": "pages/team/players/add",
+					"query": "team_id=24",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "noticeAdd",
+					"pathName": "pages/team/teamhome/notice/add",
+					"query": "team_id=s|141&notice_id=46"
+				},
+				{
+					"id": 5,
+					"name": "teamHome",
+					"pathName": "pages/team/teamhome/home",
+					"query": "team_id=13093",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "teamHomeInfo",
+					"pathName": "pages/team/teamhome/info",
+					"query": "team_id=13093"
+				},
+				{
+					"id": 7,
+					"name": "teamPlayersManage",
+					"pathName": "pages/team/players/manage",
+					"query": "team_id=13093"
+				},
+				{
+					"id": 8,
+					"name": "teamSearch",
+					"pathName": "pages/team/search",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "register",
+					"pathName": "pages/index/index",
+					"query": "action=register"
+				},
+				{
+					"id": 10,
+					"name": "teamPlayerDetail",
+					"pathName": "pages/team/players/detail",
+					"query": "team_id=13093&player_id=7",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "leagueDetail",
+					"pathName": "pages/league/leagueitem/index_h5",
+					"query": "team_id=15577&id=103828&scene=2240",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "teamHomeNotices",
+					"pathName": "pages/team/teamhome/notice/list",
+					"query": "team_id=13093"
+				},
+				{
+					"id": 13,
+					"name": "teamHomeNoticeDetail",
+					"pathName": "pages/team/teamhome/notice/detail",
+					"query": "team_id=s|2&notice_id=13"
+				},
+				{
+					"id": 14,
+					"name": "leagueEnroll",
+					"pathName": "pages/league/enroll/index",
+					"query": "league_id= 103979&team_id=13093",
+					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "leagueEnrollSelect",
+					"pathName": "pages/league/enroll/selectplayer",
+					"query": "league_id=103959&team_id=13093&job_id=3",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "teamHomeMessages",
+					"pathName": "pages/team/message/list",
+					"query": "team_id=13093"
+				},
+				{
+					"id": -1,
+					"name": "leaugeMy",
+					"pathName": "pages/league/my",
+					"query": "team_id=s|141"
+				},
+				{
+					"id": 18,
+					"name": "myFinish",
+					"pathName": "pages/my/finish/index",
+					"query": "step=1"
+				},
+				{
+					"id": 19,
+					"name": "myInfoBase",
+					"pathName": "pages/my/info/base",
+					"query": ""
+				},
+				{
+					"id": 20,
+					"name": "myInfo",
+					"pathName": "pages/my/info/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 21,
+					"name": "my",
+					"pathName": "pages/my/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 22,
+					"name": "teamEdit",
+					"pathName": "pages/team/edit",
+					"query": "team_id=13093"
+				},
+				{
+					"id": -1,
+					"name": "indexFindpassword",
+					"pathName": "pages/index/findpassword",
+					"query": "action=login"
+				},
+				{
+					"id": 24,
+					"name": "teamHomeInvitePlayer",
+					"pathName": "pages/team/teamhome/invite/player",
+					"query": "team_id=13093"
+				},
+				{
+					"id": -1,
+					"name": "leagueEnrollSelect",
+					"pathName": "pages/team/teamhome/invite/player",
+					"query": "team_id=13742"
+				},
+				{
+					"id": 26,
+					"name": "teamHomeScheduleList",
+					"pathName": "pages/team/teamhome/schedule/list",
+					"query": "team_id=13945",
+					"scene": null
+				},
+				{
+					"id": 27,
+					"name": "teamMessageApplications",
+					"pathName": "pages/team/message/applications",
+					"query": "team_id=13093&type=1"
+				},
+				{
+					"id": 28,
+					"name": "teamPlayersList",
+					"pathName": "pages/team/players/list",
+					"query": "team_id=13093",
+					"scene": null
+				},
+				{
+					"id": 29,
+					"name": "myInfoEducationexpList",
+					"pathName": "pages/my/info/educationexp/list",
+					"query": ""
+				},
+				{
+					"id": 30,
+					"name": "myInfoEdit",
+					"pathName": "pages/my/info/edit",
+					"query": "group=size",
+					"scene": null
+				},
+				{
+					"id": 31,
+					"name": "leaguelist",
+					"pathName": "pages/league/leaguelist/index_h5",
+					"query": "group_id=202&is_share=1",
+					"scene": null
+				},
+				{
+					"id": 32,
+					"name": "leagueEnrollEditPlayer",
+					"pathName": "pages/league/enroll/editplayer",
+					"query": "league_id= 103959&team_id=13093&job_id=3&player_id=7",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "indexSetpassword",
+					"pathName": "pages/index/setpassword",
+					"query": "action=login&phone=13770756177&code=6546",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myChangePassword",
+					"pathName": "pages/my/changePassword/index",
+					"query": "action=login&phone=13770756177&code=6546",
+					"scene": null
+				},
+				{
+					"id": 35,
+					"name": "teamHomeInviteLogin",
+					"pathName": "pages/team/teamhome/invite/login",
+					"query": "team_id=13093",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "teamSelect",
+					"pathName": "pages/team/select",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 37,
+					"name": "leagueEnrollView",
+					"pathName": "pages/league/enroll/view",
+					"query": "league_id=103990&team_id=13093",
+					"scene": null
+				},
+				{
+					"id": 38,
+					"name": "leagueChildList",
+					"pathName": "pages/league/leaguechildlist/index_h5",
+					"query": "id=103778",
+					"scene": null
+				},
+				{
+					"id": 39,
+					"name": "teamHomeScheduleList",
+					"pathName": "pages/team/teamhome/schedule/list",
+					"query": "team_id=13093&is_admin=1",
+					"scene": null
+				},
+				{
+					"id": 40,
+					"name": "teamHomeScheduleEdit",
+					"pathName": "pages/team/teamhome/schedule/edit",
+					"query": "team_id=13093&schedule_id=",
+					"scene": null
+				},
+				{
+					"id": 41,
+					"name": "teamHomeView",
+					"pathName": "pages/team/teamhome/view",
+					"query": "team_id=13093&token=056685520168d29c7e32d513&is_share=1",
+					"scene": null
+				},
+				{
+					"id": 42,
+					"name": "teamHomeScheduleDetail",
+					"pathName": "pages/team/teamhome/schedule/detail",
+					"query": "schedule_id=73&is_admin=1",
+					"scene": null
+				},
+				{
+					"id": 43,
+					"name": "teamHomeScheduleUsers",
+					"pathName": "pages/team/teamhome/schedule/users",
+					"query": "team_id=13093&schedule_id=3",
+					"scene": null
+				},
+				{
+					"id": 44,
+					"name": "teamHomeScheduleUser",
+					"pathName": "pages/team/teamhome/schedule/user",
+					"query": "team_id=13940&schedule_id=28&uid=424275",
+					"scene": null
+				},
+				{
+					"id": 45,
+					"name": "teamHomeScheduleUser_edit",
+					"pathName": "pages/team/teamhome/schedule/user_edit",
+					"query": "team_id=13093&schedule_id=3&uid=424275",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myMessages",
+					"pathName": "pages/my/message/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 47,
+					"name": "ad",
+					"pathName": "pages/web/ad",
+					"query": "url=https://mp.weixin.qq.com/s?__biz=MzU4NjgxNzczOQ==&tempkey=MTAwOF8zSzhaMDhRMk0vQUx2bjRibVVOTEF2TnNFX0ZQSGpsbE1xN29XUnJKWkZEdDczbkpfaTdzMFpLckdFcFhMdlBwSVRmU2FraHBnb2ZyNC00VjRNUFRCYTdaWHIyTng5SDExUVNzWkhrT0RDNDkzNmxOMzVMOFVuZHhGVmo1MEd6VEZ6RWZuaU9GN2t2N2V4ZWlHYS1ZUEt0VDhfUnJDT0xhWS1WYlRRfn4%3D&chksm=7df4c8c04a8341d640fe30780f475a0ae2825d9fb66048d1f6dd6467ffb205aaa9a7717de1c7",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "infoManual",
+					"pathName": "pages/info/manual",
+					"query": "is_share=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "teamHomeLeagueJoined",
+					"pathName": "pages/team/teamhome/league/joined",
+					"query": "schedule_id=243&is_admin=1",
+					"scene": null
+				},
+				{
+					"id": 51,
+					"name": "leagueEnrollView",
+					"pathName": "pages/league/enroll/view",
+					"query": "league_id=104081&team_id=120006",
+					"scene": null
+				}
+			]
+		}
+	}
+}

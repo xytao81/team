@@ -1,0 +1,3 @@
+<picker mode="multiSelector" bindchange="confirm" bindcolumnchange="bindColumnChange" value="{{ indexes }}" range="{{ regionArray }}" range-key="name">
+  <slot bindtap="show"></slot>
+</picker>

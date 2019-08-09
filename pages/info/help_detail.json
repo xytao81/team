@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "帮助详情",
+  "usingComponents": {
+    "back": "../../components/back/back"
+  }
+}

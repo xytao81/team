@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "查看队员资料",
+  "usingComponents": {
+    "userview": "../../../components/user/userview"
+  }
+}

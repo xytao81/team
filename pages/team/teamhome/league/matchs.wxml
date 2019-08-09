@@ -1,0 +1,46 @@
+<view class="match-header">
+  <view class="title">
+    {{league_info.name}}
+  </view>
+  <view class="content">
+    <span>{{league_info.zone}}</span>
+    <span style="margin-left:20rpx;">{{league_info.players}}人制</span>
+    <span style="margin-left:20rpx;">{{league_info.type_name}}</span>
+  </view>
+</view>
+
+<view class="match-info">
+  <view class="header">
+    <view class="flag"></view>
+    <view class="text">本队赛程</view>
+    <view class="btn" bindtap="handleEntry">
+      <view class="title">查看赛事数据</view>
+      <image src="../../../../images/arr_right.png"></image>
+    </view>
+  </view>
+
+  <!--比赛数据-->
+  <view wx:for="{{match_list}}" wx:key="item.id" wx:for-item="item">
+    <match-info item="{{item}}"></match-info>
+    <view wx:if="{{team_id == item.home.id}}" class="match-btn">
+      <view wx:if="{{item.home.lineup == 0}}" bindtap="handleClick" data-item="{{item}}" class="button blue">提交出场阵容</view>
+      <view wx:if="{{item.home.lineup == 1}}" bindtap="handleClick" data-item="{{item}}" class="button yellow">阵容待审核</view>
+      <view wx:if="{{item.home.lineup == 2}}" bindtap="handleClick" data-item="{{item}}" class="button green">阵容审核通过</view>
+      <view wx:if="{{item.home.lineup == 3}}" bindtap="handleClick" data-item="{{item}}" class="button red">阵容审核未通过</view>
+    </view>
+    <view wx:if="{{team_id == item.away.id}}" class="match-btn">
+      <view wx:if="{{item.away.lineup == 0}}" bindtap="handleClick" data-item="{{item}}" class="button blue">提交出场阵容</view>
+      <view wx:if="{{item.away.lineup == 1}}" bindtap="handleClick" data-item="{{item}}" class="button yellow">阵容待审核</view>
+      <view wx:if="{{item.away.lineup == 2}}" bindtap="handleClick" data-item="{{item}}" class="button green">阵容审核通过</view>
+      <view wx:if="{{item.away.lineup == 3}}" bindtap="handleClick" data-item="{{item}}" class="button red">阵容审核未通过</view>
+    </view>
+  </view>
+  <view class='default_view' wx:if="{{ !match_list || match_list.length==0 }}">
+    <view class='line'></view>
+    <image src='../../../../images/default_icon.png'></image>
+    <text>暂无赛程</text>
+  </view>
+
+  <view class="nomore f-normal" wx:if="{{ !info.isHideLoadMore && match_list.length > 0 }}">----- 我是有底线的 -----</view>
+
+</view>

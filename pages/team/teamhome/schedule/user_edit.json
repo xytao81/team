@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "报名资料",
+  "usingComponents": {
+    "viewimage": "../../../components/viewimage",
+    "regionpicker": "../../../components/regionpicker/regionpicker",
+    "positionpicker": "../../../components/positionpicker/positionpicker",
+    "degreepicker": "../../../components/degreepicker/degreepicker",
+    "jobpicker": "../../../components/jobpicker/jobpicker",
+    "rightspicker": "../../../components/rightspicker/rightspicker",
+    "nationpicker":"../../../components/nationpicker/nationpicker",
+    "nationpicker2":"../../../components/nationpicker2/nationpicker2",
+    "useredit": "../../../components/user/useredit"
+  }
+}

@@ -1,0 +1,17 @@
+
+<view class="supermodal {{ show ? 'supermodal--show' : '' }}">
+    <view class="supermodal__mask" bindtap="cancel" />
+    <view class="supermodal__container">
+        <view class="supermodal__title">
+            <view class="tit">{{ title }}</view>
+            <view class="cls" bindtap='close'>X</view>
+        </view>
+        <view class="supermodal__main">
+            <slot></slot>
+        </view>
+        <view class="supermodal__control" wx:if="{{ showButtons }}">
+            <view bindtap='cancel' class="supermodal-button supermodal-reset">取消</view>
+            <view bindtap='confirm' class="supermodal-button supermodal-submit b-l" style="width: 284rpx;">确定</view>
+        </view>
+    </view>
+</view>

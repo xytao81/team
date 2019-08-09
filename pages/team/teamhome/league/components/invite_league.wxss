@@ -1,0 +1,59 @@
+.invite-league {
+  margin-top: 20rpx;
+  background: #fff;
+}
+
+
+
+
+.invite-league .header {
+  height: 90rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.invite-league .header .flag {
+  width: 8rpx;
+  height: 30rpx;
+  background-color: #00a7f2;
+  margin-top: 30rpx;
+}
+
+.invite-league .header .text {
+  height: 90rpx;
+  line-height: 90rpx;
+  margin-left: 10rpx;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.default_view{
+  height: 170rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.default_view .line{
+  margin-left: 30rpx;
+  margin-right: 30rpx; 
+  height: 1rpx;
+  width:690rpx;
+  background-color: #e0e0e0;
+}
+
+.default_view image{
+  margin-top: 30rpx;
+  height:60rpx;
+  width: 60rpx;
+}
+
+.default_view text{
+  
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #bcbcbd;
+}

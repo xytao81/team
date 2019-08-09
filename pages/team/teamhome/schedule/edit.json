@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "viewimage": "../../../components/viewimage",
+    "cropper": "../../../components/cropper",
+    "regionpicker": "../../../components/regionpicker/regionpicker",
+    "datetimepicker": "../../../components/datetimepicker/datetimepicker",
+    "fieldpicker":"../../../components/fieldpicker/fieldpicker"
+  }
+}

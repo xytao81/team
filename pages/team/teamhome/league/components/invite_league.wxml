@@ -1,0 +1,15 @@
+<view class="invite-league">
+  <view class="header">
+    <view class="flag"></view>
+    <view class="text">
+    <text>已报名</text>
+    <text style="font-size: 24rpx; color: #808892; font-weight:normal;">（管理报名资料）</text>
+    </view>
+  </view>
+  <list id="list" bind:click="handleClick" hideStatus="{{ true }}"></list>
+  <view class='default_view' wx:if="{{ !list || list.length==0 }}">
+    <view class='line'></view>
+    <image src='../../../../../images/default_icon.png'></image>
+    <text>没有已报名的赛事</text>
+  </view>
+</view>

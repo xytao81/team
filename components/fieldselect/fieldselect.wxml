@@ -1,0 +1,29 @@
+<!--components/fieldselect/fieldselect.wxml-->
+<!-- <view class="contanier">
+
+</view> -->
+<view class="form-container"> 
+    <view class="title f-small">
+        请选择报名表需要的信息，选中字段均为必填项
+    </view>
+    <view wx:for="{{ enrollFields2 }}" wx:for-item="fieldGroup" wx:key="idx" wx:for-index="idx" style="border-bottom:1rpx solid #e0e0e0;background:#fff;padding:0rpx 30rpx;margin-bottom:20rpx;">
+        <!-- <view class="subTitle">
+            <view class="line"></view>
+            {{ enrollFieldsTitles[idx].text }}
+        </view> -->
+        <view class="show-container">
+            <view class="show-row">
+                <view class="show-title">
+                    <view class="f-l tit">{{ enrollFieldsTitles[idx].text}}</view>
+                </view>
+            </view>
+        </view>
+        <checkbox-group bindchange="checkboxChange" data-idx="{{ idx }}" style="padding:10rpx 0rpx;">
+            <label class="checkField" wx:for="{{ fieldGroup }}" wx:for-item="item" wx:key="idx2" wx:for-index="idx2" data-idx="{{ idx }}" data-idx2="{{ idx2 }}" bindtap="selectField" style="display:flex;">
+                <checkbox value="{{idx2}}" checked="{{ item.is_select }}" disabled="{{item.name=='姓名'? 'true' : ''}}"/>
+                <view class="checkTitle f-small {{item.is_select ? 'f-blue' : ''}}">{{item.name}}</view>
+                <view class="sensitive f-small">( {{item.intro}} )</view>     
+            </label>
+        </checkbox-group>
+    </view>
+</view>

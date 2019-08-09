@@ -1,0 +1,32 @@
+<view class="">
+  <view class="teams">
+    <navigator url="/pages/team/teamhome/view?team_id={{item.id}}" class="team" style="border-top: 0;">
+      <view class="logo">
+        <image src="https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/team/20180725/63F8C1AD97D7BE375B43566D6262215E.jpg"></image>
+      </view>
+      <view class="content">
+        <view class="title f-black f-title">顺丰内部队</view>
+        <view class="desc f-gray f-small">ID:123 | 南京</view>
+      </view>
+    </navigator>
+    <navigator url="/pages/team/teamhome/view?team_id={{item.id}}" class="team">
+      <view class="logo">
+        <image src="https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/team/20180725/63F8C1AD97D7BE375B43566D6262215E.jpg"></image>
+      </view>
+      <view class="content">
+        <view class="title f-black f-title">顺丰内部队</view>
+        <view class="desc f-gray f-small">ID:123 | 南京</view>
+      </view>
+    </navigator>
+    <navigator url="/pages/team/teamhome/view?team_id={{item.id}}" class="team">
+      <view class="logo">
+        <image src="https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/team/20180725/63F8C1AD97D7BE375B43566D6262215E.jpg"></image>
+      </view>
+      <view class="content">
+        <view class="title f-black f-title">顺丰内部队</view>
+        <view class="desc f-gray f-small">ID:123 | 南京</view>
+      </view>
+    </navigator>
+  </view>
+  <view class="f-small t-c f-blue" style="border-top: solid 1rpx #e0e0e0; line-height: 80rpx; ">查看全部球队</view>
+</view>

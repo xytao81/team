@@ -1,0 +1,87 @@
+/* pages/team/teamhome/schedule/user.wxss */
+/* pages/login/index.wxss */
+/* .page{
+    background-color:#fff;
+}
+.page-section {
+    margin-bottom: 20rpx;
+}
+
+.f-gray{
+    display:flex;
+}.f-gray{
+    display:flex;
+}
+.to-examine,.agree,.refuse{
+    height:80rpx;
+    text-align:center;
+    flex:33.33%;
+    line-height:80rpx;
+    color:#333;
+}
+.player-img{
+    width:90%;
+    display:flex;
+}
+.player-img > image{
+    width:140rpx;
+    height:160rpx;
+    padding:30rpx;
+}
+.palyer-info{
+    flex:1;
+    position: relative;
+}
+.palyer-total{
+    position:absolute;
+    top:30rpx;
+    
+}
+.palyer-info-name{
+    margin-bottom: 50rpx;
+    
+}
+.palyer-info-date{
+}
+.palyer-state{
+    padding-top:30rpx;
+}
+.line{
+    border:1rpx solid #e0e0e0;
+}
+.under-line{
+    border:1rpx solid #e0e0e0;
+    width:90%;
+    margin-left:5%;
+} */
+
+/* pages/login/index.wxss */
+
+.page-section {
+    margin-bottom: 20rpx;
+}
+.f-gray{
+    display:flex;
+}
+.examine,.agree,.refuse{
+    text-align:center;
+    flex:33.33%;
+    color:#333;
+}
+.me { background: #ecf7fc; }
+
+.weui-badge { 
+    border-radius: 6rpx; 
+}
+.to-examine{
+    color: #00a7f2; 
+}
+
+.signin-btn {
+    font-size:12px;
+    width:105rpx;
+    margin-right:30rpx;
+    margin-top:30rpx;
+    height:50rpx;
+    line-height: 55rpx;
+}

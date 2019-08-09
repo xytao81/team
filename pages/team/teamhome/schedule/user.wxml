@@ -1,0 +1,114 @@
+<view class="page">
+    <view style="padding-bottom: 100rpx;">
+        <!-- 提示消息 -->
+        <view class="my-header">
+            <view class="info-danger f-blue" wx:if="{{ enroll.status == 0 }}">报名待审核</view>
+            <view class="info-danger f-green" wx:if="{{ enroll.status == 1 }}">报名已通过</view>
+            <view class="info-danger f-red" wx:if="{{ enroll.status == 2 }}">报名被拒绝：</view>
+            <view class="info-desc f-red" wx:if="{{ enroll.status == 2 }}">{{ enroll.refusal_reason ? enroll.refusal_reason : '对不起，您不符合我们的要求。' }}</view>
+        </view>
+        <!-- <view class="f-small f-gray" style="margin: 20rpx 30rpx;">以下信息将用于比赛/活动报名，请如实填写</view> -->
+        <!-- 个人信息 -->
+        <view class="uesr-list b-white" wx:for="{{ enroll.content }}" wx:for-item="fieldGroup" wx:key="idx" wx:for-index="idx" wx:if="{{ enrollFieldsTitles[idx].count > 0 }}">
+            <view class="show-container" style="margin: 0 30rpx 0;">
+                <view class="show-row">
+                    <view class="show-title">
+                        <view class="f-l tit">{{ enrollFieldsTitles[idx].text }}</view>
+                    </view>
+                </view>
+                <view class="show-row" wx:for="{{ fieldGroup }}" wx:for-item="field" wx:key="idx2" wx:for-index="idx2" wx:if="{{ field.is_select }}">
+                    <block wx:if="{{ field.key == 'photo' }}">
+                    <view class="show-label" style="line-height: 50rpx;">{{ field.name }}</view>
+                    <view class="show-content lh-0">
+                        <view class="" style="height:98rpx;" >
+                            <viewimage src="{{ field.value ? field.value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style2="width: 70rpx; height: 98rpx;"></viewimage>
+                        </view>
+                    </view>
+                    </block>
+                    <block wx:elif="{{ field.type == 'pic' }}">
+                    <view class="show-label" style="line-height: 50rpx;">{{ field.name }}</view>
+                    <view class="show-content lh-0">
+                        <view class="" style="height:70rpx;" >
+                            <viewimage src="{{ field.value ? field.value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}" style2="width: 70rpx; height: 70rpx;"></viewimage>
+                        </view>
+                    </view>
+                    </block>
+                    <block wx:elif="{{ field.name == '居住地' }}">
+                    <view class="show-label">{{ field.name }}</view>
+                    <view class="show-content" wx:if="{{ field.value[0] }}">{{ field.value[0].name ? field.value[0].name+'-'+field.value[1].name : field.value }}</view>
+                    <view class="show-content" wx:else>{{ field.value[0].name ? field.value[0].name+'-'+field.value[1].name : field.value }}</view>
+                    </block>
+                    <block wx:elif="{{ field.type == 'number' }}">
+                    <view class="show-label">{{ field.name }}</view>
+                    <view class="show-content" wx:if="{{ field.key == 'height' }}">{{ numbersArray[field.value] }} CM</view>
+                    <view class="show-content" wx:elif="{{ field.key == 'weight' }}">{{ numbersArray[field.value] }} KG</view>
+                    <view class="show-content" wx:elif="{{ field.key == 'shoese_sizes' }}">{{ numbersArray[field.value] }} 码</view>
+                    <view class="show-content" wx:else>>{{ numbersArray[field.value] }}</view>
+                    </block>
+                    <block wx:elif="{{ field.key == 'sex' }}">
+                    <view class="show-label">{{ field.name }}</view>
+                    <view class="show-content">{{ [' ', '男', '女'][field.value] }}</view>
+                    </block>
+                    <block wx:elif="{{ field.key == 'cert_type' }}">
+                    <view class="show-label">{{ field.name }}</view>
+                    <view class="show-content">{{ [' ', '身份证', '护照','其它'][field.value] }}</view>
+                    </block>
+                    <block wx:elif="{{ field.name == '最高学历' || field.name == '学历/学位' }}">
+                    <view class="show-label">{{ field.name }}</view>
+                    <view class="show-content">{{ ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'][field.value-1] }}</view>
+                    </block>
+                    <block wx:elif="{{ field.key == 'marriage' }}">
+                    <view class="show-label">{{ field.name }}</view>
+                    <view class="show-content">{{ ['已婚', '未婚'][field.value] }}</view>
+                    </block>
+                    <block wx:elif="{{ field.name == '联系人关系' }}">
+                    <view class="show-label">{{ field.name }}</view>
+                    <view class="show-content">{{ ['父亲','母亲','亲属','朋友','同学'][field.value] }}</view>
+                    </block>
+                    <block wx:else>
+                    <view class="show-label">{{ field.name }}</view>
+                    <view class="show-content">{{ field.value }}</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+
+    <view class="footer-buttons" style="display:flex;" wx:if="{{ teamRights > 0 && enroll.status == 0 }}">
+        <button class="footer-btn pass" type="primary" bindtap="openDenyModal">拒绝</button>
+        <button class="footer-btn unpass" type="primary" bindtap="changePass">同意</button>
+    </view>
+    <view class="footer-buttons" wx:else>
+        <button class="footer-btn full-btn" type="primary" bindtap="gotoEdit" wx:if="{{ uid == myUid && enroll.status == 0 }}">修改报名资料</button>
+        <button class="footer-btn full-btn" type="primary" bindtap="gotoEdit" wx:if="{{ uid == myUid && enroll.status == 2 }}">重新报名</button>
+    </view>
+
+
+</view>
+
+<view class="mask" catchtouchmove="preventTouchMove" hidden="{{ !denyModalVisible }}"></view>
+<!-- 弹框 -->
+<view class="reason modalDlg" hidden="{{ !denyModalVisible }}">
+    <view class="reason-title shadow">审核不通过</view>
+    <view class="reason-contant">
+        <view class="contant-title">拒绝理由</view>
+        <textarea class="textarea-bg f-normal" value="{{ refusalReason }}" bindinput="onReasonChange" placeholder="对不起，您不符合我们的要求。" />
+        <view class="btn modalBtn clearfix" style="display:flex;">
+            <button class="btn candel" type="primary" bindtap="hideDenyModal">取消</button>
+            <button class="btn confirm" type="primary" bindtap="changeDeny">发送</button>
+        </view>
+    </view>
+</view>
+
+    <!-- <view class="cropper-wrapper" hidden="{{ !cropper1Visible }}">
+        <canvas class="cropper" disable-scroll="true" bindtouchstart="cropper1TouchStart" bindtouchmove="cropper1TouchMove" bindtouchend="cropper1TouchEnd" style="width:{{cropper1Opt.width}}px;height:{{cropper1Opt.height}}px;background-color: rgba(0, 0, 0, 0.8)" canvas-id="{{cropper1Opt.id}}"></canvas>
+        <canvas class="cropper" disable-scroll="true" style="position: fixed; top: -{{cropper1Opt.width * cropper1Opt.pixelRatio}}px; left: -{{cropper1Opt.height * cropper1Opt.pixelRatio}}px; width:{{cropper1Opt.width * cropper1Opt.pixelRatio}}px;height:{{cropper1Opt.height * cropper1Opt.pixelRatio}}px;" canvas-id="{{cropper1Opt.targetId}}"></canvas>
+        <view class="cropper-buttons">
+            <view class="btn" bindtap="cropper1GetImage">生成图片</view>
+        </view>
+    </view>  -->
+
+
+

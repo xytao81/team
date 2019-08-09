@@ -1,0 +1,18 @@
+<!--components/schedule/team/index.wxml-->
+<view class="team-container">
+  <view wx:if="{{list.length>0}}">
+    <view class="team-item" wx:for="{{list}}" wx:key="id" data-item="{{item}}"  bindtap="teamDetail">
+      <image wx:if="{{item.logo}}" src="{{item.logo}}"></image>
+      <image wx:else src="../../../images/league/team_logo.png"></image>
+      <view class="team-info-box">
+        <view class="team-name">{{item.name}}</view>
+        <view class="team-count">{{item.player_count+item.coach_count+item.worker_count+item.leader_count}}人</view>
+        <text class="team-status">{{item.status_name}}</text>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="no-data">
+    <image src="../../../images/league/no-data.png"></image>
+    <view>暂无数据</view>
+  </view>
+</view>

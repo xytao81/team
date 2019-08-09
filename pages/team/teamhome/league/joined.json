@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的赛事",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "join-league": "./components/join_league",
+    "invite-league": "./components/invite_league"
+  }
+}

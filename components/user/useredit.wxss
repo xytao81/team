@@ -1,0 +1,10 @@
+
+.title-name{
+    border-left:solid 10rpx #00a7f2;
+    padding-left:16rpx;
+    height:32rpx;
+    display:inline-block;
+    line-height:32rpx;
+}
+
+/* .f-red { color: #f00; } */

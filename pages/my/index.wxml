@@ -1,0 +1,86 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+
+    <userbrief name="{{ info.name }}" uid="{{ info.uid }}" photo="{{ info.photo ? info.photo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" settings="设置" bind:tap="onUserbriefTap"></userbrief>
+
+    <view class="mt show-container">
+      <navigator url="/pages/my/message/list" class="show-row">
+        <view class="weui-select">我的消息</view>
+      </navigator>
+      <navigator url="/pages/team/teamhome/schedule/my" class="show-row">
+        <view class="weui-select">我的日程</view>
+      </navigator>
+      <!-- <navigator url="/pages/web/insurance?url=https://m.aiqiumi.com/insurance?token=b17c21724f60f9fd86af4b94#/InsuredList" class="show-row">
+        <view class="weui-select">我的保险订单</view>
+      </navigator> -->
+      <!-- <navigator url="/pages/my/league/index" class="show-row">
+        <view class="weui-select">我的赛事</view>
+      </navigator> -->
+    </view>
+
+    <view class="mt b-white show-container" wx:if="{{ myTeams.length > 0 }}">
+      <view class="show-row">
+        <view class="show-title">
+          <view class="f-l tit">
+              <text class="title-name">当前球队</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="b-white">
+        <view class="show-row" data-id="{{ currentTeam.id }}">
+          <view class="team-box o-h" style="display: flex; align-items: center; padding: 10rpx 0;">
+            <view class="f-l" style="width: 100%; line-height: 40rpx;">
+              <view style="">{{ currentTeam.name }}
+                <text class="f-small f-gray">ID:{{ currentTeam.id }}</text>
+              </view>
+              <view class="f-small f-gray">{{ currentTeam.rights_name }}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="mt b-white show-container" wx:if="{{ myTeams.length > 0 }}">
+      <view class="show-row">
+        <view class="show-title">
+          <view class="f-l tit">
+              <text class="title-name">切换球队</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="b-white team-select">
+        <!-- <view class="show-row" wx:for="{{ myTeams }}" wx:key="id" wx:for-item="team" bindtap="selectTeam" data-id="{{ team.id }}"> -->
+        <view class="show-row" wx:for="{{ myTeams }}" wx:key="id" wx:for-item="team" style="position:relative;">
+          <formidMaker bindsubmit="selectTeam" data-id="{{ team.id }}">
+          <view class="team-box o-h" style="display: flex; align-items: center; padding: 10rpx 0;">
+            <view class="f-l" style="width: 630rpx; line-height: 40rpx;">
+              <view style="">{{ team.name }}
+                <text class="f-small f-gray">ID:{{ team.id }}</text>
+              </view>
+              <view class="f-small f-gray">{{ team.rights_name }}</view>
+            </view>
+            <view class="f-r f-blue" style="width:70rpx;padding:0;margin-left:35rpx;margin-top:0rpx;border:none;line-height: 72rpx;">进入</view>
+            <view class="f-r weui-select" style="width: 1rpx;"></view>
+          </view>
+          </formidMaker>
+        </view>
+      </view>
+    </view>
+
+    <view class="mt show-container">
+      <navigator url="/pages/info/manual" class="show-row">
+        <view class="weui-select">帮助与反馈</view>
+      </navigator>
+      <navigator url="/pages/my/settings/index" class="show-row">
+        <view class="weui-select">设置</view>
+      </navigator>
+    </view>
+
+    <!-- 底部公众号推荐 -->
+    <view class="mt">
+      <official-account bindload="onOfficialLoad" binderror="onOfficialError"></official-account>
+    </view>
+
+  </view>
+</view>

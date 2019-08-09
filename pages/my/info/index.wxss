@@ -1,0 +1,13 @@
+.page-section {
+    margin-bottom: 20rpx;
+}
+
+.weui-badge { background: none; border: 1rpx solid #ddd; color: #666; width: 75rpx; margin-right: 25rpx; }
+.title-name{
+    border-left:solid 10rpx #00a7f2;
+    padding-left:16rpx;
+    height:32rpx;
+    display:inline-block;
+    line-height:32rpx;
+  }
+

@@ -1,0 +1,27 @@
+<view class="page">
+
+    <form bindsubmit="enrollSubmit" report-submit>
+        <view style="padding-bottom: 100rpx;">
+
+            <useredit value="{{enroll.content}}" loadDefault="{{ true }}" bindusereditchange="onUsereditChange"></useredit>
+
+
+        </view>
+
+        <view class="footer-buttons">
+            <button class="footer-btn full-btn" type="primary" form-type="submit" wx:if="{{ !enroll.id }}">提交</button>
+            <button class="footer-btn full-btn" type="primary" form-type="submit" wx:if="{{ enroll.id && enroll.status == 0}}">修改报名资料</button>
+            <button class="footer-btn full-btn" type="primary" form-type="submit" wx:if="{{ enroll.id && enroll.status == 2}}">重新提交</button>
+        </view>
+    </form>
+
+</view>
+
+    <view class="cropper-wrapper" hidden="{{ !cropper1Visible }}">
+        <canvas class="cropper" disable-scroll="true" bindtouchstart="cropper1TouchStart" bindtouchmove="cropper1TouchMove" bindtouchend="cropper1TouchEnd" style="width:{{cropper1Opt.width}}px;height:{{cropper1Opt.height}}px;background-color: rgba(0, 0, 0, 0.8)" canvas-id="{{cropper1Opt.id}}"></canvas>
+        <canvas class="cropper" disable-scroll="true" style="position: fixed; top: -{{cropper1Opt.width * cropper1Opt.pixelRatio}}px; left: -{{cropper1Opt.height * cropper1Opt.pixelRatio}}px; width:{{cropper1Opt.width * cropper1Opt.pixelRatio}}px;height:{{cropper1Opt.height * cropper1Opt.pixelRatio}}px;" canvas-id="{{cropper1Opt.targetId}}"></canvas>
+        <view class="cropper-buttons">
+            <view class="btn" bindtap="cropper1GetImage">生成图片</view>
+        </view>
+    </view> 
+

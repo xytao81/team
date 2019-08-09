@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "赛事主页",
+  "usingComponents": {
+    "schedule": "/components/league/schedulelist/index",
+    "data": "/components/league/data/index",
+    "team": "/components/league/team/index"
+  }
+}

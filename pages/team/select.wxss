@@ -1,0 +1,20 @@
+
+page { }
+.page-section {
+    margin-bottom: 20rpx;
+}
+
+.weui-select { padding-left: 0; border-right: 0; }
+.weui-select:before{
+    border-color:#00a7f2;
+}
+.button-hover[type=primary][plain]{
+    color:#00a7f2;
+
+}
+.button {
+    padding:0;
+}
+button[size=mini] {
+    padding:0;
+}

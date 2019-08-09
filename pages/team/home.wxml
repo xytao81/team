@@ -1,0 +1,15 @@
+
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd">
+
+        <view>
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" bindtap="gotoSearch">搜索球队</button>
+            </view>
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" bindtap="gotoCreate">创建球队</button>
+            </view>
+        </view>
+
+    </view>
+</view>

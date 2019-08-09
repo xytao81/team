@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "队员管理",
+  "usingComponents": {
+    "vInput": "/components/inputModal"
+  }
+}

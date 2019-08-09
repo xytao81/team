@@ -1,0 +1,39 @@
+.player-list{
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.player-list .player{
+  height:112rpx;
+  border-bottom: 1rpx solid #e0e0e0;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.player-list .player image{
+  height:67rpx;
+  width:44rpx;
+  margin-top: 23rpx;
+}
+
+.player-list .player .content{
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+  height: 72rpx;
+  width: 100%;
+
+}
+
+.player-list .player .content .name{
+  font-size:28rpx;
+  line-height: 30rpx;
+  color: #333333;
+}
+
+.player-list .player .content .desc{
+  font-size:24rpx;
+  margin-top: 18rpx;
+  line-height: 26rpx;
+  color: #808892;
+}

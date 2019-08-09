@@ -1,0 +1,203 @@
+<view wx:if="{{enrollData}}" class="page">
+  <form bindsubmit="bindSubmit" report-submit>
+    <view style="padding-bottom: 120rpx;">
+
+      <view style="background: #fff;">
+        <view class="form-container" style="margin: 0 30rpx 0;">
+          <view class="form-row">
+            <view class="form-label" style="line-height: 100rpx;">队徽</view>
+            <view class="form-content" bindtap="openLogoSheet" style="line-height: 0;">
+              <image src="{{ enrollData.logo ? enrollData.logo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_70,w_70" style="width: 100rpx; height: 100rpx;"></image>
+            </view>
+          </view>
+          <view class="form-row">
+            <view class="form-label">球队全称</view>
+            <view class="form-content">
+              <input class="form-input" placeholder="" value="{{ enrollData.full_name }}" bindinput="bindChangeFullName" />
+            </view>
+          </view>
+          <view class="form-row">
+            <view class="form-label">球队简称</view>
+            <view class="form-content">
+              <input class="form-input" placeholder="仅限8个字" value="{{ enrollData.name }}" bindinput="bindChangeName" />
+            </view>
+          </view>
+          <view class="form-row">
+            <view class="form-label">联系人</view>
+            <view class="form-content">
+              <input class="form-input" placeholder="" value="{{ enrollData.contacts_name }}" bindinput="bindChangeContactsName" />
+            </view>
+          </view>
+          <view class="form-row">
+            <view class="form-label">联系电话</view>
+            <view class="form-content">
+              <input class="form-input" placeholder="" value="{{ enrollData.contacts_phone }}" bindinput="bindChangeContactsPhone" />
+            </view>
+          </view>
+          <view class="form-row">
+            <view class="form-title">
+              <view class="tit">球衣主颜色</view>
+            </view>
+            <clothpicker checked="{{ enrollData.color[0] }}" bindclotheschange="bindClothesChange1">
+              <view class="o-h" style="display: flex; align-items: center; ">
+                <view class="f-l" style="line-height: 90rpx">
+                  <view style="overflow:hidden; padding: 0;">
+                    <view style="float:left; width: 160rpx;">
+                      <view>队员</view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[0].player.shirt.color +') no-repeat'}}">
+                        <image src="../../../images/icon_sy.png" />
+                      </view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[0].player.shorts.color +') no-repeat'}}">
+                        <image src="../../../images/icon_kz.png" />
+                      </view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[0].player.shoes.color +') no-repeat'}}">
+                        <image src="../../../images/icon_qw.png" />
+                      </view>
+                    </view>
+                  </view>
+                  <view style="overflow:hidden; padding: 0;">
+                    <view style="float:left; width: 160rpx;">
+                      <view>守门员</view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[0].goalkeeper.shirt.color +') no-repeat'}}">
+                        <image src="../../../images/icon_sy.png" />
+                      </view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[0].goalkeeper.shorts.color +') no-repeat'}}">
+                        <image src="../../../images/icon_kz.png" />
+                      </view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[0].goalkeeper.shoes.color +') no-repeat'}}">
+                        <image src="../../../images/icon_qw.png" />
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="f-l settings-icon"></view>
+              </view>
+            </clothpicker>
+          </view>
+          <view class="form-row">
+            <view class="form-title">
+              <view class="tit">球衣副颜色</view>
+            </view>
+            <clothpicker checked="{{ enrollData.color[1] }}" bindclotheschange="bindClothesChange2">
+              <view class="o-h" style="display: flex; align-items: center; ">
+                <view class="f-l" style="line-height: 90rpx">
+                  <view style="overflow:hidden; padding: 0;">
+                    <view style="float:left; width: 160rpx;">
+                      <view>队员</view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[1].player.shirt.color +') no-repeat'}}">
+                        <image src="../../../images/icon_sy.png" />
+                      </view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[1].player.shorts.color +') no-repeat'}}">
+                        <image src="../../../images/icon_kz.png" />
+                      </view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[1].player.shoes.color +') no-repeat'}}">
+                        <image src="../../../images/icon_qw.png" />
+                      </view>
+                    </view>
+                  </view>
+                  <view style="overflow:hidden; padding: 0;">
+                    <view style="float:left; width: 160rpx;">
+                      <view>守门员</view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[1].goalkeeper.shirt.color +') no-repeat'}}">
+                        <image src="../../../images/icon_sy.png" />
+                      </view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[1].goalkeeper.shorts.color +') no-repeat'}}">
+                        <image src="../../../images/icon_kz.png" />
+                      </view>
+                    </view>
+                    <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ enrollData.color[1].goalkeeper.shoes.color +') no-repeat'}}">
+                        <image src="../../../images/icon_qw.png" />
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="f-l settings-icon"></view>
+              </view>
+            </clothpicker>
+          </view>
+        </view>
+      </view>
+      <view class="mt b-white">
+        <view class="form-container" style="margin: 0 30rpx 0;">
+          <view class="form-row">
+            <view class="form-title">
+              <view class="f-l tit">报名总数 <text class="f-blue">(已报名{{ playersTotalCount }}人/上限{{ leagueDetail.join_players }}人)</text></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="mt b-white" wx:for="{{ player_list }}" wx:for-item="job" wx:for-index="idx" wx:key="id" style="{{ idx == 0 ? ' margin-top:0;' : '' }}">
+        <view class="form-container" style="margin: 0 30rpx 0;" wx:if="{{ job.is_select }}">
+          <view class="form-row">
+            <view class="form-title">
+              <view class="f-l tit">{{ job.type }} <text class="f-blue">(已报名{{ job.players.length }}人{{ job.value == 3 || true ? '/至少报名'+job.list.sign_number[0].min+'人' : '' }})</text></view>
+              <view class="f-r">
+                <view bindtap='onClickSetting' data-index="{{ job.value }}" style="line-height: 0;">
+                  <button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;">设置</button>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="o-h">
+            <view class="show-content" style="width: 100%;">
+              <view class="players">
+
+                <navigator url="/pages/league/enroll/editplayer?league_id={{ leagueId }}&team_id={{ teamId }}&job_id={{ job.value }}&player_id={{ player.player_id }}" class="weui-select player-row b-white" wx:for="{{ job.players }}" wx:for-item="player" wx:key="player_id">
+                  <view class="f-l avatar">
+                    <image src="{{ player.content['person_info'][0].value ? player.content['person_info'][0].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style="width: 48rpx; height: 67rpx;"></image>
+                  </view>
+                  <view class="f-r right">
+                    <view class="t1">
+                      <view class="f-l tit" style="display: inline-block; vertical-align: middle; line-height: 30rpx;">{{ player.content['person_info'][1].value }} <view class="weui-badge" wx:if="{{ !player.is_user && false }}" style="background:#ccc;">临时</view></view>
+                      <view class="f-r badge">
+                        <view wx:if="{{ player.badge_name }}" class="weui-badge c{{ player.badge_class }}">{{ player.badge_name }}</view>
+                      </view>
+                    </view>
+                    <view class="t2 f-gray f-small">{{ player.sub_job_name }} {{ player.job == 3 && player.content['person_info'][3].is_select && player.content['person_info'][3].value ? player.content['person_info'][3].value+'号 ' : ''}} <text class="f-red" wx:if="{{ !player.isFinished }}">报名资料不全，请补全资料</text></view>
+                  </view>
+                </navigator>
+
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="footer-buttons">
+      <button class="footer-btn full-btn" type="primary" form-type="submit">提交报名资料</button>
+    </view>
+  </form>
+</view>
+
+<view class="cropper-wrapper" hidden="{{ !cropper1Visible }}">
+  <canvas class="cropper" disable-scroll="true" bindtouchstart="cropper1TouchStart" bindtouchmove="cropper1TouchMove" bindtouchend="cropper1TouchEnd" style="width:{{cropper1Opt.width}}px;height:{{cropper1Opt.height}}px;background-color: rgba(0, 0, 0, 0.8)" canvas-id="{{cropper1Opt.id}}"></canvas>
+  <canvas class="cropper" disable-scroll="true" style="position: fixed; top: -{{cropper1Opt.width * cropper1Opt.pixelRatio}}px; left: -{{cropper1Opt.height * cropper1Opt.pixelRatio}}px; width:{{cropper1Opt.width * cropper1Opt.pixelRatio}}px;height:{{cropper1Opt.height * cropper1Opt.pixelRatio}}px;" canvas-id="{{cropper1Opt.targetId}}"></canvas>
+  <view class="cropper-buttons">
+      <view class="btn" bindtap="cropper1GetImage">生成图片</view>
+  </view>
+</view>

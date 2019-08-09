@@ -1,0 +1,3 @@
+<picker bindchange="confirm" value="{{ valueIndex }}" range="{{ subJobs }}" range-key="name">
+    <slot bindtap="show"></slot>
+</picker>

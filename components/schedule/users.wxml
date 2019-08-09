@@ -1,0 +1,2 @@
+<!--components/schedule/users.wxml-->
+<user wx:for="{{ list }}" wx:for-item="user" wx:key="uid" user="{{ user }}" isAdmin="{{ isAdmin }}" showSignedStatus="{{ showSignedStatus }}" bindclickuser="onClickUser" bindupdate="onUserUpdate" ></user>

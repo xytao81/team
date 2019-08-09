@@ -1,0 +1,65 @@
+<view class="page" style="background: #fff;" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+
+    <block wx:if="{{ step == 1 }}">
+      <view class="form-container" style="margin: 0 50rpx 0;">
+        <!-- <view class="form-row">
+              <view class="form-label">头像</view>
+              <view class="form-content">
+                  <image src="{{ registerDialogData.avatarUrl }}" style="width: 100rpx; height: 100rpx;" bindtap="chooseImage"></image>
+              </view>
+          </view> -->
+        <block wx:if="{{is_show_login}}">
+          <view class="form-row">
+            <view class="form-label">用户名</view>
+            <view class="form-content">
+              <input class="form-input" placeholder="请输入用户名" value="{{ info.login }}" bindinput="inputChangeValue" data-key="login" bindfocus="inputShowTipLogin" bindblur="inputHideTipLogin" />
+            </view>
+          </view>
+          <view class="form-tip">用户名不能重复，可设置5-25个字符，可以是数字或英文字母，不能有标点或空格，一旦设置成功无法修改。</view>
+        </block>
+        <!-- <block wx:if="{{is_show_email}}">
+          <view class="form-row">
+            <view class="form-label">邮箱</view>
+            <view class="form-content">
+              <input class="form-input" placeholder="请输入邮箱" value="{{ info.email }}" bindinput="inputChangeValue" data-key="email" bindfocus="inputShowTipEmail" bindblur="inputHideTipEmail" />
+            </view>
+          </view>
+          <block wx:if="{{is_show_name}}">
+          <view class="form-tip" hidden="{{ !tipEmailVisible }}" style="top: 272rpx;">邮箱将用于验证身份、找回用户名、找回密码等。</view>
+          </block>
+          <block wx:else>
+          <view class="form-tip" hidden="{{ !tipEmailVisible }}" style="top: 182rpx;">邮箱将用于验证身份、找回用户名、找回密码等。</view>
+          </block>
+        </block> -->
+      </view>
+      <view class="form-buttons" style="margin: 130rpx 50rpx 0;">
+        <button class="form-button form-button-circular" type="primary" bindtap="step1Submit">下一步</button>
+      </view>
+    </block>
+
+    <block wx:if="{{ step == 2 }}">
+      <view class="form-container" style="margin: 0 50rpx 0;">
+        <!-- <view class="form-row">
+              <view class="form-label">头像</view>
+              <view class="form-content">
+                  <image src="{{ registerDialogData.avatarUrl }}" style="width: 100rpx; height: 100rpx;" bindtap="chooseImage"></image>
+              </view>
+          </view> -->
+        <block wx:if="{{is_show_name}}">
+          <view class="form-row">
+            <view class="form-label">真实姓名</view>
+            <view class="form-content">
+              <input class="form-input" placeholder="请输入真实姓名" value="{{ info.name }}" bindinput="inputChangeValue" data-key="name" bindfocus="inputShowTipName" bindblur="inputHideTipName" />
+            </view>
+          </view>
+          <view class="form-tip">设置姓名才能让队友知道你是谁。2-25个字符，推荐使用中文。</view>
+        </block>
+      </view>
+      <view class="form-buttons" style="margin: 130rpx 50rpx 0;">
+        <button class="form-button form-button-circular" type="primary" bindtap="step2Submit">保存</button>
+      </view>
+    </block>
+
+  </view>
+</view>

@@ -1,0 +1,12 @@
+/* pages/login/index.wxss */
+
+.page-section{
+    margin-bottom: 20rpx;
+  }
+
+.flex-wrp { display: flex; }
+.label { width: 30%; }
+.content { width: 70%; }
+.bc_green {background: green;width:100px; height: 100px;}
+.bc_red {background: red;width:100px; height: 100px;}
+.bc_blue {background: blue;width:100px; height: 100px;}

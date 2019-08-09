@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "我的消息",
+  "usingComponents": {
+    "mList": "../../components/message/list"
+  }
+}

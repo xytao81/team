@@ -1,0 +1,70 @@
+<scroll-view scroll-y style="" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+  <view class="welcome">
+    <view class="message" wx:for="{{list}}" wx:key="id" data-item="{{item}}">
+      <view class="message-time f-small">
+        {{item.show_time}}
+      </view>
+      <view class="message-content">
+        <view class="top">
+          <block wx:if="{{item.type==101}}">
+            <image class="icon" src="../../images/menu/menu_player.png"></image>
+            <view class="title f-normal black">球队消息</view>
+          </block>
+          <block wx:elif="{{item.type==102}}">
+            <image class="icon" src="../../images/menu/menu_notice.png"></image>
+            <view class="title f-small black">球队公告</view>
+          </block>
+          <block wx:elif="{{item.type==201}}">
+            <image class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAYAAACMRWrdAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozNkJDODc4MzBGRTcxMUU5QjE2QUY4Nzg1NTg4QkQ0QSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozNkJDODc4NDBGRTcxMUU5QjE2QUY4Nzg1NTg4QkQ0QSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjM2QkM4NzgxMEZFNzExRTlCMTZBRjg3ODU1ODhCRDRBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjM2QkM4NzgyMEZFNzExRTlCMTZBRjg3ODU1ODhCRDRBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+v3AqYgAAB4tJREFU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"></image>
+            <view class="title f-normal black">日程消息</view>
+          </block>
+          <block wx:else>
+            <image class="icon" src="../../images/menu/menu_league.png"></image>
+            <view class="title f-normal black">赛事消息</view>
+          </block>
+        </view>
+        <view class="middle">
+          <view class="title f-normal black">{{item.title}}</view>
+          <view class="content f-normal gray">{{item.content}}</view>
+        </view>
+        <view wx:if="{{isTeam && item.type < 100 }}" class="bottom" data-item="{{item}}" bindtap="onClickDetail">
+          <view class='weui-select'>
+            <view class="title f-normal black">查看详情</view>
+          </view>
+        </view>
+        <view wx:if="{{isTeam!=true && item.type==201 }}" class="bottom" data-item="{{item}}" bindtap="onClickDetail">
+          <view class='weui-select'>
+            <view class="title f-normal black">查看详情</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="nomore f-normal" wx:if="{{ isLoadMore }}">----- 我是有底线的 -----</view>
+
+
+</scroll-view>
+
+
+<!-- <view wx:if="{{ list.length > 0 }}">
+  <view class="notices">
+    <view wx:for="{{ list }}" wx:key="id" class="notice">
+      <view bindtap="onClickDetail" data-item="{{item}}">
+        <view class="title">{{ item.title }}</view>
+        <view class="date">{{ item.show_time }}</view>
+        <text class="content">{{ item.content }}</text>
+      </view>
+    </view>
+  </view>
+  <view class="nomore" wx:if="{{ !hasMore }}">----- 我是有底线的 -----</view>
+</view>
+<view wx:else class="no-data f-title">
+  <view class="no-data-icon"></view>
+  <view class="no-data-text">暂无数据</view>
+</view> -->

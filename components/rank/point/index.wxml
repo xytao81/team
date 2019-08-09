@@ -1,0 +1,73 @@
+<!--components/data/point/index.wxml-->
+<view>
+  <view class="point-rank f-small">
+    <view wx:if="{{vsList.length>0}}" class="vs-table" wx:for="{{vsList}}" wx:key="id" data-item="{{item}}" data-item="item">
+      <view class="point-rank-line">
+        <text wx:if="{{item.name}}" class="point-rank-title">
+          <text class="span">{{item.name}}</text>
+        </text>
+      </view>
+      <view class="vs-table-item f-normal {{(index%2 == 0) ?'':'stripe'}}" wx:for="{{item.list}}" wx:key="id" data-item="{{item}}" data-childItem="childItem">
+        <view class="flex-box">
+          <view class="flex-home">
+            <view class="flex-left">
+              <text wx:if="{{item.home_name}}" class="home-name">{{item.home_name}}</text>
+              <text wx:else class="home-name">{{item.home_flag}}</text>
+              <image class="home-rank-logo" wx:if="{{item.home_logo}}" src="{{item.home_logo}}" />
+              <image class="home-rank-logo" wx:else src="../../../images/league/team_logo.png" />
+            </view>
+          </view>
+          <view class="flex-point">
+            <view class="flex-center">
+              <view style="margin-bottom:10rpx" class="f-gray f-small">{{item.start_time}}</view>
+              <view class="team-score f-normal" wx:if="{{item.home_team_score}}">{{item.home_team_score}}:{{item.away_team_score}}</view>
+              <view class="team-point-score" wx:if="{{item.home_team_point_score}}">点球 [{{item.home_team_point_score}}:{{item.away_team_point_score}}]</view>
+            </view>
+          </view>
+          <view class="flex-away">
+            <view class="flex-right">
+              <image class="away-rank-logo" wx:if="{{item.away_logo}}" src="{{item.away_logo}}" />
+              <image class="away-rank-logo" wx:else src="../../../images/league/team_logo.png" />
+              <text wx:if="{{item.away_name}}" class="away-name">{{item.away_name}}</text>
+              <text wx:else class="away-name">{{item.away_flag}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="default-table" wx:if="{{list.length>0}}" wx:for="{{list}}" wx:key="id" data-item="{{item}}" data-item="item">
+      <view class="point-rank-line">
+        <text wx:if="{{item.group_name}}" class="point-rank-title">
+          <text class="span">{{item.group_name}}</text>
+        </text>
+      </view>
+      <view class="table">
+        <view class="table-head">
+          <view class="column1"></view>
+          <view class="column2"></view>
+          <view class="column3">球队</view>
+          <view class="column4">赛</view>
+          <view class="column5">胜/平/负</view>
+          <view class="column6">进/失</view>
+          <view class="column7">积分</view>
+        </view>
+        <view wx:for="{{item.list}}" wx:key="id" data-item="{{item}}" class="tr {{(index%2 == 0) ?'':'stripe'}}">
+          <view class="column1">{{index + 1}}</view>
+          <view class="column2">
+            <image class="rank-logo" wx:if="{{item.team_logo}}" src="{{item.team_logo}}" />
+            <image class="rank-logo" wx:else src="../../../images/league/team_logo.png" />
+          </view>
+          <view class="item-team column3">{{item.team_name}}</view>
+          <view class="column4">{{item.num}}</view>
+          <view class="column5">{{item.win}}/{{item.draw}}/{{item.lose}}</view>
+          <view class="column6">{{item.in_goal}}/{{item.out_goal}}</view>
+          <view class="column7">{{item.score}}</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{list.length == 0 && vsList.length == 0}}" class="no-data f-title">
+      <image src="../../../images/league/no-data.png" />
+      <view>暂无数据</view>
+    </view>
+  </view>
+</view>

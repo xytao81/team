@@ -1,0 +1,4 @@
+<!--components/nationalpicker/nationalpicker.wxml-->
+<picker bindchange="confirm" value="{{ valueIndex }}" range="{{ nationality }}" range-key="text">
+    <slot bindtap="show"></slot>
+</picker>

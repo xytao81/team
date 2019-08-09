@@ -1,0 +1,39 @@
+<!--pages/select-player/index.wxml-->
+<view>
+  <block wx:for="{{member_list}}" wx:key="id">
+  <select-player wx:if="{{type==3}}"
+    roletype="{{type}}"
+    member = "{{item}}"
+    bind:itemsChanged = 'playerItemsChanged'
+    bind:editNumberActionCallBack = 'editNumberActionCallBack'
+  >
+  </select-player>
+
+  <select-other 
+    wx:if="{{type==1||type==2||type==4}}"
+    roletype="{{type}}"
+    member="{{item}}"
+    bind:itemsChanged = 'otherItemsChanged'
+    bind:editNumberActionCallBack = 'editNumberActionCallBack'
+    ></select-other>
+
+  </block>
+
+  <view class="nomore f-normal" style="margin-bottom: 90rpx;" wx:if="{{ !info.isHideLoadMore }}">----- 我是有底线的 -----</view>
+
+  <view class="footer-buttons">
+    <button class="full-btn" type="primary" bindtap="savelist">保存</button>
+  </view>
+
+  <supermodal title="修改球衣号码" show="{{ show }}" showButtons="{{ true }}" bind:confirm="onConfirm">
+    <view class="score-modal f-normal">
+        <view class="mt o-h">
+            <view class="f-l score-label">号码</view>
+            <view class="f-r score-right o-h">
+                <view class="f-l r r1"><input type="number" class="score-input" value="{{ number }}" bindinput="onChange" /></view>
+            </view>
+        </view>
+    </view>
+  </supermodal>
+
+</view>

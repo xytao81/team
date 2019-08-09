@@ -1,0 +1,49 @@
+<view class="page">
+  <view class="page__bd">
+
+    <view class="show-container" style="margin: 20rpx 0 0; background: #fff; padding: 0 30rpx;" wx:for="{{ jobs }}" wx:for-item="job" wx:key="id" hidden="{{ job.children.length == 0 }}">
+      <view class="show-row">
+        <view class="show-title">
+          <view class="f-l tit">{{ job.name }}</view>
+        </view>
+      </view>
+      <view class="">
+        <view wx:for="{{ job.children }}" wx:key="player_id" class="player-row{{ teamRights == null ? '' : ' weui-select' }}">
+          <view class="f-l avatar">
+            <viewimage src="{{ item.content.person_info[0].value ? item.content.person_info[0].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style2="width: 84rpx; height: 120rpx;"></viewimage>
+            <!-- 照片下面的悬浮小说明 -->
+            <view wx:if="{{ item.position.id && job.id == 3 }}" class="pos">{{ item.position.name }}</view>
+          </view>
+          <view class="f-r right" bindtap="gotoDetail" data-playerid="{{ item.player_id }}" style="{{ teamRights == null ? '' : 'width: 520rpx;' }}">
+            <view class="t1">
+              <view class="f-l tit" style="display: inline-block; vertical-align: middle">{{ item.content.person_info[1].value }} <view class="weui-badge" wx:if="{{ !item.is_user }}" style="background:#ccc;">临时</view></view>
+              <view class="f-r badge">
+                <view wx:if="{{ item.badge_name }}" class="weui-badge c{{ item.badge_class }}">{{ item.badge_name }}</view>
+              </view>
+            </view>
+            <view class="t2">{{ item.number && job.id == 3 ? item.show_number+' ' : ''}}{{ item.sub_job_name }}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="mt-40 nomore" wx:if="{{ !hasMore }}">----- 我是有底线的 -----</view>
+
+  </view>
+</view>
+
+<block wx:if="{{ from == 'aqm' }}">
+  <block wx:if="{{teamRights == 2}}">
+    <view class="footer-buttons" wx:if="{{ team.player_count == 1 }}">
+      <button class="footer-btn full-btn red-btn" type="primary" bindtap="quit">退出球队</button>
+    </view>
+    <view class="footer-buttons" wx:else>
+      <button class="footer-btn full-btn red-btn" type="primary" bindtap="cantQuit">退出球队</button>
+    </view>
+  </block>
+  <block wx:elif="{{ teamRights !== null }}">
+    <view class="footer-buttons">
+      <button class="footer-btn full-btn red-btn" type="primary" bindtap="quit">退出球队</button>
+    </view>
+  </block>
+</block>

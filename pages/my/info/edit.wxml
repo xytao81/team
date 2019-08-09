@@ -1,0 +1,18 @@
+<view class="page">
+  <view style="padding-bottom: 100rpx;">
+
+    <view class="my-header">{{ user.name }}
+      <text class="t2">ID: {{user.uid}}</text>
+    </view>
+
+    <view class="f-small f-gray" style="margin: 20rpx 30rpx;">以下信息将用于比赛/活动报名，请如实填写</view>
+
+    <useredit value="{{ content }}" loadDefault="{{ false }}" bindusereditchange="onUsereditChange"></useredit>
+
+  </view>
+
+  <view class="footer-buttons">
+    <button class="footer-btn full-btn" type="primary" bindtap="editSubmit">保存</button>
+  </view>
+
+</view>

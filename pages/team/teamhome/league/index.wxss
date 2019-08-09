@@ -1,0 +1,66 @@
+@import "../../../league/my.wxss";
+
+.league {
+  margin-top: 20rpx;
+  background-color: white;
+  padding: 0 30rpx;
+}
+
+.league .top {
+  height: 90rpx;
+  width: 100%;
+}
+
+.league .top .flag {
+  /* float: left;
+  margin-top: 30rpx;
+  top: 30rpx;
+  width: 10rpx;
+  height: 28rpx;
+  background-color: #00a7f2; */
+}
+
+.league .top >.title {
+  float: left;
+  /* margin-left: 16rpx; */
+  font-weight: bold;
+  line-height: 90rpx;
+  color: #333333;
+}
+
+.league .top .btn {
+  float: right;
+  margin-top: 24rpx;
+  width: 100rpx;
+  height: 40rpx;
+  border: 1rpx solid #00a7f2;
+  border-radius: 20rpx;
+}
+
+.league .top .btn .title {
+  width: 100rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  color: #00a7f2;
+}
+
+.league .content {
+  border-top: solid 1rpx #e0e0e0;
+}
+.f-small { font-size: 24rpx; }
+.title-name{
+  border-left:solid 10rpx #00a7f2;
+  padding-left:16rpx;
+  height:32rpx;
+  display:inline-block;
+  line-height:32rpx;
+}
+
+.league-more{
+  text-align: center;
+  height:80rpx;
+  line-height: 80rpx;
+
+  color: #00a7f2;
+}

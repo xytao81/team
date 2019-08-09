@@ -1,0 +1,5 @@
+
+<!-- <schedule_row wx:for=" {{list}} " wx:for-item="schedule" wx:key="sid"></schedule_row> -->
+<schedule_row wx:for="{{ schedules }}" wx:for-item="row" wx:key="id" schedule="{{ row }}" isAdmin="{{ isAdmin }}" showTeam="{{ showTeam }}"></schedule_row>
+
+    

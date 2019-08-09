@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "编辑紧急联系人",
+  "usingComponents": {
+    "regionpicker": "../../../components/regionpicker/regionpicker",
+    "positionpicker": "../../../components/positionpicker/positionpicker",
+    "degreepicker": "../../../components/degreepicker/degreepicker",
+    "jobpicker": "../../../components/jobpicker/jobpicker",
+    "rightspicker": "../../../components/rightspicker/rightspicker"
+  }
+}

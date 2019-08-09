@@ -1,0 +1,38 @@
+.detail {
+  /* width: 100%; */
+  padding: 20rpx 30rpx;
+  background-color: #eafbff;
+}
+
+.card-box .info-box {
+  position: relative;
+  margin: 20rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border: solid 1rpx #e0e0e0;
+}
+
+.card-box .info-box.active {
+  margin: 20rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border: solid 1rpx #00a7f2;
+}
+
+.container {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+}
+
+.container.active {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  right: 0;
+  bottom: 0;
+  visibility: visible;
+}

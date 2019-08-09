@@ -1,0 +1,177 @@
+
+    <!-- 活动 -->
+    <view class="league" style="background: #fff; padding: 0 ;border-top:1rpx  solid #e0e0e0;" wx:if="{{ schedule.type == 1 }}">
+        <view class="content">
+            <!-- <block wx:if="{{info}}">   -->
+            <navigator url="/pages/team/teamhome/schedule/detail?team_id={{ schedule.team_id }}&schedule_id={{ schedule.id }}&is_admin={{ isAdmin ? '1' : '' }}" class="schedule-row" data-scheduleid="{{ schedule.id }}">
+                <view class="welcome">
+                    <view class="league-item-box">
+                        <view class="launch f-gray f-normal" wx:if="{{ showTeam }}">【{{ schedule.team_name }}】发起</view>
+                        <view class='league-item' bindtap="gotoDetail">
+                            <view class="logo">
+                                <image class="logo" mode='widthFix' src="../../images/schedule_icon_1.png" />
+                                <text class="status-name green" wx:if="{{ enrollStatus == 1 }}">报名中</text>
+                                <!-- <text wx:if="{{info.status == '01' && !info.is_multi}}" class="status-name green">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '00' && !info.is_multi}}" class="status-name yellow">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '02' && !info.is_multi}}" class="status-name back2">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '22' && !info.is_multi}}" class="status-name black">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '12' && !info.is_multi}}" class="status-name blue">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '11' && !info.is_multi}}" class="status-name blue">{{info.status_name}}</text> -->
+                            </view>
+                            <view class="info-box">
+                                <view class="info-title">{{schedule.title}}</view>
+                                <view class="info-desc">
+                                    <!-- <text wx:if="{{info.city_name}}">地区</text>               
+                                    <text wx:if="{{info.players_name}}">地点</text>-->
+                                    <text wx:if="{{schedule.province_name}}">{{schedule.province_name}}</text> 
+                                    <text wx:if="{{schedule.city_name}}">{{schedule.city_name}}</text> 
+                                    <text wx:if="{{schedule.district_name}}">{{ schedule.district_name}}</text>
+                                    <text class="space" wx:if="{{schedule.place}}">{{ schedule.place}}</text>
+                                </view>
+                                <view class="o-h">
+                                <!-- <view style="display:flex;" wx:if="{{info.time_desc}}"> -->
+                                    <view class="f-r f-small f-blue" style="text-align:right;">{{schedule.is_enroll!=0 ? schedule.status_count.waiting + schedule.status_count.agreed+'人参与' : '无需报名'}}</view>
+                                    <view class="f-l f-small f-gray">活动时间：{{ schedule.start_time}}</view>
+                                </view>
+        
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <!-- 比赛 -->
+    <view class="league" style="background: #fff; padding: 0 ;border-top:1rpx  solid #e0e0e0;" wx:if="{{ schedule.type == 2 }}">
+        <view class="content">
+            <!-- <block wx:if="{{info}}">   -->
+            <navigator url="/pages/team/teamhome/schedule/detail?team_id={{ schedule.team_id }}&schedule_id={{ schedule.id }}&is_admin={{ isAdmin ? '1' : '' }}" class="schedule-row" data-scheduleid="{{ schedule.id }}">
+                <view class="welcome">
+                    <view class="league-item-box">
+                        <view class="launch" wx:if="{{ showTeam }}">【{{ schedule.team_name }}】发起
+                        </view>
+                        <view class='league-item' bindtap="gotoDetail">
+                            <view class="logo">
+                                <image class="logo" mode='widthFix' src="../../images/schedule_icon_2.png" />
+                                <text class="status-name green" wx:if="{{ enrollStatus == 1 }}">报名中</text>
+                            </view>
+                            <view class="info-box">
+                                <view class="info-title" wx:if="{{ schedule.is_home }}">{{ schedule.team_name }} {{ vsText }} {{ schedule.target_team_name }}</view>
+                                <view class="info-title" wx:if="{{ !schedule.is_home }}">{{ schedule.target_team_name }} {{ vsText }} {{ schedule.team_name }}</view>
+                                <view class="info-desc">
+                                    <text wx:if="{{schedule.province_name}}">{{schedule.province_name}}</text> 
+                                    <text wx:if="{{schedule.city_name}}">{{schedule.city_name}}</text> 
+                                    <text wx:if="{{schedule.district_name}}">{{ schedule.district_name}}</text>
+                                    <text class="space" wx:if="{{schedule.place}}">{{ schedule.place}}</text>
+                                </view>
+                                <view class="o-h">
+                                    <!-- <view style="display:flex;" wx:if="{{info.time_desc}}"> -->
+                                        <view class="f-r f-small f-blue" style="text-align:right;">{{schedule.is_enroll!=0 ? schedule.status_count.waiting + schedule.status_count.agreed+'人参与' : '无需报名'}}</view>
+                                        <view class="f-l f-small f-gray">比赛时间：{{ schedule.start_time}}</view>
+                                </view>
+        
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <!-- 训练 -->
+    <view class="league" style="background: #fff; padding: 0 ;border-top:1rpx  solid #e0e0e0;" wx:if="{{ schedule.type == 3 }}">
+        <view class="content">
+            <!-- <block wx:if="{{info}}">   -->
+            <navigator url="/pages/team/teamhome/schedule/detail?team_id={{ schedule.team_id }}&schedule_id={{ schedule.id }}&is_admin={{ isAdmin ? '1' : '' }}" class="schedule-row" data-scheduleid="{{ schedule.id }}">
+                <view class="welcome">
+                    <view class="league-item-box">
+                        <view class="launch" wx:if="{{ showTeam }}">【{{ schedule.team_name }}】发起
+                        </view>
+                        <view class='league-item' bindtap="gotoDetail">
+                            <view class="logo">
+                                <image class="logo" mode='widthFix' src="../../images/schedule_icon_3.png" />
+                                <text class="status-name green" wx:if="{{ enrollStatus == 1 }}">报名中</text>
+                                <!-- <text wx:if="{{info.status == '01' && !info.is_multi}}" class="status-name green">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '00' && !info.is_multi}}" class="status-name yellow">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '02' && !info.is_multi}}" class="status-name back2">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '22' && !info.is_multi}}" class="status-name black">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '12' && !info.is_multi}}" class="status-name blue">{{info.status_name}}</text>
+                                <text wx:if="{{info.status == '11' && !info.is_multi}}" class="status-name blue">{{info.status_name}}</text> -->
+                            </view>
+                            <view class="info-box">
+                                <view class="info-title">{{schedule.title}}</view>
+                                <view class="info-desc">
+
+                                    <text wx:if="{{schedule.province_name}}">{{schedule.province_name}}</text> 
+                                    <text wx:if="{{schedule.city_name}}">{{schedule.city_name}}</text> 
+                                    <text wx:if="{{schedule.district_name}}">{{ schedule.district_name}}</text>
+                                    <text class="space" wx:if="{{schedule.place}}">{{ schedule.place}}</text>
+                                </view>
+
+                                <view class="o-h">
+                                    <!-- <view style="display:flex;" wx:if="{{info.time_desc}}"> -->
+                                        <view class="f-r f-small f-blue" style="text-align:right;">{{schedule.is_enroll!=0 ? schedule.status_count.waiting + schedule.status_count.agreed+'人参与' : '无需报名'}}</view>
+                                        <view class="f-l f-small f-gray">训练时间：{{ schedule.start_time}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+     <!-- vs -->
+     <navigator url="/pages/team/teamhome/schedule/detail?team_id={{ schedule.team_id }}&schedule_id={{ schedule.id }}&is_admin={{ isAdmin ? '1' : '' }}" data-scheduleid="{{ schedule.id }}" class="schedule-item" style="background:#fff;margin-left:0;margin-right:0;padding-bottom:30rpx" wx:if="{{ schedule.type == 4 }}">
+        <view class="schedule-title f-gray f-small">{{schedule.match.league_name}}</view>
+        <view class="schedule-item-info">
+            <view class="f1">
+                <text class="schedule-round f-small">
+                    <text> {{ schedule.match.schedule_round }} </text>
+                </text>
+                <text class="date f-gray f-small">{{ schedule.match.start_time }}</text>
+                <text class="order f-gray f-small">场序:{{ schedule.match.index }}</text>
+            </view>
+            <view class="f2">
+                <view class="match-flexbox">
+                    <view class="home-box">
+                        <image class="team-logo" src="{{ schedule.match.home.logo ? schedule.match.home.logo : '../../images/league/team_logo.png' }}"></image>
+                        <text class="team-name f-normal">{{ schedule.match.home.name }}</text>
+                    </view>
+                    <view class="match-flexbox">
+                        <view class="vs-box">
+                            <view wx:if="{{ schedule.match.result }}">
+                                <view class="status-box f-score">{{schedule.match.result.home_score}}:{{schedule.match.result.away_score}}</view>
+                                <view class="f-small f-gray" wx:if="{{schedule.match.result.home_point_score > 0 || schedule.match.result.away_point_score > 0 }}">点球[{{schedule.match.result.home_point_score}}:{{schedule.match.result.away_point_score}}]</view>
+                            </view>
+                            <view class="vs f-score" wx:else>VS</view>
+                            
+                        </view>
+                        
+                    </view>
+                    <!-- <view class="status-box"></view> -->
+                    <view class="away-box">
+                        <image class="team-logo" src="{{ schedule.match.away.logo ? schedule.match.away.logo : '../../images/league/team_logo.png' }}"></image>
+                        <text class="team-name f-normal">{{ schedule.match.away.name }}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom-box">
+      
+                <view class="f3 vs-state">
+                    <view class="match-place f-gray f-small">
+                        <text >{{ schedule.match.place.title ? '地点： ' + schedule.match.place.title : '' }}</text>
+                    </view>
+                </view>
+                <view class="f4 vs-state" wx:if="{{schedule.match.desc}}">
+                    <view class="match-place f-gray f-small">
+                        <text>公告：{{schedule.match.desc}}</text>
+                    </view>
+                </view>
+             
+                <view style="position: absolute;right:0;bottom: -2rpx;">
+                    <text class="f-blue f-small" wx:if="{{schedule.is_enroll}}">{{schedule.status_count.waiting + schedule.status_count.agreed}}人参与</text>
+                    <text class="f-blue f-small" wx:if="{{!schedule.is_enroll}}" style="text-align: right;">无需报名</text>
+                </view>
+               
+            </view>    
+        </view>
+    </navigator> 

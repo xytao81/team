@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "编辑个人信息",
+  "usingComponents": {
+    "viewimage": "../../../components/viewimage",
+    "regionpicker": "../../../components/regionpicker/regionpicker",
+    "positionpicker": "../../../components/positionpicker/positionpicker",
+    "degreepicker": "../../../components/degreepicker/degreepicker",
+    "jobpicker": "../../../components/jobpicker/jobpicker",
+    "rightspicker": "../../../components/rightspicker/rightspicker",
+    "useredit": "../../../components/user/useredit"
+  }
+}

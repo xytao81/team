@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "编辑我的信息",
+  "usingComponents": {
+    "userbrief": "/components/user/userbrief",
+    "userBaseInfo": "/components/user/base_info",
+    "userBodyInfo": "/components/user/body_info",
+    "userEducationExpInfo": "/components/user/education_exp_info",
+    "userWorkExpInfo": "/components/user/work_exp_info",
+    "userContactsExpInfo": "/components/user/contacts_exp_info",
+    "userTqiInfo": "/components/user/tqi_info",
+    "viewimage": "/components/viewimage",
+    "positionpicker": "/components/positionpicker/positionpicker",
+    "jobpicker": "/components/jobpicker/jobpicker",
+    "rightspicker": "/components/rightspicker/rightspicker"
+  }
+}

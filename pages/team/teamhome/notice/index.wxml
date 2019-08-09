@@ -1,0 +1,3 @@
+<!--pages/team/notice/index.wxml-->
+<text>{{content}}</text>
+<button wx:if="{{teamRights!=0}}" bindtap="gotoAdd">添加</button>

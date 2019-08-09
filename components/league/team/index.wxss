@@ -1,0 +1,55 @@
+/* components/schedule/team/index.wxss */
+.team-container{
+  background-color:#fff;
+}
+.team-item {
+  padding: 20rpx 30rpx;
+  font-size:28rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.team-item image {
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+  vertical-align: middle;
+}
+.team-info-box {
+  display: inline-block;
+  width: 580rpx;
+  position: relative;
+  vertical-align: top;
+  margin-left: 20rpx;
+}
+.team-status {
+  position: absolute;
+  top: 30rpx;
+  right: 0;
+  font-size: 28rpx;
+  color: #808892;
+}
+.team-name {
+  font-size: 28rpx;
+  color: #333333;
+  display:inline-block;
+  width: 480rpx;
+}
+.team-count {
+  font-size: 24rpx;
+  color: #818891;
+  margin-top: 16rpx;
+}
+.no-data {
+  text-align: center;
+  background-color: #ecf1f5;
+  padding-top: 100rpx;
+}
+.no-data image {
+  display: inline-block;
+  width: 140rpx;
+  height: 140rpx;
+}
+.no-data p {
+  font-size: 28rpx;
+  color: #818891;
+  margin-top: 20rpx;
+}

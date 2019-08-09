@@ -1,0 +1,70 @@
+<view class="page">
+  <view style="padding-bottom: 120rpx;">
+
+  <userbrief name="{{ playerInfo.content.person_info[1].value }}" uid="{{ playerInfo.uid }}" photo="{{ playerInfo.content.person_info[0].value ? playerInfo.content.person_info[0].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" settings="设置"></userbrief>
+
+  <view class="f-white">
+    <userBaseInfo id="base" secure="{{ teamRights > 0 ? false : true }}">
+      <navigator wx:if="{{ teamRights > 0 }}" url="/pages/user/info/index?action=captain_check&team_id={{ playerInfo.team_id }}&from_player_id={{ playerInfo.player_id }}" style="line-height: 0;"><button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;">查看</button></navigator>
+    </userBaseInfo>
+  </view>
+
+  <view class="mt" style="background: #fff;">
+    <view class="show-container" style="margin: 0 30rpx 0;">
+      <view class="show-row">
+        <view class="show-title">
+          <view class="f-l tit">
+              <text class="title-name">队内信息</text> 
+          </view>
+          <view class="f-r">
+            <navigator wx:if="{{ teamRights > 0 }}" url="/pages/team/players/edit?team_id={{ playerInfo.team_id }}&player_id={{ playerInfo.player_id }}" style="line-height: 0;"><button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;">设置</button></navigator>
+          </view>
+        </view>
+      </view>
+      <view class="show-row" wx:if="{{from=='aqm'}}">
+          <view class="show-label">队内职务</view>
+          <view class="show-content"><block wx:for="{{ playerInfo.show_jobs }}" wx:key="index">{{ item }} </block><text wx:if="{{ !playerInfo.show_jobs }}">-</text></view>
+      </view>
+      <view class="show-row" wx:if="{{playerInfo.is_player}}">
+          <view class="show-label">球衣号</view>
+          <view class="show-content">{{ playerInfo.show_number ? playerInfo.show_number : '-' }}</view>
+      </view>
+      <view class="show-row" wx:if="{{playerInfo.is_player}}">
+          <view class="show-label">场上位置</view>
+          <view class="show-content">{{ position.name ? position.name : '-' }}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mt" style="background: #fff;" wx:if="{{from=='aqm' && playerInfo.is_user }}">
+    <view class="show-container" style="margin: 0 30rpx 0;">
+      <view class="show-row">
+        <view class="show-title">
+          <view class="f-l tit">
+              <text class="title-name">账户权限</text> 
+          </view>
+          <view class="f-r">
+            <navigator wx:if="{{ teamRights == 2 && playerInfo.is_me!=true }}" url="/pages/team/players/rights?team_id={{ playerInfo.team_id }}&player_id={{ playerInfo.player_id }}" style="line-height: 0;"><button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;">设置</button></navigator>
+          </view>
+        </view>
+      </view>
+      <view class="show-row">
+          <view class="show-label">队内权限</view>
+          <view class="show-content">{{ playerInfo.rights_name ? playerInfo.rights_name : '-' }}</view>
+      </view>
+    </view>
+  </view>
+
+  </view>
+</view>
+
+<block wx:if="{{ teamRights == 2 && playerInfo.is_me!=true }}">
+  <view class="footer-buttons">
+      <button class="footer-btn full-btn red-btn" type="primary" bindtap="kickPlayer">移出球队</button>
+  </view>
+</block>
+<block wx:if="{{ teamRights == 1 && playerInfo.rights==0 && playerInfo.is_me!=true }}">
+  <view class="footer-buttons">
+      <button class="footer-btn full-btn red-btn" type="primary" bindtap="kickPlayer">移出球队</button>
+  </view>
+</block>

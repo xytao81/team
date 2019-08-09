@@ -1,0 +1,21 @@
+
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+
+    <view class="show-container">
+      <!-- <navigator url="/pages/my/settings/index?player_id={{ 16 }}" class="show-row">
+        <view class="weui-select">关于爱球迷</view>
+      </navigator> -->
+      <navigator url="/pages/my/changePassword/index" class="show-row">
+        <view class="weui-select">修改密码</view>
+      </navigator>
+    </view>
+
+    <view class="mt show-container">
+      <view url="/pages/my/settings/index?player_id={{ 16 }}" class="show-row">
+        <view class="f-blue t-c" bindtap="switchToLogOut">退出登录</view>
+      </view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,88 @@
+.team-color-name{
+  height: 90rpx;
+  margin:0rpx 30rpx ;
+
+  border-bottom: 1rpx solid #e0e0e0;
+
+  display:flex;
+  flex-direction:row;
+}
+
+.team-color-name .title{
+  width:650rpx;
+  font-size: 28rpx;
+  color: black;
+  line-height: 90rpx;
+  text-align: center;
+  
+  
+}
+
+.team-color-name button{
+  width: 100rpx;
+  height:40rpx;
+  margin-top: 25rpx;
+  font-size: 24rpx;
+
+  color: #00a7f2;
+  border: 1px solid #00a7f2;
+  border-radius: 20rpx;
+  line-height: 40rpx;
+  padding: 0 0px;
+}
+
+
+.player-title{
+  height: 90rpx;
+  margin:0rpx 30rpx ;
+  border-bottom: 1rpx solid #e0e0e0;
+
+  display:flex;
+  flex-direction:row;
+}
+
+.player-title .header{
+  display:flex;
+  flex-direction:row;
+  flex-grow: 1;
+}
+
+.player-title .header .flag {
+  width: 8rpx;
+  height: 30rpx;
+  background-color: #00a7f2;
+  margin-top: 31rpx;
+}
+
+.player-title .header .text {
+  height: 90rpx;
+  line-height: 90rpx;
+  margin-left: 10rpx;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+
+
+.player-title button{
+  width: 100rpx;
+  height:40rpx;
+  margin-top: 25rpx;
+  font-size: 24rpx;
+
+  color: #00a7f2;
+  border: 1px solid #00a7f2;
+  border-radius: 20rpx;
+  line-height: 40rpx;
+  padding: 0 0px;
+}
+
+.sub-player-title{
+  height: 84rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  line-height:84rpx;
+  font-size: 24rpx;
+  color: #00a7f2;
+}

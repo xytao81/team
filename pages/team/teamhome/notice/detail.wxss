@@ -1,0 +1,8 @@
+/* pages/team/notice/list.wxss */
+
+page { background: #fff; }
+.notice { padding: 20rpx 30rpx; }
+.notice .title { color: #333; }
+.notice .date { color: #808892; margin-top: 6rpx; border-bottom: solid 1rpx #e0e0e0; padding-bottom: 20rpx; }
+.notice .content { color: #333; margin-top: 20rpx; display: block; }
+textarea { background: #f0f; line-height: 40rpx; }

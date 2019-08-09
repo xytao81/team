@@ -1,0 +1,25 @@
+/* pages/login/index.wxss */
+
+page { }
+
+.page-section{
+    margin-bottom: 20rpx;
+  }
+
+.flex-wrp { display: flex; }
+
+.player-row { border: 0; font-size: 32rpx; line-height: 44rpx; padding: 10rpx 30rpx; overflow: hidden; height: 130rpx; }
+.player-row .avatar { text-align: center; width: 84rpx; height: 120rpx; position: relative; }
+.player-row .avatar .pos { position: absolute; left: 0; bottom: 0; width: 100%; height: 36rpx; line-height: 36rpx; font-size: 26rpx; background: rgba(0,0,0,0.3); color: #fff; }
+.player-row .text { width: 70%; margin-left: 30rpx; font-size: 28rpx; }
+.player-row .text .t1 { margin-top: 2rpx; color: #333; }
+.player-row .text .t2 { margin-top: 16rpx; color: #999; }
+.player-row .badge { width: 80rpx; font-size: 24rpx; margin-top: 2rpx; }
+.player-row .badge .c0 { background: #00a7f2; }
+.player-row .badge .c2 { background: #f98e5a; }
+.player-row .badge .c1 { background: #fdbb8a; }
+.player-row .badge .c3 { background: #bcbcbd; }
+
+.show-container { padding: 0 30rpx 0; background: #fff;  }
+
+.weui-select { padding-left: 0; border-right: 0; }

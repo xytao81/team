@@ -1,0 +1,53 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="f-normal f-gray" style="border: 0; line-height: 44rpx; padding-top: 30rpx; padding-bottom: 30rpx;overflow: hidden; height: 30rpx; line-height: 30rpx; background: #fff; border-bottom: 1rpx solid #e0e0e0;      ">
+        <view class="'tabs-item examine' + {{state==0?'to-examine':''}} f-normal" bindtap='onTabsItemTab' data-index='0'>报名表（{{ schedule.status_count.waiting }}）</view>
+        <view class="'tabs-item agree' + {{state==1?'to-examine':''}} f-normal" bindtap='onTabsItemTab'  data-index='1'>签到表（{{ schedule.status_count.agreed }}）</view>
+        <view class="'tabs-item refuse' + {{state==2?'to-examine':''}} f-normal" bindtap='onTabsItemTab' data-index='2'>拒绝表（{{ schedule.status_count.denied }}）</view>
+    </view>
+    
+    <view class="players-detail" wx:if="{{ pageType == 1 }}">
+         <!-- 待审核 -->
+        <users list='{{ enrolls }}' bindclickuser="onClickUser" bindupdate="onUsersUpdate" isAdmin="{{ true }}"></users>
+        <view class="nomore">----- 我是有底线的 -----</view>
+    </view>
+
+    <!-- <view class="players-detail" wx:if="{{ pageType == 2 && state == 1 }}">
+        <view style="background: #fff;">
+            <view wx:for="{{ enrolls }}" wx:for-item="enroll" wx:key="uid" class="player-row" data-uid="{{ enroll.uid }}" style="display:flex;">
+                 <view class="f-l avatar">
+                    <image src="{{ enroll.content.person_info[0].value ? enroll.content.person_info[0].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style="width: 84rpx; height: 120rpx;"></image>
+                </view>
+                <view class="f-r right" data-uid="{{ enroll.uid }}" style="flex:1;padding-left:30rpx;">
+                    <view class="t1">
+                        <view class="f-l tit" style="display: inline-block; vertical-align: middle">{{ enroll.content.person_info[1].value }}</view>
+                    </view>
+                    <view class="t2">{{ enroll.create_time }} 已报名</view>
+                </view>
+                <view class="f-r badge" style="line-height:120rpx;" wx:if="{{ !enroll.arrive }}">
+                    <button type="primary" bindtap="signin" data-uid="{{ enroll.uid }}" class="signin-btn">签到</button>
+                </view>
+                <view class="f-r f-normal" style="line-height:120rpx; color: #aaa; padding-right: 30rpx;" wx:if="{{ enroll.arrive }}">已签到</view>
+            </view>
+        </view>
+        <view class="nomore" wx:if="{{ !hasMore }}">----- 我是有底线的 -----</view>
+    </view> -->
+     
+    <!-- <view class="footer-buttons">
+        <button class="footer-btn full-btn" type="primary" bindtap="changePageType" wx:if="{{ pageType == 1 && state == 1 }}">扫码签到</button>
+        <button class="footer-btn full-btn" type="primary" bindtap="changePageType" wx:if="{{ pageType == 2 }}">切换至审核页</button>
+    </view> -->
+      
+  </view>
+</view> 
+    
+
+  
+  <!-- <block wx:if="{{ from == 'aqm' && inTeam }}">
+    <view class="footer-buttons">
+      <button class="footer-btn half-btn" type="primary" bindtap="gotoAddPlayer">添加球员</button>
+      <button class="footer-btn half-btn" type="primary" open-type="share">邀请队员</button>
+    </view>
+  </block> -->
+
+

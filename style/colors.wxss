@@ -1,0 +1,15 @@
+.blue{
+  color: #00a7f2;
+}
+
+.gray{
+  color:#808892;
+}
+
+.black{
+  color:#333333;
+}
+
+.white{
+  color:white;
+}

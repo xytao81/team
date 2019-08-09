@@ -1,0 +1,51 @@
+<slot bindtap="show"></slot>
+<superpicker show="{{ show }}" bindconfirm="confirm" bindcancel="cancel">
+    <view style="padding:30rpx 30rpx;">
+        <view>
+            <view class="weui-search-bar__form" style="width:95%;">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="输入国家名称" value="{{search_name}}" focus="{{is_show}}" bindinput="qChange" />
+                </view>
+            </view>
+        </view>
+        <view style="display:flex;">
+            <view style="height:800rpx; flex:1 ">
+                <picker-view  scroll-y style="height:800rpx; width:100% " indicator-style="height: 35rpx;" bindchange="nationChange" value="{{ indexes }}">
+                    <picker-view-column>
+                        <view wx:for="{{ nations }}" wx:key="id" style="line-height: 68rpx;">{{item.text}}</view>
+                    </picker-view-column>
+                    
+                </picker-view>
+            </view>
+            <view class="nation-letter" style="display:none">
+                <view class="selected">A</view>
+                <view>B</view>
+                <view>C</view>
+                <view>D</view>
+                <view>E</view>
+                <view>F</view>
+                <view>G</view>
+                <view>H</view>
+                <view>I</view>
+                <view>J</view>
+                <view>K</view>
+                <view>L</view>
+                <view>M</view>
+                <view>N</view>
+                <view>O</view>
+                <view>P</view>
+                <view>Q</view>
+                <view>R</view>
+                <view>S</view>
+                <view>T</view>
+                <view>U</view>
+                <view>V</view>
+                <view>W</view>
+                <view>X</view>
+                <view>Y</view>
+                <view>Z</view>
+            </view>
+        </view>
+    </view>
+</superpicker>

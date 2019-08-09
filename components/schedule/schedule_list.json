@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "schedule_row":"./schedule_row"
+  }
+}

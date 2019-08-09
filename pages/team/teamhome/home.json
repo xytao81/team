@@ -1,0 +1,21 @@
+{
+  "navigationBarTitleText": "球队主页",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "team_stat": "./team_stat/team_stat",
+    "team_statistics": "./team_statistics/team_statistics",
+    "team_message": "./team_message/team_message",
+    "team_my_league":"./team_my_league/team_my_league",
+    "team_notice": "./team_notice/team_notice",
+    "team_recommend": "./team_recommend/team_recommend",
+    "team_com": "./team_com/team_com",
+    "league": "./league/index",
+    "schedule": "./schedule/index",
+    "team_my_schedule":"./team_my_schedule/team_my_schedule",
+    "ad1":"../../../components/ad/ad1",
+    "team_contact":"./team_contact/team_contact",
+    "back": "../../../components/back/back",
+    "team_album":"./team_album/team_album"
+  }
+}

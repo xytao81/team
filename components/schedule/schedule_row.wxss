@@ -1,0 +1,172 @@
+/* components/schedule/schedule_match.wxss */
+/* components/schedule/schedule_list.wxss */
+@import "../../pages/league/my.wxss";
+
+.league {
+  /* margin-top: 20rpx; */
+  background-color: white;
+}
+.league-item{
+  border-bottom:none;
+}
+
+/* .league .content {
+  border-top: solid 1rpx #e0e0e0;
+} */
+
+.league-more{
+  text-align: center;
+  height:80rpx;
+  line-height: 80rpx;
+
+  color: #00a7f2;
+}
+
+
+.league-no{
+  height:200rpx;
+  text-align: center
+}
+
+.league-no-logo{
+  height:100rpx;
+  width:100rpx;
+  margin-top:50rpx;
+}
+/* 以下vs样式 */
+.schedule-item-info{
+  margin-top:5rpx;
+}
+.schedule-item{
+  margin-left:30rpx;
+  border-top:1rpx solid #e0e0e0;
+  margin-right:30rpx;
+}
+.schedule-title{
+  margin-top:30rpx;
+}
+.schedule-round{
+  display:inline-block;
+  background-color:#00a7f2;
+  color:#fff;
+  height:34rpx;
+  line-height: 34rpx;
+  padding: 0 10rpx 0 10rpx;
+  margin: 0 30rpx 0 0rpx;
+  transform: skew(-15deg);
+}
+.schedule-round text {
+  display:inline-block;
+  transform: skew(15deg);
+}
+.date , .order{
+  vertical-align:-1rpx;
+}
+.order{
+  display:inline-block;
+  margin-left:20rpx;
+}
+.match-flexbox{
+  display:flex;
+  height:134rpx;
+}
+.f2{
+  margin-top:30rpx;
+  margin-bottom:20rpx;
+
+}
+.team-logo{
+  width:80rpx;
+  height:80rpx;
+}
+.team-name{
+  color:#333;
+  display:block;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.vs-box{
+  width: 250rpx;
+  text-align: center;
+}
+.home-box,.away-box{
+  width:220rpx;
+  text-align: center;
+}
+.home-box{
+  /* margin-left:30rpx; */
+}
+.vs,.status-box{
+  margin-top:19rpx;
+}
+.match-place{
+  /* width:550rpx; */
+  /* display:inline-block; */
+  /* vertical-align:-14rpx; */
+  width: 594rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.match-place text{
+
+}
+/* .f2{
+  padding-bottom: 10rpx;
+} */
+.f3{
+  /* margin:0 30rpx 0 30rpx; */
+  /* padding-bottom: 20rpx; */
+  display:flex;
+}
+.f4{
+  /* margin-bottom: 20rpx; */
+}
+.join-peoson{
+  text-align:right;
+  margin-right:20rpx;
+}
+.space{
+  /* padding-left:20rpx; */
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  padding-right:30rpx;
+  overflow: hidden;
+
+}
+
+.launch{
+  padding-bottom: 10rpx;
+}
+.league-item-box{
+  padding: 30rpx 0;
+}
+.league-item {
+  padding:0;
+}
+.f-big { font-size: 32rpx; }
+.f-title { font-size: 32rpx; }
+.f-normal { font-size: 28rpx; }
+.f-small { font-size: 24rpx; }
+.f-score { font-size: 44rpx; }
+
+.f-blue { color:#00a7f2; }
+.f-gray { color:#808892; }
+.f-red { color: #f00; }
+.f-gray { color:#808892; }
+.f-white { color:#fff; }
+.f-blue { color:#00a7f2; }
+.f-black { color:#333; }
+.f-green { color: green; }
+
+.o-h { overflow: hidden; }
+.f-l { float: left; }
+.f-r { float: right; }
+
+
+.bottom-box{
+  position: relative;
+  min-height: 40rpx;
+}
+

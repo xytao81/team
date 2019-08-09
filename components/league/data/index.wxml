@@ -1,0 +1,31 @@
+<!--components/data/index.wxml-->
+<!-- 数据tab切换 -->
+<view class="data-container b-white">
+  <view class="tab-bar f-gray f-normal">
+    <text wx:if="{{rankInfo.is_leaguetable}}" class="tab-item {{dataTab == 0 ? 'active':'' }}" data-dataTab="0" bindtap='dataTabClick'>积分榜</text>
+    <text wx:if="{{rankInfo.is_goal_ranking}}" class="tab-item {{dataTab == 1 ? 'active':'' }}" data-dataTab="1" bindtap='dataTabClick'>射手榜</text>
+    <text wx:if="{{rankInfo.is_assists_ranking}}" class="tab-item {{dataTab == 2 ? 'active':'' }}" data-dataTab="2" bindtap='dataTabClick'>助攻榜</text>
+    <text wx:if="{{rankInfo.is_card_ranking}}" class="tab-item {{dataTab == 3 ? 'active':'' }}" data-dataTab="3" bindtap='dataTabClick'>红黄牌榜</text>
+    <text wx:if="{{rankInfo.is_team_ranking}}" class="tab-item {{dataTab == 4 ? 'active':'' }}" data-dataTab="4" bindtap='dataTabClick'>球队榜</text>
+  </view>
+  <!-- 积分榜 -->
+  <view wx:if="{{dataTab == 0}}">
+    <point id="point" leagueid="{{leagueid}}"></point>
+  </view>
+  <!-- 射手榜 -->
+  <view wx:if="{{dataTab == 1}}">
+    <goal id="goal" leagueid="{{leagueid}}"></goal>
+  </view>
+  <!-- 助攻榜 -->
+  <view wx:if="{{dataTab == 2}}">
+    <assist id="assist" leagueid="{{leagueid}}"></assist>
+  </view>
+  <!-- 红黄牌榜 -->
+  <view wx:if="{{dataTab == 3}}">
+    <card id="card" leagueid="{{leagueid}}"></card>
+  </view>
+  <!-- 球队榜 -->
+  <view wx:if="{{dataTab == 4}}">
+    <team id="team" leagueid="{{leagueid}}"></team>
+  </view>
+</view>

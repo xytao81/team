@@ -1,0 +1,73 @@
+<view class="page">
+  <view style="padding-bottom: 120rpx;">
+
+    <view class="topbar">
+    <!-- <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="输入球员姓名" value="{{ q }}" bindinput="bindQChange" />
+          <view class="weui-icon-clear" wx:if="{{q.length > 0}}" bindtap="bindQClear">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!is_show}}" bindtap="handleHideInput">取消</view>
+    </view> -->
+
+    <view class="b-white">
+      <view class="show-container">
+        <view class="show-row">
+          <view class="show-content" style="padding: 18rpx 0 22rpx; width: 100%;">
+            <view class="o-h">
+              <view class="f-l count" style="padding: 0 24rpx;">({{ selected_list.length }}人)</view>
+              <view class="f-r selected-tags" style="width: 632rpx;">
+                <view class="tag" wx:for="{{ selected_list }}" wx:for-index="index" wx:for-item="player" wx:key="player_id" bindtap="removePlayer" data-index="{{index }}">{{ player.content.person_info[1].value }}
+                  <view class="weui-badge">X</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
+
+
+    <view class="b-white" style="margin-top: 120rpx; padding: 0 30rpx 0;">
+      <view class="players">
+        <checkbox-group bindchange="checkedChange">
+          <view class="player-row {{player.is_selected ? 'blue' : ''}}" wx:for="{{ info.list }}" wx:for-item="player" wx:key="player_id" wx:for-index="index">
+            <view class="f-l avatar">
+              <image src="{{ player.content.person_info[0].value ? player.content.person_info[0].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style="width: 44rpx; height: 67rpx;"></image>
+            </view>
+            <view class="f-l name">{{ player.content.person_info[1].value }}</view>
+
+            <!-- <subjobpicker wx:if="{{ player.is_selected }}" job="{{ jobId }}" value="{{ player.sub_job }}" bindsubjobchange="bindSubjobChange" data-index="{{index}}">
+              <view class="f-l job-pick">{{ player.sub_job_name }}</view>
+            </subjobpicker>
+            <view wx:if="{{ !player.is_selected }}" class="f-l job">{{ player.sub_job_name }}</view>
+            <block wx:if="{{ 3 == player.job }}">
+              <view wx:if="{{ player.is_selected }}" class="f-l number-input">
+                <input type="number" value="{{ player.number }}" bindinput="bindNumberChange" data-index="{{ index }}" style="" /> 号
+              </view>
+              <view wx:if="{{ !player.is_selected }}" class="f-l number">{{ player.number }}</view>
+            </block> -->
+
+            <view class="f-r icon">
+              <checkbox class="" value="{{index}}" checked="{{player.is_selected}}" color="#00a7f2" />
+            </view>
+          </view>
+        </checkbox-group>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="footer-buttons">
+    <!-- <navigator url="/pages/league/enroll/index?league_id={{ leagueId }}&team_id={{ teamId }}" style="line-height: 0;">
+    <button class="footer-btn full-btn" type="primary">提交</button>
+    </navigator> -->
+    <button bindtap="onSaveData" class="footer-btn full-btn" type="primary">提交</button>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "选择球队",
+  "usingComponents": {
+    "userbrief": "/components/user/userbrief"
+  }
+}

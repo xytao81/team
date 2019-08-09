@@ -1,0 +1,90 @@
+.flex_Center {
+  display: flex;
+  align-items: center;
+  padding: 10rpx;
+}
+
+/*主容器*/
+
+.stepper {
+  position: absolute;
+  right: 20rpx;
+  width: 90px;
+  height: 50rpx;
+  /*给主容器设一个边框*//* border: 1px solid #ccc;
+	border-radius: 3px; */
+}
+
+/*加号和减号*/
+
+.stepper image {
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  float: left;
+}
+
+/*数值*/
+
+.stepper .f-normal {
+  width: 60rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*普通样式*/
+
+.stepper .normal {
+  color: black;
+}
+
+/*禁用样式*/
+
+.stepper .disabled {
+  color: #ccc;
+}
+
+/*button样式*/
+
+.button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 300rpx;
+  height: 90rpx;
+  border-radius:0;
+}
+
+.dialog_mask {
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10; */
+  /* background: rgba(0, 0, 0, 0.5); */
+  /* display: none; */
+}
+
+.dialog_container {
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  background: white;
+  transform: translateY(150%);
+  transition: all 0.4s ease;
+  z-index: 11;
+  border-top: solid 1rpx #e0e0e0;
+}
+
+.dialog_show .dialog_container {
+  transform: translateY(0);
+}
+
+.dialog_show .dialog_mask {
+  display: block;
+}

@@ -1,0 +1,44 @@
+<view style="{{info.enrolls==1?'padding-bottom: 120rpx; ':''}}">
+  <view class="leaguedetail-container">
+    <view class="header">
+      <image class="banner" wx:if="{{info.banner}}" mode="widthFix" src="{{info.banner}}"></image>
+      <view class="header-info">
+        <view class="header-info-title {{info.banner?'':'other-color'}}">{{info.name}}</view>
+        <view class="header-info-other">
+          <text class="text" wx:if="info.zone">{{info.zone}}</text>
+          <text class="text" wx:if="info.players">{{info.players}}人制</text>
+          <text class="text" wx:if="info.type_name">{{info.type_name}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="line"></view>
+    <!-- tab切换 -->
+    <view class="tab-bar">
+      <text class="tab-item {{currentTab == 0 ? 'active':'' }}" data-currentTab="0" bindtap='click'>赛程</text>
+      <text class="tab-item {{currentTab == 1 ? 'active':'' }}" data-currentTab="1" bindtap='click'>数据</text>
+      <text class="tab-item {{currentTab == 2 ? 'active':'' }}" data-currentTab="2" bindtap='click'>球队</text>
+    </view>
+    <!-- 赛程 -->
+    <view wx:if="{{currentTab == 0}}">
+      <schedule id="schedule" leagueid="{{id}}"></schedule>
+    </view>
+    <!-- 数据 -->
+    <view wx:if="{{currentTab == 1}}">
+      <data id="data" leagueid="{{id}}"></data>
+    </view>
+    <!-- 球队 -->
+    <view wx:if="{{currentTab == 2}}">
+      <team id="team" leagueid="{{id}}"></team>
+    </view>
+
+  </view>
+</view>
+
+<view class="footer-buttons" wx:if="{{info.enroll_status=='1' && teamRights!=0 && info.team_league_status!=20 }}">
+  <navigator url="/pages/league/enroll/index?league_id={{ id }}&team_id={{ teamId }}">
+    <button class="footer-btn full-btn" type="primary">报名</button>
+  </navigator>
+</view>
+<view class="footer-buttons" wx:elif="{{info.team_league_status==20}}">
+  <button class="footer-btn full-btn" type="primary">参赛中</button>
+</view>

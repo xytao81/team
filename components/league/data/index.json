@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "point": "/components/rank/point/index",
+    "goal": "/components/rank/goal/index",
+    "assist": "/components/rank/assist/index",
+    "card": "/components/rank/card/index",
+    "team": "/components/rank/team/index"
+  }
+}

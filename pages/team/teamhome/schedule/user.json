@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "查看报名资料",
+  "usingComponents": {
+    "viewimage": "../../../components/viewimage"
+  }
+}

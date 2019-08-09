@@ -1,0 +1,84 @@
+<!--pages/set-lineup/index.wxml-->
+<view class="container">
+  <!--比赛信息-->
+  <view style="padding-top:20rpx">
+    <match-info item="{{match_info}}"></match-info>
+  </view>
+  <!--球衣颜色-->
+  <view style="margin-top:20rpx; background: white;">
+    <view class="team-color-name">
+      <view class="title">{{team_id==match_info.home.id?match_info.home.name:match_info.away.name}}</view>
+    </view>
+  </view>
+  <!-- <view style="margin-top:20rpx; background: white;">
+    <view class="team-color-name">
+      <view class="title">{{team_id==match_info.home.id?match_info.home.name:match_info.away.name}}</view>
+      <button plain round >设置</button>
+    </view>
+
+    <match-color></match-color>
+  </view> -->
+
+  <view wx:if="lineup_info" style="margin-top:20rpx; background: white;">
+    <view class="player-title">
+      <view class="header">
+        <view class="flag"></view>
+        <view class="text">领队</view>
+      </view>
+      <button wx:if="{{is_show}}" plain round bindtap='enterTeamLeader'>编辑</button>
+    </view>
+    <player-list list="{{lineup_info.leader_list}}"></player-list>
+  </view>
+
+  <view wx:if="lineup_info" style="margin-top:20rpx; background: white;">
+    <view class="player-title">
+
+      <view class="header">
+        <view class="flag"></view>
+        <view class="text">教练</view>
+      </view>
+      <button wx:if="{{is_show}}" plain round bindtap='enterTeamCoach'>编辑</button>
+    </view>
+
+    <player-list list="{{lineup_info.coach_list}}"></player-list>
+  </view>
+
+  <view style="margin-top:20rpx; background: white;">
+    <view class="player-title">
+      <view class="header">
+        <view class="flag"></view>
+        <view class="text">队员</view>
+      </view>
+      <button wx:if="{{is_show}}" plain round bindtap='enterTeamPlayer'>编辑</button>
+    </view>
+
+    <view class="sub-player-title">首发</view>
+    <player-list list="{{first_list}}"></player-list>
+    <view class="sub-player-title">替补</view>
+    <player-list list="{{second_list}}"></player-list>
+  </view>
+
+  <view wx:if="lineup_info" style="margin-top:20rpx; background: white;">
+    <view class="player-title">
+      <view class="header">
+        <view class="flag"></view>
+        <view class="text">官员/工作人员</view>
+      </view>
+        <button wx:if="{{is_show}}" plain round bindtap='enterTeamOfficial'>编辑</button>
+      </view>
+
+      <player-list list="{{lineup_info.other_list}}"></player-list>
+    </view>
+
+    <view class="nomore f-normal" style="margin-bottom: 90rpx;" wx:if="{{ !info.isHideLoadMore }}">----- 我是有底线的 -----</view>
+
+    <view class="footer-buttons" wx:if="{{ !isAdmin }}">
+        <form bindsubmit='formSubmit' report-submit="true">
+          <button wx:if="{{lineup == 0}}" class="full-btn" type="primary" formType="submit">提交出场阵容</button>
+          <button wx:if="{{lineup == 1}}" class="full-btn" type="primary" formType="submit">修改出场阵容</button>
+          <button wx:if="{{lineup == 2}}" class="full-btn" type="primary">阵容审核通过</button>
+          <button wx:if="{{lineup == 3}}" class="full-btn" type="primary" formType="submit">修改出场阵容</button>
+        </form>
+    </view>
+    
+  </view>

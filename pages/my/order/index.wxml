@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="nav">
+      <view bindtap='clickButton' data-type="1" class="nav-li {{ type == 1 ? 'nav-li-on' :''}}">
+        <view class="text f-normal">已支付 {{finished}}</view>
+      </view>
+      <view bindtap='clickButton' data-type="2" class="nav-li {{ type == 2 ? 'nav-li-on' :''}}">
+        <view class="text f-normal">未支付 {{unpaid}}</view>
+      </view>
+    </view>
+
+    <view hidden="{{type!=1}}">
+      <mList1 list="{{info_1.list}}" limit="{{info_1.limit}}" current_page="{{info_1.current_page}}" isHideLoadMore="{{info_1.isHideLoadMore}}" bind:onClickButton="onClickButton"></mList1>
+    </view>
+    <view hidden="{{type!=2}}">
+      <mList2 list="{{info_2.list}}" limit="{{info_2.limit}}" current_page="{{info_2.current_page}}" isHideLoadMore="{{info_2.isHideLoadMore}}" bind:onClickButton="onClickButton" bind:deleteItem='deleteItem'></mList2>
+    </view>
+  </view>
+</view>

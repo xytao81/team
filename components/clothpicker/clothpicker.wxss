@@ -1,0 +1,16 @@
+.colorRole { color: #999; border-top: 1rpx solid #ddd; padding-top: 10px; }
+
+.bg-color {
+  background-size: 100% 100% !important;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 20rpx;
+  vertical-align: middle;
+  line-height: 0;
+}
+.bg-color image {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}

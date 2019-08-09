@@ -1,0 +1,11 @@
+
+page { }
+.page-section {
+    margin-bottom: 20rpx;
+}
+
+.player-row { padding-left: 30rpx; border: 0; font-size: 32rpx; line-height: 44rpx; padding-bottom: 16rpx; overflow: hidden; height: 130rpx; margin-bottom: 30rpx; border-bottom: 1rpx solid #ccc; }
+.player-row .avatar { text-align: center; width: 20%; }
+.player-row .text { width: 70%; }
+
+.weui-select { padding-left: 0; border-right: 0; }

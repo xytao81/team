@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "录入阵容",
+  "usingComponents": {
+    "clothpicker": "/components/clothpicker/clothpicker",
+    "match-info": "/components/match/info",
+    "match-color": "/components/match/color",
+    "player-list": "/components/player/list"
+  }
+}

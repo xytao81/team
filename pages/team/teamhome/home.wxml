@@ -1,0 +1,170 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+  <view class="mask" hidden="{{ !teamSelectorVisible ? true : false }}" bindtouchstart="toggleTeamSelector"></view>
+  <view class="select-popup" hidden="{{ !teamSelectorVisible }}">
+    <view wx:if="{{ myTeams.length > 0}}" class="team-header">
+      <view class="box">
+        <view bindtap="openInfo" class="f-l avatar">
+          <image src="{{ team.logo ? team.logo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_100,w_100" style="width: 100rpx; height: 100rpx;"></image>
+        </view>
+
+        <view bindtap="openInfo" class="f-l text">
+          <view class="t1 f-title">
+            <view style="display: inline-block; vertical-align: middle">{{ team.showname }}{{ team.name == team.showname ? '' : '...' }}</view>
+          </view>
+          <view class="t2 f-small">
+            ID:{{ team.id }}{{ team.zone_name ? ' | '+team.zone_name : '' }} | <navigator class="t2btn f-small" style="display:inline; margin-left: 24rpx;" url="/pages/team/players/list?team_id={{teamId}}">队员{{team.player_count}}人</navigator> 
+          </view>
+        </view>
+        <view class="arrow-box" bindtap="toggleTeamSelector">
+          <view class="arrow"></view>
+        </view>
+      </view>
+    </view>
+
+    <view style="padding: 0 30rpx;">
+
+      <view class="t-c" wx:if="{{from == 'aqm'}}" style="margin: 30rpx 0 20rpx;">
+        <navigator url="/pages/team/create" style="display:inline-block; width: 220rpx; height: 80rpx; margin-right: 180rpx;">
+          <button type="primary" class="f-normal" style="width: 100%; height: 100%; line-height: 80rpx;">创建球队</button>
+        </navigator>
+        <navigator url="/pages/team/search" style="display:inline-block; width: 220rpx; height: 80rpx;">
+          <button type="primary" class="f-normal" style="width: 100%; height: 100%; line-height: 80rpx;">搜索球队</button>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view style="padding-bottom: 40rpx;">
+    <view wx:if="{{ myTeams.length > 0}}" class="team-header">
+      <view class="box">
+        <view bindtap="openInfo" class="f-l avatar">
+          <image src="{{ team.logo ? team.logo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_100,w_100" style="width: 100rpx; height: 100rpx;"></image>
+        </view>
+
+        <view class="f-l text">
+          <view bindtap="openInfo" class="t1 f-title">
+            <view style="display: inline-block; vertical-align: middle">{{ team.showname }}{{ team.name == team.showname ? '' : '...' }}</view>
+          </view>
+          <view class="t2 f-small">
+              ID:{{ team.id }}{{ team.zone_name ? ' | '+team.zone_name : '' }} | <navigator class="t2btn f-small" style="display:inline; margin-left: 24rpx;" url="/pages/team/players/list?team_id={{teamId}}">队员{{team.player_count}}人</navigator> 
+          </view>
+        </view>
+        <view class="arrow-box" bindtap="toggleTeamSelector">
+          <view class="arrow"></view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{ myTeams.length > 0 && team.rights!=0}}" class="show-container" style="margin: 20rpx 0 0; background: #fff; padding: 0 30rpx;">
+      <view class="show-row">
+        <view class="show-title">
+          <view class="f-l tit">
+            <text class="title-name">管理员控制台</text>
+            <text class="f-gray f-small" style="font-weight: normal;">（仅管理员可见）</text></view>
+        </view>
+      </view>
+      <view class="">
+        <team_stat id="team_stat" bind:clickMenu="statClickMenu" user_team_rights="{{team.rights}}" to_team_id="{{team.id}}" user_token="{{userToken}}"></team_stat>
+      </view>
+    </view>
+
+
+    <block wx:if="{{ from == 'aqm' && myTeams.length == 0 }}">
+      <view class="show-container" style="margin: 20rpx 0 0; background: #fff; padding: 0 30rpx;">
+        <view class="show-row">
+          <view class="show-title">
+            <view class="f-l tit">选择一</view>
+          </view>
+        </view>
+        <view class="show-row t-c">
+          <view bindtap="gotoSearch" class="button f-small" style="width: 220rpx; height: 50rpx; line-height: 50rpx;">加入球队/俱乐部</view>
+          <text class="d-b f-small" style="color: #bbb; line-height: 36rpx; margin: 10rpx 0 15rpx;">输入关键词或球队ID，找到所属球队，输入邀请码加入此机构。如无邀请码，请向该机构的管理员查询。</text>
+        </view>
+      </view>
+      <view class="show-container" style="margin: 20rpx 0 0; background: #fff; padding: 0 30rpx;">
+        <view class="show-row">
+          <view class="show-title">
+            <view class="f-l tit">选择二</view>
+          </view>
+        </view>
+        <view class="show-row t-c">
+          <view bindtap="gotoCreate" class="button f-small" style="width: 220rpx; height: 50rpx; line-height: 50rpx;">创建球队/俱乐部</view>
+          <text class="d-b f-small" style="color: #bbb; line-height: 36rpx; margin: 10rpx 0 15rpx;">创建成功后，您就是创始管理员，可以通过邀请码添加其他管理员协同工作。</text>
+        </view>
+      </view>
+    </block>
+
+
+    <view hidden="{{ teamSelectorVisible ? false : false }}">
+      <view wx:if="{{ myTeams.length > 0}}" class="mt">
+        <team_message id="team_message" bind:clickMenu="statClickMenu"></team_message>
+      </view>
+      <!-- 球队日程 -->
+      <view wx:if="{{ myTeams.length > 0}}" class="mt" style="margin:10px 0 0; background:#fff;padding:0 30rpx;">
+          <view class="show-row" style="border:none">
+              <view class="show-title">
+                  <view class="f-l tit">
+                    <text class="title-name">球队日程</text>
+                  </view>
+              </view>
+          </view>
+          <team_my_schedule id="team_my_schedule" bind:clickMenu="statClickMenu"></team_my_schedule>
+      </view>
+      <!-- 参加赛事 -->
+      <view wx:if="{{ myTeams.length > 0}}" class="mt" style="margin:10px 0 0; background:#fff;padding:0;">
+        <view class="show-row" style="border-bottom: none;padding-left:30rpx;">
+            <view class="show-title">
+                <view class="f-l tit">
+                    <text class="title-name">参加赛事</text>
+                </view>
+            </view>
+        </view>
+        <team_my_league id="team_my_league" bind:clickMenu="statClickMenu"></team_my_league>
+      </view>
+
+      <!-- 球队相册 -->
+      <!-- <view wx:if="{{ myTeams.length > 0}}" class="mt" style="margin:10px 0 0; background:#fff;padding:0;">
+        <view class="show-row" style="border-bottom: none;padding-left:30rpx;">
+            <view class="show-title">
+                <view class="f-l tit">
+                    <text class="title-name">球队相册</text>
+                </view>
+            </view>
+        </view>
+        <team_album id="team_my_album" bind:clickMenu="statClickMenu" user_team_rights="{{team.rights}}" to_team_id="{{team.id}}" user_token="{{userToken}}" teamId="{{team.id}}"></team_album>
+      </view> -->
+
+      <!-- 数据 -->
+      <view wx:if="{{ myTeams.length > 0}}" class="show-container mt b-white" style="padding: 0 30rpx;">
+        <team_statistics id="team_statistics" teamid="{{ team.id }}" bindtap="vsstatClick"></team_statistics>
+      </view>
+      <!-- 球队联系方式 -->
+      <view wx:if="{{ myTeams.length > 0}}" class="show-container mt b-white" style="padding: 0 30rpx;">
+        <team_contact id="team_contact" contactName="{{ team.contact_name}}" contactPhone="{{ team.contact_phone }}" contactWx="{{ team.contact_wx }}" expand="{{ false }}"></team_contact>
+      </view>
+      <!-- 球队简介 -->
+      <view wx:if="{{ myTeams.length > 0}}" class="show-container mt b-white" style="padding: 0 30rpx;">
+        <team_com id="team_com" photo="{{ team.photo }}" desc="{{ team.desc }}" expand="{{ false }}"></team_com>
+      </view>
+      <!-- 爱球迷广告位 -->
+      <view>
+        <ad1></ad1>
+      </view>
+    <!-- 推荐赛事 -->
+      <view class="bt">
+        <league id="team_league"></league>
+      </view>
+
+      <!-- 腾讯广告位 -->
+      <view class="mt b-white" style="padding: 30rpx;">
+        <ad unit-id="adunit-5b7a3351cb8f709b"></ad>
+      </view>
+
+    </view>
+
+   
+  </view>
+  <back wx:if="{{ isShare }}" url="{{ teamRights !== null ? '/pages/team/teamhome/view?team_id='+teamId+'&is_share=1' : '/pages/index/index' }}"></back>
+
+</view>

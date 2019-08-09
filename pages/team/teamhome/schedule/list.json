@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "球队日程",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "vInput": "/components/inputModal",
+    "viewimage": "/components/viewimage",
+    "schedule_list":"../../../../components/schedule/schedule_list",
+    "back": "../../../components/back/back"
+  }
+}

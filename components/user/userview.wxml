@@ -1,0 +1,128 @@
+
+<view class="uesr-list b-white" wx:for="{{ content }}" wx:for-item="fieldGroup" wx:key="idx" wx:for-index="idx" wx:if="{{ contentFieldsTitles[idx].count > 0 }}">
+    <view class="show-container">
+        <view class="show-row" style="margin: 0 30rpx 0;">
+            <view class="show-title">
+                <view class="f-l tit">
+                    <text class="title-name">{{ contentFieldsTitles[idx].text }}</text>  
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="show-container" style="margin: 0 30rpx;">
+        <view class="show-row" wx:for="{{ fieldGroup }}" wx:for-item="field" wx:key="idx2" wx:for-index="idx2" wx:if="{{ field.is_select }}">
+            <block wx:if="{{ field.key == 'photo' }}">
+            <view class="show-label" style="line-height: 50rpx;">{{ field.name }}</view>
+            <view class="show-content lh-0">
+                <view class="weui-select" style="height:98rpx;">
+                    <viewimage src="https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/photo_example.png" style2="width: 70rpx; height: 98rpx; margin-right: 50rpx;"></viewimage> 
+                    <image src="{{ field.value ? field.value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}?x-oss-process=image/resize,m_fill,h_98,w_70" style="width: 70rpx; height: 98rpx;"></image>
+                </view>
+            </view>
+            </block>
+            <block wx:elif="{{ field.type == 'pic' }}">
+            <view class="show-label" style="line-height: 50rpx;">{{ field.name }}</view>
+            <view class="show-content lh-0">
+                <view class="weui-select" style="height:70rpx;">
+                    <image src="{{ field.value ? field.value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_70,w_70" style="width: 90rpx; height: 90rpx;"></image>
+                </view>
+            </view>
+            </block>
+            <block wx:elif="{{ field.type == 'number' && field.key != 'number' }}">
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">
+                <view class="weui-select" wx:if="{{ field.key == 'height' }}">{{ numbersArray[field.value-1] ? numbersArray[field.value-1] + ' CM' : '' }}</view>
+                <view class="weui-select" wx:if="{{ field.key == 'weight' }}">{{ numbersArray[field.value-1] ? numbersArray[field.value-1] + ' KG' : '' }}</view>
+                <view class="weui-select" wx:if="{{ field.key == '鞋码' }}">{{ numbersArray[field.value-1] ? numbersArray[field.value-1] + ' 码' : '' }}</view>
+                <view class="weui-select" wx:else>{{ numbersArray[field.value-1] }}</view>
+            </view>
+            </block>
+
+            <block wx:elif="{{ field.key == 'birthday' }}">
+                <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+                <view class="show-content" wx:if="{{ !isIdCard }}">
+                    <view class="weui-select">{{ field.value }}</view>
+                </view>
+                <view class="show-content" style='line-height:65rpx;' wx:if="{{ isIdCard }}">{{ field.value }}</view>
+            </block>
+
+            <block wx:elif="{{ field.type == 'phone' }}">
+                <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+                <view class="show-content">{{ field.value }}</view>
+            </block>
+            <block wx:elif="{{ field.type == 'email' }}">
+                <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+                <view class="show-content">{{ field.value }}</view>
+            </block>
+
+            <block wx:elif="{{ field.key == 'sub_rights' }}">
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">{{ subjob.name }}</view>
+            </block>
+            <block wx:elif="{{ field.key == 'position' }}">
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">{{ position.name }}</view>
+            </block>
+            <block wx:elif="{{ field.key == 'number' }}">
+                <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+                <view class="show-content">{{ field.value }}</view>
+            </block>
+            <block wx:elif="{{ field.name == '开始时间' }}">
+                <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+                <view class="show-content">{{ field.value ? field.value : '' }}</view>
+            </block>
+            <block wx:elif="{{ field.name == '结束时间' }}">
+                <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+                <view class="show-content">{{ field.value ? field.value : '' }}</view>
+            </block>
+
+            <block wx:elif="{{ field.name == '性别' }}">
+                <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+                <view class="show-content">{{ [' ','男', '女'][field.value] }}</view>
+            </block>
+
+
+            <block wx:elif="{{ field.key == 'cert_type' }}">
+                <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+                <view class="show-content">{{ [' ', '身份证', '护照','其它'][field.value] }}</view>
+            </block>
+            <block wx:elif="{{ field.name == '证件号码' }}">
+                <view class="show-label {{ redLables[idx][field.key] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+                <view class="show-content">{{ field.value }}</view>
+            </block>
+            <!-- 国籍 -->
+            <block wx:elif="{{ field.name == '国籍' }}">
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">{{ field.value }}</view>
+            </block>
+            <block wx:elif="{{ field.name == '民族' }}">
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">{{ field.value }}</view>
+            </block>
+            <block wx:elif="{{ field.name == '最高学历' || field.name == '学历/学位' }}">
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">{{ ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'][field.value-1] }}</view>
+            </block>
+            <block wx:elif="{{ field.name == '婚姻状况' }}">
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">{{ ['已婚','未婚'][field.value] }}</view>
+            </block>
+            <block wx:elif="{{ field.name == '居住地' }}">
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">
+                <text wx:if="{{ field.value[0] }}">{{ field.value[0].name ? field.value[0].name+'-'+field.value[1].name : field.value }}</text>
+                <text wx:else>{{ region[0].name ? region[0].name+'-'+region[1].name : field.value }}</text>
+            </view>
+            </block>
+            <block wx:elif="{{ field.name == '联系人关系' }}">
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">{{ ['父亲','母亲','亲属','朋友','同学','其他'][field.value] }}</view>
+            </block>
+            <block wx:else>
+            <view class="show-label {{ redLables[idx][idx2] == true ? 'f-red' :'' }} ">{{ field.name }}</view>
+            <view class="show-content">{{ field.value }}</view>
+            </block>
+
+        </view>
+    </view>
+</view>

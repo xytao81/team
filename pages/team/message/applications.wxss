@@ -1,0 +1,6 @@
+@import '../../../app.wxss';
+
+.nav { background: #fff; overflow: hidden; }
+.nav .nav-li { float: left; width: 50%; }
+.nav .nav-li .text { display: block; margin: 0 auto; width: 150rpx; height: 85rpx; line-height: 85rpx; color: #333; border-bottom: 0; text-align: center; }
+.nav .nav-li-on .text { border-bottom: solid 6rpx #00a7f2; }

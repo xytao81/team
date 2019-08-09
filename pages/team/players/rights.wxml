@@ -1,0 +1,57 @@
+<view class="page">
+
+  <userbrief name="{{ playerInfo.name }}" uid="{{ playerInfo.uid }}" photo="{{ playerInfo.photo ? playerInfo.photo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}"></userbrief>
+
+  <view class="b-white">
+
+
+    <view class="show-container" style="margin: 0 30rpx 0;">
+      <view class="show-row">
+        <view class="show-title">
+          <view class="f-l tit">账号权限</view>
+        </view>
+      </view>
+    </view>
+    <view class="form-container" style="margin: 0 30rpx 0;">
+      <view class="form-row">
+        <view class="form-label">队内权限</view>
+        <view class="form-content">
+          <rightspicker bindrightschange="bindRightsChange" value="{{ saveData.rights.id }}">
+            <view class="weui-select" style="padding-left: 0; border-right: 0;">{{ saveData.rights.name }}</view>
+          </rightspicker>
+        </view>
+      </view>
+    </view>
+
+
+  <!-- <view class="weui-cells weui-cells_in-small-appmsg">
+    <view wx:if="{{ team.rights != 20 && from=='aqm'}}" class="weui-cell weui-cell_select" style="padding: 0 0 0 15px;">
+        <view class="weui-cell__hd">
+            <view class="weui-label">队内权限</view>
+        </view>
+        <view class="weui-cell__bd" bindtap="openRightsPicker">
+            <view class="weui-select" style="padding-left: 0;">{{ saveData.rights.name }}</view>
+        </view>
+    </view>
+    <view wx:if="{{from=='aqm'}}" class="weui-cell weui-cell_select" style="padding: 0 0 0 15px;">
+        <view class="weui-cell__hd">
+            <view class="weui-label">队内职务</view>
+        </view>
+        <view class="weui-cell__bd">
+            <jobpicker show="{{ jobPickerVisible }}" checked="{{ saveData.jobs }}" bindjobchange="bindJobChange">
+              <view class="weui-select" style="padding-left: 0"><block wx:for="{{ saveData.jobs }}" wx:key="index">{{ item.job_name }} </block></view>
+            </jobpicker>
+        </view>
+    </view>
+  </view>
+  <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="savePlayerInfo">保存</button>
+  </view> -->
+
+  </view>
+
+  <view class="footer-buttons">
+      <button class="footer-btn full-btn" type="primary" bindtap="savePlayerInfo">保存</button>
+  </view>
+
+</view>

@@ -1,0 +1,77 @@
+
+<view class="page" style="background: #fff;" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd">
+
+        <view class="team-header">
+      <view class="box">
+        <view bindtap="openInfo" class="f-l avatar">
+          <image src="{{ team.logo ? team.logo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style="width: 100rpx; height: 100rpx;"></image>
+        </view>
+
+        <view bindtap="openInfo" class="f-l text">
+          <view class="t1">
+            <view style="display: inline-block; vertical-align: middle">{{ team.showname }}{{ team.name == team.showname ? '' : '...' }}</view>
+          </view>
+          <view class="t2">
+            {{ team.zone_name ? team.zone_name : '' }} | {{ team.player_count }} 人
+          </view>
+        </view>
+      </view>
+    </view>
+
+        <view class="weui-tab">
+            <!-- <view class="weui-navbar">
+                    <view id="0" class="weui-navbar__item {{loginType == 1 ? 'weui-bar__item_on' : ''}}" data-logintype="1" bindtap="changeLoginType">
+                        <view class="weui-navbar__title">账号登录</view>
+                    </view>
+                    <view id="1" class="weui-navbar__item {{loginType == 3 ? 'weui-bar__item_on' : ''}}" data-logintype="3" bindtap="changeLoginType">
+                        <view class="weui-navbar__title">短信登录</view>
+                    </view>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view> -->
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content">
+
+                    <view class="form-container" style="margin: 0 50rpx 0;">
+                        <view class="form-row" style="border-bottom: solid 1rpx #e0e0e0;">
+                            <view class="form-label">用户名</view>
+                            <view class="form-content">
+                                <input class="form-input" placeholder="请输入用户名/手机号" bindinput="inputChangePhone" />
+                            </view>
+                            <!-- <view class="weui-cell__ft">
+                                <view class="weui-vcode-btn"><button open-type="getPhoneNumber" bindgetphonenumber="wxGetPhoneNumber" style="border: 0;" plain="true">获取手机号</button></view>
+                            </view> -->
+                        </view>
+                        <view class="form-row" hidden="{{ loginType == 3 }}" style="border-bottom: solid 1rpx #e0e0e0;">
+                            <view class="form-label">密码</view>
+                            <view class="form-content">
+                                <input class="form-input" placeholder="请输入密码" password="true" bindinput="inputChangePassword" />
+                            </view>
+                        </view>
+                        <view class="mt form-buttons">
+                            <button class="form-button form-button-circular" type="primary" bindtap="loginSubmit">登录并入队</button>
+                        </view>
+                        <view class="o-h f-normal lh-28" style="margin-top: 8rpx;">
+                            <!-- <navigator url="/pages/index/findusername" class="f-l f-blue lh-80">忘记用户名？</navigator> -->
+                            <navigator url="/pages/index/findpassword?redirect_url={{ redirectUrlEncoded }}" class="f-r f-blue lh-80">忘记密码？</navigator>
+                        </view>
+                    </view>
+                    <view class="lh-28 f-normal t-c f-black" style="margin-top: 60rpx;">
+                      <navigator url="/pages/index/index?redirect_url={{ redirectUrlEncoded }}&is_invited=1">没有帐号？<text class="lh-28 f-normal f-blue">去注册</text></navigator>
+                    </view>
+
+                </view>
+            </view>
+        </view>
+
+        <view class="weui-footer weui-footer_fixed-bottom">
+            <!-- <image src="https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/text_logo.png" style="width: 280rpx; height: 105rpx; margin-bottom: 50rpx;" /> -->
+            <image src="https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/mobile_login_footer_2.jpg" style="width: 303rpx; height: 95rpx; margin-bottom: 50rpx;" />
+            <!-- <view class="weui-footer__text">登录即表示您同意</view>
+            <view class="weui-footer__text">
+                <text class="blue">《爱球迷用户使用协议》</text> 和 <text class="blue">《用户隐私保护声明》</text>
+            </view> -->
+        </view>
+
+    </view>
+</view>

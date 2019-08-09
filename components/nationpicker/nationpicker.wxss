@@ -1,0 +1,8 @@
+.selected{
+    color:#00a7f2;
+}
+.nation-letter view{
+    width:80rpx;
+    text-align:right;
+    font-size: 20rpx;
+}

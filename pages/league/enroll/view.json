@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "报名资料查看",
+  "usingComponents": {
+    "clothpicker": "../../../components/clothpicker/clothpicker"
+  }
+}

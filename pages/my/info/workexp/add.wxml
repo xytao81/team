@@ -1,0 +1,65 @@
+<view class="page">
+  <view style="padding-bottom: 100rpx;">
+
+    <view class="my-header">{{user_info.name}}
+      <text class="t2">ID: {{user_info.uid}}</text>
+    </view>
+
+    <view class="f-small f-gray" style="margin: 20rpx 30rpx;">以下信息将用于比赛/活动报名，请如实填写</view>
+
+    <view class="mt" style="background: #fff;">
+      <view class="show-container" style="margin: 0 30rpx 0;">
+        <view class="show-row">
+          <view class="show-title">
+            <view class="f-l tit">工作经历</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="background: #fff">
+      <view class="form-container" style="margin: 0 30rpx 0;">
+        <view class="form-row">
+          <view class="form-label">单位名称</view>
+          <view class="form-content">
+            <input class="form-input" placeholder="请输入单位名称" value="{{ post_data.company_name }}" bindinput="bindCompanyChange" />
+          </view>
+        </view>
+        <view class="form-row">
+          <view class="form-label">职务</view>
+          <view class="form-content">
+            <input class="form-input" placeholder="请输入职务" value="{{ post_data.job }}" bindinput="bindJobChange" />
+          </view>
+        </view>
+        <view class="form-row">
+          <view class="form-label">开始时间</view>
+          <view class="form-content">
+            <picker mode="date" data-key="birthday" value="{{ post_data.start_time }}" start="1900-01-01" bindchange="bindInputStartChange">
+              <view class="weui-select">{{ post_data.start_time }}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="form-row">
+          <view class="form-label">结束时间</view>
+          <view class="form-content">
+            <picker mode="date" data-key="birthday" value="{{ post_data.end_time }}" start="1900-01-01" bindchange="bindInputEndChange">
+              <view class="weui-select">{{ post_data.end_time ? post_data.end_time : '至今' }}</view>
+            </picker>
+          </view>
+        </view>
+        <!-- <view class="form-row">
+          <view class="form-label">学科</view>
+          <view class="form-content">
+            <input class="form-input" placeholder="请输入学科" value="{{ exp.subject }}" bindinput="bindSubjectChange" />
+          </view>
+        </view> -->
+      </view>
+    </view>
+
+
+  </view>
+
+  <view class="footer-buttons">
+    <button class="footer-btn full-btn" type="primary" bindtap="save">保存</button>
+  </view>
+
+</view>

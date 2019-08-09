@@ -1,0 +1,26 @@
+<!--components/data/goal/index.wxml-->
+<view>
+  <view class="table f-small" wx:if="{{list.length>0}}">
+    <view class="table-head">
+      <view class="column1"></view>
+      <view class="column2"></view>
+      <view class="column3">球员</view>
+      <view class="column4">球队</view>
+      <view class="column5">进球</view>
+    </view>
+    <view wx:for="{{list}}" wx:key="id" data-item="{{item}}" class="tr {{(index%2 == 0) ?'':'stripe'}}">
+      <view class="column1">{{item.order_by}}</view>
+      <view class="column2">
+        <image class="player-photo" wx:if="{{item.photo}}" src="{{item.photo}}" />
+        <image class="player-photo" wx:else src="../../../images/league/data-user-default.png" />
+      </view>
+      <view class="item-team column3">{{item.name}}</view>
+      <view class="column4">{{item.team_name}}</view>
+      <view class="column5">{{item.count}}</view>
+    </view>
+  </view>
+  <view wx:else class="no-data f-title">
+    <image src="../../../images/league/no-data.png" />
+    <view>暂无数据</view>
+  </view>
+</view>

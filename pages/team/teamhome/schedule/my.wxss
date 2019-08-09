@@ -1,0 +1,11 @@
+/* pages/login/index.wxss */
+
+.page-section {
+    margin-bottom: 20rpx;
+}
+
+.date-row { text-align: center; line-height: 80rpx; }
+
+.weui-select { padding-left: 0; }
+
+.weui-badge { border-radius: 6rpx; }

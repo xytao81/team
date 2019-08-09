@@ -1,0 +1,46 @@
+<scroll-view scroll-y style="" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+  <view class="welcome">
+    <view class="league-item-box" wx:for="{{list}}" wx:key="id" data-item="{{item}}" bindtap="handleClick">
+      <view class='league-item'>
+        <!-- {{index}}: {{item.name}} -->
+        <view class="logo">
+          <!-- <image wx:if="{{item.logo}}" class="logo" src="item.logo" />
+        <image  wx:else class="logo" src="../../images/team_logo.png" /> -->
+          <image wx:if="{{item.logo}}" mode='widthFix' src="{{item.logo}}" />
+          <image wx:else class="logo" mode='widthFix' src="../../../../images/league/team_logo.png" />
+          <text wx:if="{{item.status == '01' && !item.is_multi}}" class="status-name green">{{item.status_name}}</text>
+          <text wx:if="{{item.status == '00' && !item.is_multi}}" class="status-name yellow">{{item.status_name}}</text>
+          <text wx:if="{{item.status == '02' && !item.is_multi}}" class="status-name back2">{{item.status_name}}</text>
+          <text wx:if="{{item.status == '22' && !item.is_multi}}" class="status-name black">{{item.status_name}}</text>
+          <text wx:if="{{item.status == '12' && !item.is_multi}}" class="status-name blue">{{item.status_name}}</text>
+          <text wx:if="{{item.status == '11' && !item.is_multi}}" class="status-name blue">{{item.status_name}}</text>
+        </view>
+        <view class="info-box">
+          <view class="info-title">{{item.name}}</view>
+          <view class="info-desc">
+            <text wx:if="{{item.city_name}}">{{item.city_name}}</text>
+            <text wx:if="{{item.players_name}}">{{item.players_name}}</text>
+            <text wx:if="{{item.type_name}}">{{item.type_name}}</text>
+          </view>
+          <view class="info-box-f3" wx:if="{{item.time_desc}}">
+            <image src="../../../../images/league/time-icon.png"></image>
+            <text>{{item.time_desc}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="load_end" wx:if="{{isLoadMore}}">--END--</view>
+
+
+  <!-- <view  wx:if="{{isLoadMore}}">加载中</view> -->
+
+
+</scroll-view>

@@ -1,0 +1,14 @@
+<view class="player-header f-title" bind:tap="onTap">
+    <view class="f-l avatar" wx:if= "{{ photo }}">
+        <image mode="aspectFill" src="{{ photo }}" style="width: 84rpx; height: 120rpx;"></image>
+    </view>
+    <view class="f-l text f-normal">
+      <view class="t1">
+        <view style="display: inline-block; vertical-align: middle">{{ name }}</view>
+      </view>
+      <view class="t2">ID: {{ uid }}</view>
+    </view>
+    <!-- <view class="setting weui-select">
+        <text class="f-normal">{{ settings }}</text>
+    </view> -->
+</view>

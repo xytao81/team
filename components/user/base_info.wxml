@@ -1,0 +1,59 @@
+
+<view style="background: #fff;" wx:if="{{ info }}">
+  <view class="show-container" style="margin: 0 30rpx 0;">
+    <view class="show-row">
+      <view class="show-title">
+        <view class="f-l tit">
+          <text class="title-name">个人信息</text>
+        </view>
+        <view class="f-r">
+          <slot></slot>
+        </view>
+      </view>
+    </view>
+  
+    <view class="show-row">
+        <view class="show-label" style="line-height: 98rpx;">正面免冠照</view>
+        <view class="show-content" class="lh-0"><viewimage src="{{ info.realphoto.value ? info.realphoto.value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style2="width: 70rpx; height: 98rpx;"></viewimage></view>
+    </view>
+    <view class="show-row">
+        <view class="show-label">真实姓名</view>
+        <view class="show-content">{{ info.realname.value }}</view>
+    </view>
+    <view class="show-row" hidden="{{ secure }}">
+        <view class="show-label">证件类型</view>
+        <view class="show-content" wx:if="{{info.cert_type.value==0}}"> </view>
+        <view class="show-content" wx:if="{{info.cert_type.value==1}}">身份证</view>
+        <view class="show-content" wx:if="{{info.cert_type.value==2}}">护照</view>
+        <view class="show-content" wx:if="{{info.cert_type.value==3}}">其它</view>
+    </view>
+    <view class="show-row" hidden="{{ secure }}">
+        <view class="show-label">证件号码</view>
+        <view class="show-content">{{ info.certnumber.value }}</view>
+    </view>
+    <view class="show-row">
+        <view class="show-label">性别</view>
+        <view class="show-content" wx:if="{{info.sex.value==0}}"> </view>
+        <view class="show-content" wx:if="{{info.sex.value==1}}">男</view>
+        <view class="show-content" wx:if="{{info.sex.value==2}}">女</view>
+    </view>
+    <view class="show-row">
+        <view class="show-label">居住地</view>
+        <view class="show-content">{{ info.region[0].name ? info.region[0].name+'-'+info.region[1].name : '-' }}</view>
+    </view>
+    <view class="show-row">
+        <view class="show-label">联系地址</view>
+        <view class="show-content">{{ info.address.value }}</view>
+    </view>
+    <view class="show-row">
+        <view class="show-label">联系手机</view>
+        <view class="show-content">{{ info.phone.value }}</view>
+    </view>
+
+  </view>
+</view>
+
+<!-- <view class="show-row" wx:if="{{playerInfo.is_player}}">
+    <view class="show-label">场上位置</view>
+    <view class="show-content">{{ position.name ? position.name : '-' }}</view>
+</view> -->

@@ -1,0 +1,118 @@
+
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd" style="background: #fff;">
+
+    <view>
+      <view class="show-container" style="margin: 0 30rpx 0;">
+        <view class="show-row" style="">
+          <view class="show-label" style="line-height: 100rpx;">队徽</view>
+          <view class="show-content" style="line-height: 0;">
+            <viewimage src="{{ editData.logoUrl ? editData.logoUrl : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}" style2="width: 100rpx; height: 100rpx;"></viewimage>
+          </view>
+        </view>
+        <view class="show-row">
+          <view class="show-label">名称</view>
+          <view class="show-content" style="line-height: 42rpx;">{{ editData.name }}</view>
+        </view>
+        <view class="show-row">
+          <view class="show-label">类型</view>
+          <view class="show-content">
+            <view class="" style="padding-left: 0;border-right:0;">{{types[typeIndex].name}}</view>
+          </view>
+        </view>
+        <view class="show-row">
+          <view class="show-label">所在地</view>
+          <view class="show-content">
+            <view class="" style="padding-left: 0;border-right:0;">{{ editData.region[0].name }}，{{ editData.region[1].name }}</view>
+          </view>
+        </view>
+        <view class="show-row">
+          <view class="show-title gray">球衣主颜色</view>
+          <view class="o-h" style="display: flex; align-items: center; ">
+            <view class="f-l" style="line-height: 90rpx">
+              <view style="overflow:hidden; padding: 0;">
+                  <view style="float:left; width: 160rpx;">
+                      <view>队员</view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].player.shirt.color +') no-repeat'}}"><image src="../../../images/icon_sy.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].player.shorts.color +') no-repeat'}}"><image src="../../../images/icon_kz.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].player.shoes.color +') no-repeat'}}"><image src="../../../images/icon_qw.png" /></view>
+                  </view>
+              </view>
+              <view style="overflow:hidden; padding: 0;">
+                  <view style="float:left; width: 160rpx;">
+                      <view>守门员</view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].goalkeeper.shirt.color +') no-repeat'}}"><image src="../../../images/icon_sy.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].goalkeeper.shorts.color +') no-repeat'}}"><image src="../../../images/icon_kz.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[0].goalkeeper.shoes.color +') no-repeat'}}"><image src="../../../images/icon_qw.png" /></view>
+                  </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="show-row">
+          <view class="show-title gray">球衣副颜色</view>
+          <view class="o-h" style="display: flex; align-items: center; ">
+            <view class="f-l" style="line-height: 90rpx">
+              <view style="overflow:hidden; padding: 0;">
+                  <view style="float:left; width: 160rpx;">
+                      <view>队员</view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].player.shirt.color +') no-repeat'}}"><image src="../../../images/icon_sy.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].player.shorts.color +') no-repeat'}}"><image src="../../../images/icon_kz.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].player.shoes.color +') no-repeat'}}"><image src="../../../images/icon_qw.png" /></view>
+                  </view>
+              </view>
+              <view style="overflow:hidden; padding: 0;">
+                  <view style="float:left; width: 160rpx;">
+                      <view>守门员</view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].goalkeeper.shirt.color +') no-repeat'}}"><image src="../../../images/icon_sy.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].goalkeeper.shorts.color +') no-repeat'}}"><image src="../../../images/icon_kz.png" /></view>
+                  </view>
+                  <view style="float:left; width: 150rpx;">
+                      <view class="bg-color" style="background:{{'url('+ editData.color[1].goalkeeper.shoes.color +') no-repeat'}}"><image src="../../../images/icon_qw.png" /></view>
+                  </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="show-row" style="">
+          <view class="show-label" style="line-height: 100rpx;">全家福</view>
+          <view class="show-content" style="line-height: 0;">
+            <viewimage src="{{ editData.familyUrl ? editData.familyUrl : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_400,w_800" style2="width: 200rpx; height: 100rpx;"></viewimage>
+          </view>
+        </view>
+        <view class="show-row" style="border-bottom: 0;">
+          <view class="show-title gray">简介</view>
+          <view style="line-height: 150%;">
+            {{ editData.intro ? editData.intro : '管理员很懒，没有填写简介。' }}
+            <view wx:if="{{ editData.contact_name }}">球队联系人：{{editData.contact_name}}</view>
+            <view wx:if="{{ editData.contact_phone }}">联系电话：{{editData.contact_phone}}</view>
+            <view wx:if="{{ editData.contact_wx }}">联系微信：{{editData.contact_wx}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

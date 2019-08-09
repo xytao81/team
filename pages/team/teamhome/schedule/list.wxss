@@ -1,0 +1,29 @@
+/* pages/login/index.wxss */
+
+.page-section {
+    margin-bottom: 20rpx;
+}
+
+.date-row { text-align: center; line-height: 80rpx; }
+
+.weui-select { padding-left: 0; }
+
+.weui-badge { border-radius: 6rpx; }
+
+.refresh-button{
+    width: 90rpx;
+    height: 90rpx;
+    /* background-color:rgba(00a7f2.8); */
+    /* background:#00a7f2; */
+    background-color: rgba(255,255,255,0.55);
+    border: solid 1rpx rgb(0,167,242);
+    position:fixed;
+    top: 64%;
+    right: 20rpx;
+    color:rgb(0,167,242);
+    font-size: 28rpx;
+    line-height: 90rpx;
+    text-align: center;
+    border-radius: 80rpx;
+    
+}

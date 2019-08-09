@@ -1,0 +1,24 @@
+
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd"> 
+
+        <!-- <view class="tips">
+            <view class="tip" wx:for="{{ helps }}" wx:for-item="help" wx:for-index="idx" wx:key="id">
+                <view class="tip-title f-title" bindtap="toggle" data-idx="{{ idx }}"><text class="{{ help.show ? 'top' : 'bottom' }}" ></text>{{ help.title }}</view>
+                <view class="tip-content f-normal {{ help.show ? '' : 'hide' }}">{{ help.content }}</view>
+            </view>
+        </view> -->
+        <view class="tips">
+            <view class="tip" wx:for="{{ helps }}" wx:for-item="help" wx:for-index="idx" wx:key="id">
+                <navigator class='weui-select b-white' url="/pages/info/help_detail?id={{ help.id }}" style="padding-left: 0; border-right:0;">
+                    <view class="tip-title f-title f-black" data-idx="{{ idx }}">{{ help.title }}</view>
+                </navigator>
+            </view>
+        </view>
+
+        <!-- 返回首页 -->
+        <back wx:if="{{ isShare }}" url="{{ teamId ? '/pages/team/teamhome/view?team_id='+teamId : '/pages/index/index' }}"></back>
+
+    </view>
+</view>
+

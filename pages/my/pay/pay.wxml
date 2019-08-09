@@ -1,0 +1,55 @@
+<!--pages/my/pay.wxml-->
+<view class='content'>
+
+  <view style="padding: 30rpx;">
+    <view class="show-title">
+      <view class="f-l f-title">{{info.price.title}}</view>
+      <view class="f-r">
+        <text class="f-normal f-gray">¥{{info.price.price/100}}</text>
+      </view>
+    </view>
+
+    <view class="show-title">
+      <view class="f-r">
+        <text class="f-normal f-gray">X{{count}}</text>
+      </view>
+    </view>
+
+    <view class="show-title">
+      <view class="f-l f-normal f-gray">订单总价</view>
+      <view class="f-r">
+        <view class="f-normal f-gray">¥{{total_amout/100}}</view>
+      </view>
+    </view>
+
+    <view class="show-title">
+      <view class="f-l f-normal f-gray">优惠券</view>
+      <view class="f-r">
+        <navigator url="/pages/my/card/coupon?select=1&current_coupon_id={{ coupon_id }}&team_id={{team_id}}&price_id={{ price_id }}&total_amount={{ total_amout }}&count={{ count }}">
+         <text wx:if="{{coupon_desc}}" class="f-normal f-blue">{{coupon_desc}}</text>
+         <text wx:else class="f-normal f-blue">可用优惠券{{coupon_count}}张 ></text>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="show-title">
+      <view class="f-l f-normal f-gray">已优惠</view>
+      <view class="f-r">
+        <view class="f-normal f-gray">- ¥{{discount/100}}</view>
+      </view>
+    </view>
+
+    <view class="show-title">
+      <view class="f-r">
+        <text class="f-normal">还需支付</text>
+        <text class="f-title f-blue"> ¥{{sale_amout/100}}</text>
+      </view>
+    </view>
+
+    <view class="footer-buttons">
+      <button class="footer-btn full-btn" type="primary" bindtap='payClick'>确认支付</button>
+    </view>
+
+  </view>
+
+</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "查看订单",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "mList1": "../../components/order/order",
+    "mList2": "../../components/order/order"
+  }
+}

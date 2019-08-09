@@ -1,0 +1,52 @@
+<view class="page">
+  <view wx:if="{{info}}" style="padding-bottom: 100rpx;">
+
+    <view class="my-header">{{ user.name }}
+      <text class="t2">ID: {{ user.uid }}</text>
+    </view>
+
+    <view class="f-small f-gray" style="margin: 20rpx 30rpx;">以下信息将用于比赛/活动报名，请如实填写</view>
+
+    <view class="b-white">
+    <view class="show-container" style="margin: 0 30rpx 0;">
+      <view class="show-row">
+        <view class="show-title">
+          <view class="f-l tit">身材鞋码</view>
+        </view>
+      </view>
+    </view>
+    </view>
+
+    <view class="b-white">
+    <view class="form-container" style="margin: 0 30rpx 0;">
+      <view class="form-row">
+        <view class="form-label">身高</view>
+        <view class="form-content">
+          <input class="form-input" type="number" data-key="height" placeholder="请输入身高" value="{{ info.height }}" bindinput="bindInputChange" />
+        </view>
+      </view>
+
+      <view class="form-row">
+        <view class="form-label">体重</view>
+        <view class="form-content">
+          <input class="form-input" type="number" data-key="weight" placeholder="请输入体重" value="{{ info.weight }}" bindinput="bindInputChange" />
+        </view>
+      </view>
+
+      <view class="form-row">
+        <view class="form-label">鞋码</view>
+        <view class="form-content">
+          <input class="form-input" type="number" data-key="shoese_sizes" placeholder="请输入鞋码" value="{{ info.shoese_sizes }}" bindinput="bindInputChange" />
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+  </view>
+
+  <view class="footer-buttons">
+    <button class="footer-btn full-btn" type="primary" bindtap="saveInfo">保存</button>
+  </view>
+
+</view>

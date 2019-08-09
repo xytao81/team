@@ -1,0 +1,113 @@
+<!--components/schedule/schedule.wxml-->
+<!-- 轮次筛选 -->
+<view wx:if="{{round_list.length>0}}" class="round-menu">
+  <view class="flex-box picker-flex">
+    <view class="flex-item">
+      <view class="grid-content pre">
+        <view wx:if="{{round_index > 0}}" class="click-area" bindtap="preRound">
+          <image class="arrow-icon left-arrow" src="../../../images/league/left-arrow.png" />
+        </view>
+      </view>
+    </view>
+    <view class="flex-item">
+      <view class="grid-content current">
+        <!-- 轮次选择器 -->
+        <picker bindchange="bindPickerChange" value="{{round_index}}" range="{{picker_list}}">
+          <view class="picker">
+            <text>{{round_list[round_index].name}}</text>
+            <image class="arrow-icon down-arrow" src="../../../images/league/down-arrow.png" />
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="flex-item">
+      <view class="grid-content next">
+        <view class="click-area" wx:if="{{round_index <round_list.length-1}}" bindtap="nextRound">
+          <image class="arrow-icon right-arrow" src="../../../images/league/right-arrow.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 按轮次筛选的赛程列表 -->
+<view class="schedule-item" wx:for="{{list}}" wx:key="id" data-item="{{item}}" bindtap="onClickItem">
+  <view class="schedule-item-line"></view>
+  <view class="schedule-item-info">
+    <view class="f1">
+      <text class="schedule-round">
+            <text class="span">{{item.schedule_round}}</text>
+      </text>
+      <text style="margin-left:20rpx;">{{item.start_time}}</text>
+    </view>
+    <view class="f2">
+      <view class="flex-box league-flex">
+        <view class="flex-item">
+          <view class="home-box">
+            <image class="team-logo" wx:if="{{item.home.logo}}" src="{{item.home.logo}}" />
+            <image class="team-logo" wx:else src="../../../images/league/team_logo.png" />
+            <text class="team-name">{{item.home.name}}</text>
+            <view class="bg-color" style="background:{{'url('+ item.home.clothes.player.shirt.color +') no-repeat'}}">
+              <image src="../../../images/league/icon_sy.png" />
+            </view>
+          </view>
+        </view>
+        <view class="flex-item">
+          <view class="vs-box">
+            <view wx:if="{{item.result && !item.live}}">
+              <view class="point">
+                <text>{{item.result.home_score}}</text>
+                <text>:</text>
+                <text>{{item.result.away_score}}</text>
+              </view>
+              <view style="margin-top:10rpx;" class="kick" wx:if="{{item.result.home_point_score}}">
+                <text>点球 [{{item.result.home_point_score}}</text>
+                <text>:</text>
+                <text>{{item.result.away_point_score}}]</text>
+              </view>
+            </view>
+            <view wx:if="{{item.result && item.live}}">
+              <view class="point">
+                <text>{{item.result.home_score}}</text>
+                <text>:</text>
+                <text>{{item.result.away_score}}</text>
+              </view>
+              <view style="margin-top:10rpx;" class="kick" wx:if="{{item.result.home_point_score}}">
+                <text>点球 [{{item.result.home_point_score}}</text>
+                <text>:</text>
+                <text>{{item.result.away_point_score}}]</text>
+              </view>
+              <view style="margin-top:10repx;" class="status-name">{{item.live.status_name}}</view>
+            </view>
+            <view wx:if="{{!item.result && item.live}}">
+              <text class="status-name">{{item.live.status_name}}</text>
+            </view>
+            <view wx:if="{{!item.result && !item.live}}" style="font-size:44rpx;">VS</view>
+          </view>
+        </view>
+        <view class="flex-item">
+          <view class="away-box">
+            <image class="team-logo" wx:if="{{item.away.logo}}" src="{{item.away.logo}}" />
+            <image class="team-logo" wx:else src="../../../images/league/team_logo.png" />
+            <view class="team-name">{{item.away.name}}</view>
+            <view class="bg-color" style="background:{{'url('+ item.away.clothes.player.shirt.color +') no-repeat'}}">
+              <image src="../../../images/league/icon_sy.png" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="f3" wx:if="{{item.place.title}}">
+      <image src="../../../images/league/local.png" />
+      <text class="place-title">{{item.place.title}}</text>
+    </view>
+    <view class="f3" wx:if="{{item.desc}}">
+      <image src="../../../images/league/gg.png" />
+      <text class="place-title">{{item.desc}}</text>
+    </view>
+  </view>
+</view>
+<!-- 无数据 -->
+<view wx:if="{{round_list.length==0}}" class="no-data">
+  <image src="../../../images/league/no-data.png" />
+  <view class="text">暂无数据</view>
+</view>

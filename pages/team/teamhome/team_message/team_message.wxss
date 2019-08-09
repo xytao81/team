@@ -1,0 +1,51 @@
+@import '../../../../style/weui.wxss';
+@import '../../../../style/colors.wxss';
+
+.message{
+  height: 132rpx;
+  width:750rpx;
+  background-color: white;
+}
+
+.weui-select{
+  height: 132rpx;
+}
+
+.message .logo{
+  float: left;
+  margin-top:30rpx;
+  width:72rpx;
+  height:72rpx;
+}
+
+.message .content{
+  float: left;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  width:540rpx;
+  height:74rpx;  
+}
+
+.message .content .title{
+  height:37rpx;
+  line-height: 35rpx; 
+}
+
+.message .content .title .date{
+  padding-left:30rpx;
+  color: #bcbcbc;
+}
+
+
+
+.f-big { font-size: 32rpx; }
+.f-title { font-size: 32rpx; }
+.f-normal { font-size: 28rpx; }
+.f-small { font-size: 24rpx; }
+
+.f-red { color: #f00; }
+.f-gray { color:#808892; }
+.f-white { color:#fff; }
+.f-blue { color:#00a7f2; }
+.f-black { color:#333; }
+.f-green { color: green; }

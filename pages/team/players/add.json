@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "添加球员",
+    "usingComponents": {
+      "viewimage": "../../../components/viewimage",
+      "positionpicker": "../../../components/positionpicker/positionpicker",
+      "jobpicker": "../../../components/jobpicker/jobpicker"
+    }
+  }

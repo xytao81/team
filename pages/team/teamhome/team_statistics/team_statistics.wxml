@@ -1,0 +1,50 @@
+<view class="">
+  <view class="show-row">
+    <view class="show-title">
+      <view class="f-l tit">
+        <text class="title-name">球队数据</text>
+      </view>
+      <view class="f-r o-h" style="height: 70rpx;">
+        <picker bind:change="onYearChange" value="{{ yearIndex }}" range="{{ yearRange }}">
+        <button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;margin-top:10rpx;">{{ yearRange[yearIndex] }}</button>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="o-h b-white f-small f-gray team-statistics">
+    <view class="f-l col">
+      <view class="col-center">
+        <view class="f-title f-blue" style="padding-left: 4rpx; line-height: 1;">{{ data.league_vs.total_count }}</view>
+        <view class="f-black f-normal" style="margin-top: 12rpx;">官方比赛</view>
+        <view class="mt">胜 {{ data.league_vs.win_count }} 场</view>
+        <view>平 {{ data.league_vs.draw_count }} 场</view>
+        <view>负 {{ data.league_vs.lose_count }} 场</view>
+      </view>
+    </view>
+    <view class="f-l col">
+      <view class="col-center">
+        <view class="f-title f-blue" style="padding-left: 4rpx; line-height: 1;">{{ data.team_vs.total_count }}</view>
+        <view class="f-black f-normal" style="margin-top: 12rpx;">自办比赛</view>
+        <view class="mt">胜 {{ data.team_vs.win_count }} 场</view>
+        <view>平 {{ data.team_vs.draw_count }} 场</view>
+        <view>负 {{ data.team_vs.lose_count }} 场</view>
+      </view>
+    </view>
+    <view class="f-l col">
+      <view class="col-center">
+        <view class="f-title f-blue" style="padding-left: 4rpx; line-height: 1;">{{ data.team_training.total_count }}</view>
+        <view class="f-black f-normal" style="margin-top: 12rpx;">球队训练</view>
+        <view class="mt">场均 {{ data.team_training.single_average }} 人</view>
+        <view>人均 {{ data.team_training.player_average }} 次</view>
+      </view>
+    </view>
+    <view class="f-l col" style="border: 0;">
+      <view class="col-center">
+        <view class="f-title f-blue" style="padding-left: 4rpx; line-height: 1;">{{ data.team_activity.total_count }}</view>
+        <view class="f-black f-normal" style="margin-top: 12rpx;">球队活动</view>
+        <view class="mt">场均 {{ data.team_activity.single_average }} 人</view>
+        <view>人均 {{ data.team_activity.player_average }} 次</view>
+      </view>
+    </view>
+  </view>
+</view>

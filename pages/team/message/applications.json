@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "审批通知",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "mList1": "../../components/message/application",
+    "mList2": "../../components/message/application",
+    "vInput":"../..//components/inputModal"
+  }
+}

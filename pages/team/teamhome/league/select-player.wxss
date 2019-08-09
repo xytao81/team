@@ -1,0 +1,10 @@
+
+.score-modal { padding: 30rpx; }
+.score-modal .score-label { width: 175rpx; text-align: right; }
+.score-modal .score-right { width: 280rpx; }
+.score-modal .score-right .r { display: inline-block; text-align: center; }
+.score-modal .score-right .r1 { width: 150rpx; }
+.score-modal .score-right .r2 { width: 70rpx; }
+.score-modal .score-right .r3 { width: 120rpx; }
+.score-modal .score-input { width: 100%; border: 1rpx solid #e0e0e0; display: inline-block; }
+.score-modal .score-button { width: 240rpx; height: 80rpx; line-height: 80rpx; }

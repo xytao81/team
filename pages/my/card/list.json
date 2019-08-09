@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "产品卡券",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "dialog": "/components/card/dialog"
+  }
+}

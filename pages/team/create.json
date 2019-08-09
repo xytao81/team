@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "创建球队",
+  "usingComponents": {
+    "cropper": "../../components/cropper",
+    "regionpicker": "../../components/regionpicker/regionpicker",
+    "clothpicker": "../../components/clothpicker/clothpicker"
+  }
+}

@@ -1,0 +1,167 @@
+<view class="page">
+  <view wx:if="{{info}}" style="padding-bottom: 100rpx;">
+
+    <view class="form-container" style="margin: 0 30rpx 0;">
+      <view class="form-row">
+        <view class="form-label" style="line-height: 98rpx;">{{info.realphoto.name}}</view>
+        <view class="form-content" style="line-height: 0;">
+          <image src="{{info.realphoto.value ? info.realphoto.value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}?x-oss-process=image/resize,m_fill,h_98,w_70" style="width: 70rpx; height: 98rpx;" bindtap="openPhotoSheet"></image>
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-label">{{info.realname.name}}</view>
+        <view class="form-content">
+          <input class="form-input" data-key="realname" placeholder="请输入真实姓名" value="{{ info.realname.value }}" bindinput="bindInputChange" />
+        </view>
+      </view>
+
+      <view class="form-row">
+        <view class="form-label">{{info.cert_type.name}}</view>
+        <view class="form-content">
+          <picker data-key="cert_type" bindchange="bindInputChange" value="{{ info.cert_type.value }}" range="{{ ['身份证', '护照','其它'] }}">
+            <view class="weui-select">{{ ['身份证', '护照','其它'][info.cert_type.value] }}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-label">{{info.certnumber.name}}</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="请输入证件号码" data-key="certnumber" value="{{info.certnumber.value}}" bindinput="bindInputChange" />
+        </view>
+      </view>
+
+      <view class="form-row">
+        <view class="form-label">{{info.sex.name}}</view>
+        <view class="form-content">
+          <picker bindchange="bindInputChange" data-key="sex" value="{{info.sex.value}}" range="{{ [' ', '男', '女'] }}">
+            <view class="weui-select">{{ [' ', '男', '女'][info.sex.value] }}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-label">{{info.birthday.name}}</view>
+        <view class="form-content">
+          <picker mode="date" data-key="birthday" value="{{ info.birthday.value }}" start="1900-01-01" bindchange="bindInputChange">
+            <view class="weui-select">{{ info.birthday.value }}</view>
+          </picker>
+        </view>
+      </view>
+
+        <view class="form-row">
+          <view class="form-label">居住地</view>
+          <view class="form-content">
+            <regionpicker checked="{{ info.region }}" bindregionchange="bindRegionChange">
+              <view class="weui-select" style="padding-left: 0;border-right:0;">{{ info.region[0].name }}，{{ info.region[1].name }}</view>
+            </regionpicker>
+          </view>
+        </view>
+
+      <view class="form-row">
+        <view class="form-label">联系地址</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="请输入联系地址" value="{{info.phone.value}}" bindinput="bindInputChange" />
+        </view>
+      </view>
+
+      <view class="form-row">
+        <view class="form-label">最高学历</view>
+        <view class="form-content">
+          <degreepicker binddegreechange="bindDegreeChange" value="{{ info.degree }}">
+            <view class="weui-select" style="padding-left: 0; border-right: 0;">{{ degree.name }}</view>
+          </degreepicker>
+        </view>
+      </view>
+
+      <view class="form-row">
+        <view class="form-label">婚姻状况</view>
+        <view class="form-content">
+          <picker bindchange="bindInputChange" data-key="sex" value="{{info.sex.value}}" range="{{ ['已婚', '未婚'] }}">
+            <view class="weui-select">{{ ['已婚', '未婚'][info.sex.value] }}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="form-row">
+        <view class="form-label">单位/学校</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="请输入单位/学校" value="{{ info.email.value }}" bindinput="bindInputChange" />
+        </view>
+      </view>
+
+
+      <!-- <view class="form-row">
+        <view class="form-label">国家/地区</view>
+        <view class="form-content">
+          <picker mode="multiSelector" bindchange="bindRegionPickerChange" bindcolumnchange="bindRegionPickerColumnChange" value="{{regionIndexes}}" range="{{regionArray}}" range-key="name">
+            <view class="weui-select" style="padding-left: 0;border-right:0;">{{regionString}}</view>
+          </picker>
+        </view>
+      </view>
+      
+      <view class="form-row">
+        <view class="form-label">民族</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="民族" value="{{ saveData.nation }}" bindinput="bindNationChange" />
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-label">外援</view>
+        <view class="form-content">
+          <picker bindchange="bindForeignChange" value="{{ saveData.foreign }}" range="{{ ['不是外援', '亚洲外援', '是外援'] }}">
+            <view class="weui-select">{{ ['不是外援', '亚洲外援', '是外援'][saveData.foreign] }}</view>
+          </picker>
+        </view>
+      </view>
+
+
+      <view class="form-row">
+        <view class="form-label">居住地</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="居住地" value="{{ saveData.live_address }}" bindinput="bindLiveAddressChange" />
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-label">户籍所在地</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="户籍所在地" value="{{ saveData.id_address }}" bindinput="bindIdAddressChange" />
+        </view>
+      </view>
+      
+      <view class="form-row">
+        <view class="form-label">单位/学校</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="单位/学校" value="{{ saveData.company }}" bindinput="bindCompanyChange" />
+        </view>
+      </view>
+
+      <view class="form-row">
+        <view class="form-label">紧急联系人</view>
+      </view>
+      <view class="form-row">
+        <view class="form-label">姓名</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="姓名" value="{{ saveData.emergency_name }}" bindinput="bindEmergencyNameChange" />
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-label">关系</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="关系" value="{{ saveData.emergency_relation }}" bindinput="bindEmergencyRelationChange" />
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-label">电话</view>
+        <view class="form-content">
+          <input class="form-input" placeholder="电话" value="{{ saveData.emergency_phone }}" bindinput="bindEmergencyPhoneChange" />
+        </view>
+      </view> -->
+
+    </view>
+
+  </view>
+
+  <view class="footer-buttons">
+    <button class="footer-btn full-btn" type="primary" bindtap="saveInfo">保存</button>
+  </view>
+
+</view>

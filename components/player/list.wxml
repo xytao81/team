@@ -1,0 +1,17 @@
+<!--components/player/list.wxml-->
+<view class="player-list">
+
+  <view wx:for="{{list}}" wx:key="item.id" wx:for-item="item" class="player" style="{{index==list.length-1?'border-bottom: 0rpx':''}}">
+  <image wx:if="{{item.photo && item.photo.length>0}}" src="{{item.photo}}"></image>
+    <image wx:else src="../../images/data-user-default.png"></image>
+    <view class="content">
+      <view class="name">{{item.name}}</view>
+      <view class="desc">
+      <span>{{item.sub_rights_name}}</span>
+      <span wx:if="{{item.rights==3}}" style="margin-left:15rpx;">{{item.number}}</span>
+      <span wx:if="{{item.rights==3}}" style="margin-left:15rpx;">{{item.position_name=='-'?'待定':item.position_name }}</span>
+      </view>
+    </view>
+  </view>
+
+</view>

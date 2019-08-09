@@ -1,0 +1,48 @@
+<view class="select-player">
+  <view class="content">
+    <!-- <checkbox class="select-checked" shape="square" value="{{ is_checked }}" bind:change="handleCheck" checked-color="#00a7f2"></checkbox> -->
+    <checkbox-group bindchange="handleCheck">
+      <checkbox class="select-checked" value="{{ is_checked }}" checked="{{ is_checked }}" color="#00a7f2"></checkbox>
+    </checkbox-group>
+    <view class="info">
+      <view class="name" wx:if='{{member.number.length>0}}'>{{member.name}} | {{ member.number}}</view>
+      <view class="name" wx:if='{{member.number.length==0}}'>{{member.name}}</view>
+      <image class='tag_edit' src='/images/edit.png' bindtap='editNumberAction'></image>
+      <view class="rights">
+        <view class="title">出场</view>
+        <view class="sub_rights">
+          <view class="btn select" bind:tap = 'buttonSelectFirstAction' data-first="{{1}}" wx:if='{{member.is_first == 1}}'>首发</view>
+          <view class="btn" bind:tap ='buttonSelectFirstAction' data-first='{{1}}' wx:if='{{member.is_first != 1}}'>首发</view>
+
+          <view class="btn select" bind:tap ='buttonSelectFirstAction' data-first="{{2}}" wx:if='{{member.is_first == 2}}'>替补</view>
+          <view class="btn" bind:tap = 'buttonSelectFirstAction' data-first="{{2}}" wx:if='{{member.is_first != 2}}'>替补</view>
+        </view>
+
+        <view class="title">身份</view>
+        <view class="sub_rights">
+          <block wx:for="{{list}}" wx:key='index'>
+            <view class="btn select" wx:if='{{member.sub_rights == item.id}}' data-rights='{{item}}' bind:tap='buttonSelectAction'>{{item.name}}</view>
+            <view class="btn" wx:if='{{member.sub_rights != item.id}}' data-rights='{{item}}' bind:tap='buttonSelectAction'>{{item.name}}</view>
+          </block>
+        </view>
+      </view>
+      <view class="positions">
+        <view class="title">位置</view>
+        <view class="sub_rights">
+          <block wx:for="{{plist}}" wx:key='index'>
+            <view class="btn select" 
+              wx:if='{{member.position==item.id}}' 
+              data-position='{{item}}' 
+              bind:tap='buttonSelectPositionAction' 
+            >{{item.name}}</view>
+            <view class="btn" 
+              wx:if='{{member.position!=item.id}}' 
+              data-position='{{item}}'
+              bind:tap='buttonSelectPositionAction' 
+            >{{item.name}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

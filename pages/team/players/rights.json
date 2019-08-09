@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "编辑账号权限",
+  "usingComponents": {
+    "userbrief": "/components/user/userbrief",
+    "positionpicker": "/components/positionpicker/positionpicker",
+    "jobpicker": "/components/jobpicker/jobpicker",
+    "rightspicker": "/components/rightspicker/rightspicker"
+  }
+}

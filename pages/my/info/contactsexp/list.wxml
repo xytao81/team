@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="page__bd">
+
+    <view class="my-header">{{user_info.name}}
+      <text class="t2">ID: {{user_info.uid}}</text>
+    </view>
+
+    <view class="f-small f-gray" style="margin: 20rpx 30rpx;">以下信息将用于比赛/活动报名，请如实填写</view>
+
+    <view wx:if="{{ list.length > 0 }}">
+      <view class="notices">
+        <view wx:for="{{ list }}" wx:key="id" class="notice f-small">
+          <view class="title f-title">{{ item.name }}</view>
+          <view class="date">{{ item.phone }}</view>
+          <text class="content">{{ ['父亲','母亲','亲属','其他'][item.relation-1] }}</text>
+          <view class="buttons">
+            <view data-type="2" bindtap='onRemoveButton' data-item="{{item}}" class="btn f-red f-normal" style="border-right: solid 1rpx #e0e0e0;">删除</view>
+            <view data-type="1" bindtap='onEditButton' data-item="{{item}}" class="btn f-blue f-normal">编辑</view>
+          </view>
+        </view>
+      </view>
+      <view class="nomore" wx:if="{{ !hasMore }}">----- 我是有底线的 -----</view>
+    </view>
+    <view wx:else class="no-data">
+      <view class="no-data-icon"></view>
+      <view class="no-data-text">暂无数据</view>
+    </view>
+  </view>
+
+  <view class="footer-buttons">
+    <navigator url="/pages/my/info/contactsexp/add">
+      <button class="footer-btn full-btn" type="primary">新增</button>
+    </navigator>
+  </view>
+
+</view>

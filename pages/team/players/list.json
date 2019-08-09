@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "队员列表",
+  "usingComponents": {
+    "vInput": "/components/inputModal",
+    "viewimage": "/components/viewimage"
+  }
+}

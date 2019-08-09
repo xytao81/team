@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "邀请入队",
+  "usingComponents": {
+    "regionpicker": "../../components/regionpicker/regionpicker",
+    "clothpicker": "../../components/clothpicker/clothpicker",
+    "vInput": "/components/inputModal"
+  }
+}

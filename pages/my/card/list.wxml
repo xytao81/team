@@ -1,0 +1,36 @@
+<view >
+
+  <view style="width: 100%;">
+    <navigator url="/pages/my/card/coupon?team_id={{team_id}}" style="margin: 30rpx">
+      <button type="primary" style="font-size: 28rpx; line-height: 80rpx;">优惠券({{coupon_count}})</button>
+    </navigator>
+  </view>
+
+  <view class="detail">
+    <view class="f-normal f-gray">
+      <text>视频直播，指球队管理员创建活动/训练/比赛日程后，给日程详情页添加直播功能。添加后... </text>
+      <text class="f-blue" bindtap="gotoDesc">详细说明 ></text>
+    </view>
+  </view>
+  <!-- <view class="detail f-normal f-gray">
+    <view>视频直播，指球队管理员创建活动/训练/比赛日程后，给日程详情页添加直播功能。添加后，管理员用“爱球迷助手APP”进行手机直播的拍摄，视频画面展现在小程序日程详情页中，赛后自动生成回放。视频直播和回放功能，有助于队内分享和赛后复盘总结。</view>
+    <view class="mt">如需专业团队制作直播信号，请联系：</view>
+    <view>400-006-0155</view>
+  </view> -->
+
+  <view class="card-box" wx:for="{{info.list}}" wx:key="id" data-item="{{item}}" bindtap="tapShowModal" id='{{index}}'>
+    <view class='item'>
+      <view class="info-box {{index == currentIndex ? 'active' : ''}}">
+        <view class='f-title f-black'>{{item.title}}</view>
+        <view class='f-normal f-gray'>{{item.content}}</view>
+        <view class='f-normal f-blue' style='margin-top: 20rpx'>{{item.price_desc}}</view>
+        <view class='f-normal f-gray'>{{item.desc}}</view>
+        <image class="container {{index == currentIndex ? 'active' : ''}}" src="../../../images/icon_choice.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <dialog id="dialog" bind:tapHideModal='tapHideModal' price="{{price}}" price_id="{{price_id}}" team_id="{{team_id}}" 
+  total_num="{{total_num}}"></dialog>
+
+</view>

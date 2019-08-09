@@ -1,0 +1,10 @@
+
+<view class="page">
+  <view style="padding-bottom: 100rpx;">
+
+    <view class="b-white">
+    <userview value="{{ player.content }}" job="{{ jobId }}"></userview>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,25 @@
+/* components/back/back.wxss */
+.box{
+    width:120rpx;
+    height:60rpx;
+    /* background-color:rgba(00a7f2.8); */
+    /* background:#00a7f2; */
+    background-color:rgba(0,167,242,0.75);
+    position:fixed;
+    top:64%;
+    color:#fff;
+    line-height:56rpx;
+    border-radius:0rpx 80rpx 80rpx 0rpx;
+    
+}
+.back-img{
+    width:30rpx;
+    height:30rpx;
+    vertical-align:-4rpx;
+    margin-left:5rpx;
+
+}
+.back-text{
+    font-size:24rpx;
+    vertical-align:3rpx;
+}

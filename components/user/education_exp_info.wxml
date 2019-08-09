@@ -1,0 +1,39 @@
+
+<view class="b-white">
+  <view class="show-container">
+    <view class="show-row" style="margin: 0 30rpx 0;">
+      <view class="show-title">
+        <view class="f-l tit">
+            <text class="title-name">教育经历</text>
+        </view>
+        <view class="f-r">
+          <slot></slot>
+        </view>
+      </view>
+    </view>
+    <view wx:for="{{ list }}" wx:for-index="idx" class="{{ idx > 0 ? ' mtt' : '' }}" wx:key="id">
+      <view style="margin: 0 30rpx 0;">
+        <view class="show-row">
+          <view class="show-label">学校名称</view>
+          <view class="show-content">{{ item.school_name }}</view>
+        </view>
+        <view class="show-row">
+          <view class="show-label">学历/学位</view>
+          <view class="show-content">{{ item.education_name }}</view>
+        </view>
+        <view class="show-row">
+          <view class="show-label">专业</view>
+          <view class="show-content">{{ item.subject || '' }}</view>
+        </view>
+        <view class="show-row">
+          <view class="show-label">开始时间</view>
+          <view class="show-content">{{ item.start_time }}</view>
+        </view>
+        <view class="show-row" style="border: 0;">
+          <view class="show-label">结束时间</view>
+          <view class="show-content">{{ item.end_time ? item.end_time : '至今' }}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

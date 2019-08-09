@@ -1,0 +1,16 @@
+<view class="message">
+  <view class="weui-select">
+    <image class="logo" src="../../../../images/message/icon.png"></image>
+    <view class="content" bindtap="onClickMenu">
+      <block wx:if="{{list.length>0}}">
+        <view wx:for="{{list}}" wx:for-item="item" wx:key="unique" class="title black f-normal">{{item.title}}
+          <span class="date f-small">{{item.show_time}}</span>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="gray f-normal" style='line-height:74rpx'>暂无消息</view>
+      </block>
+    </view>
+    <view wx:if="{{is_have==true}}" class="weui-badge weui-badge_dot" style="position: absolute;margin-top: 57rpx;margin-left: -10rpx;" />
+  </view>
+</view>

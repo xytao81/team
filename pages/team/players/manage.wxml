@@ -1,0 +1,70 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="f-normal f-gray" style="padding-left: 30rpx; border: 0; line-height: 44rpx; padding-top: 30rpx; padding-bottom: 30rpx; overflow: hidden; height: 30rpx; line-height: 30rpx; background: #fff; border-bottom: 1rpx solid #e0e0e0;">
+      总人数 {{ totalCount }} 人
+    </view>
+    <view style="background: #fff;">
+      <navigator wx:for="{{ players }}" wx:key="player_id" url="/pages/team/players/detail?team_id={{ item.team_id }}&player_id={{ item.player_id }}" class="weui-select player-row {{ item.is_me ? 'me' : '' }}" data-playerid="{{ item.player_id }}" wx:if="{{ teamRights > 0 }}">
+        <view class="f-l avatar">
+          <image mode="aspectFill" src="{{ item.content.person_info[0].value ? item.content.person_info[0].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style="width: 84rpx; height: 120rpx;"></image>
+          <view wx:if="{{ item.position.id && item.is_player }}" class="pos">{{ item.position.name }}</view>
+        </view>
+        <view class="f-r right" bindtap="gotoDetail" data-playerid="{{ item.player_id }}">
+          <view class="t1">
+            <view class="f-l tit" style="display: inline-block; vertical-align: middle">{{ item.content.person_info[1].value }} <view class="weui-badge" wx:if="{{ !item.is_user }}" style="background:#ccc;">临时</view></view>
+            <view class="f-r badge">
+              <view wx:if="{{ item.badge_name }}" class="weui-badge c{{ item.badge_class }}">{{ item.badge_name }}</view>
+            </view>
+          </view>
+          <view class="t2">{{ item.number && item.is_player ? item.number+'号 ' : ''}}{{ item.show_jobs }}</view>
+        </view>
+      </navigator>
+
+      <view wx:for="{{ players }}" wx:key="player_id" class="player-row {{ item.is_me ? 'me' : '' }}" data-playerid="{{ item.player_id }}" wx:if="{{ teamRights == 0 }}" style="padding-right: 30rpx;">
+        <view class="f-l avatar">
+          <image mode="aspectFill" src="{{ item.photo ? item.photo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style="width: 84rpx; height: 120rpx;"></image>
+          <view wx:if="{{ item.position.id && item.is_player }}" class="pos">{{ item.position.name }}</view>
+        </view>
+        <view class="f-l text">
+          <view class="t1">
+            <view style="display: inline-block; vertical-align: middle">{{ item.name }} <view class="weui-badge" wx:if="{{ !item.is_user }}" style="background:#ccc;">临时</view></view>
+          </view>
+          <view class="t2">{{ item.number && item.is_player ? item.number+'号 ' : ''}}{{ item.show_jobs }}</view>
+        </view>
+        <view class="f-r badge">
+          <view wx:if="{{ item.badge_name }}" class="weui-badge c{{ item.badge_class }}">{{ item.badge_name }}</view>
+        </view>
+      </view>
+    </view>
+    <view class="nomore" wx:if="{{ !hasMore }}">----- 我是有底线的 -----</view>
+  </view>
+
+  <block wx:if="{{ from == 'aqm' && inTeam }}">
+    <view class="footer-buttons">
+      <button class="footer-btn half-btn" type="primary" bindtap="gotoAddPlayer">添加球员</button>
+      <button class="footer-btn half-btn" type="primary" open-type="share">邀请队员</button>
+    </view>
+  </block>
+
+  <!-- <block wx:if="{{ from == 'aqm' && inTeam }}">
+    <block wx:if="{{teamRights==0}}">
+      <view class="footer-buttons">
+        <button class="footer-btn full-btn red-btn" type="primary" bindtap="quit">退出球队</button>
+      </view>
+    </block>
+    <block wx:else>
+      <view wx:if="{{teamRights==2 && players.length>1}}" class="footer-buttons">
+        <button class="footer-btn full-btn" type="primary" bindtap="gotoAddPlayer">添加球员</button>
+      </view>
+      <view wx:elif="{{teamRights==2 && players.length==1}}" class="footer-buttons">
+        <button class="footer-btn half-btn red-btn" type="primary" bindtap="quit">解散球队</button>
+        <button class="footer-btn half-btn" type="primary" bindtap="gotoAddPlayer">添加球员</button>
+      </view>
+      <view wx:else class="footer-buttons">
+        <button class="footer-btn half-btn red-btn" type="primary" bindtap="quit">退出球队</button>
+        <button class="footer-btn half-btn" type="primary" bindtap="gotoAddPlayer">添加球员</button>
+      </view>
+    </block>
+  </block> -->
+
+</view>

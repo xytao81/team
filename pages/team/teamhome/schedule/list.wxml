@@ -1,0 +1,67 @@
+<view class="page">
+  <view class="page__bd">
+
+    <!-- <view class="date-row f-gray">2019-03-11</view> -->
+
+    <view class="b-white" style="padding:0 30rpx;">
+        <schedule_list schedules="{{ schedules }}" isAdmin="{{ isAdmin }}"></schedule_list>
+    </view>
+
+
+    <view class="nomore" wx:if="{{ !hasMore }}">----- 我是有底线的 -----</view>
+
+
+  </view>
+
+  <view class="footer-buttons" wx:if="{{ teamRights > 0 && isAdmin }}">
+    <button class="footer-btn full-btn" type="primary" bindtap="onSelectNewScheduleType">发布新日程</button>
+  </view>
+
+  <view class="refresh-button" bindtap="refresh">刷新</view>
+
+  <back wx:if="{{ isShare }}" url="{{ teamRights !== null ? '/pages/team/teamhome/view?team_id='+teamId+'&is_share=1' : '/pages/index/index' }}"></back>
+</view>
+
+  <!-- <block wx:if="{{ from == 'aqm' && inTeam }}">
+    <block wx:if="{{teamRights==0}}">
+      <view class="footer-buttons">
+        <button class="footer-btn full-btn red-btn" type="primary" bindtap="quit">退出球队</button>
+      </view>
+    </block>
+    <block wx:else>
+      <view wx:if="{{teamRights==2 && players.length>1}}" class="footer-buttons">
+        <button class="footer-btn full-btn" type="primary" bindtap="gotoAddPlayer">添加球员</button>
+      </view>
+      <view wx:elif="{{teamRights==2 && players.length==1}}" class="footer-buttons">
+        <button class="footer-btn half-btn red-btn" type="primary" bindtap="quit">解散球队</button>
+        <button class="footer-btn half-btn" type="primary" bindtap="gotoAddPlayer">添加球员</button>
+      </view>
+      <view wx:else class="footer-buttons">
+        <button class="footer-btn half-btn red-btn" type="primary" bindtap="quit">退出球队</button>
+        <button class="footer-btn half-btn" type="primary" bindtap="gotoAddPlayer">添加球员</button>
+      </view>
+    </block>
+  </block> -->
+
+
+   <!-- <navigator url="/pages/team/teamhome/schedule/detail?team_id={{ item.team_id }}&schedule_id={{ item.id }}" class="schedule-row" data-scheduleid="{{ item.id }}" wx:for="{{ schedules }}" wx:key="id">
+          <view class="f-l avatar">
+            <image src="{{ item.banner_url ? item.banner_url : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/schedule/default_banner.png' }}" style="width: 280rpx; height: 160rpx;"></image>
+          </view>
+          <view class="f-r right">
+            <view class="t1">
+              <view class="tit" style="max-height: 130rpx; display:-webkit-box; -webkit-line-clamp: 3;">{{ item.title }}</view>
+            </view>
+            <view class="t2">
+              <view class="f-l f-small" style="display: inline-block;">
+                <view>{{ item.province_name ? item.province_name : '' }} {{ item.city_name ? item.city_name : '' }} {{ item.district_name ? item.district_name : '' }}</view>
+                <view>{{ item.start_time }}</view>
+              </view>
+              <view class="f-r">
+                <view wx:if="{{ item.badge_name }}" class="weui-badge c{{ item.badge_class }}">{{ item.badge_name }}</view>
+              </view>
+            </view>
+          </view>
+        </navigator> -->
+
+

@@ -1,0 +1,25 @@
+<view class="page">
+  <view style="padding-bottom: 100rpx;">
+
+    <userbrief name="{{ info.realname.value }}" uid="{{ info.uid }}" photo="{{ info.realphoto.value ? info.realphoto.value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" settings="设置"></userbrief>
+
+    <view class="f-white">
+      <userBaseInfo id="base"></userBaseInfo>
+    </view>
+
+    <view class="mt f-white">
+      <userBodyInfo id="body"></userBodyInfo>
+    </view>
+
+    <view class="mt f-white">
+      <userEducationExpInfo id="edu" uid="{{ info.uid }}"></userEducationExpInfo>
+    </view>
+
+  </view>
+
+  <view class="footer-buttons" wx:if="{{isDone==0 && teamRights!=0 }}">
+      <button class="footer-btn half-btn" type="primary" data-type='1' bindtap="captainCheck">同意</button>
+      <button class="footer-btn half-btn" type="primary" data-type='2' bindtap="captainCheck">拒绝</button>
+  </view>
+  <vInput id="input" title="输入理由" bind:onInpueDone="onInpueDone"></vInput>
+</view>

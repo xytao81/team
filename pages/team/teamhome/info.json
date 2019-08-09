@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "球队信息",
+  "usingComponents": {
+    "viewimage": "/components/viewimage"
+  }
+}

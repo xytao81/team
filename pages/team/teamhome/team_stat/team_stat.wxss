@@ -1,0 +1,8 @@
+.menus {
+  display: table-cell;
+  padding-bottom: 20rpx;
+  background-color: #fff;
+  width: 688rpx;
+  margin-left: auto;
+  margin-right: auto;
+}

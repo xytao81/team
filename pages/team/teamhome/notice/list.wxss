@@ -1,0 +1,8 @@
+/* pages/team/notice/list.wxss */
+
+.notices { margin: 20rpx 30rpx; }
+.notices .notice { padding: 20rpx 30rpx; background: #fff; margin-top: 20rpx; border-radius: 10rpx; }
+.notices .notice .title { color: #333; }
+.notices .notice .date { color: #808892; margin-top: 6rpx; }
+.notices .notice .content { color: #808892; margin-top: 20rpx; display: block }
+

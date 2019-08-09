@@ -1,0 +1,4 @@
+.page { background: #fff; }
+
+.title { border-bottom: solid 1rpx #e0e0e0; padding: 20rpx 0; margin: 0 30rpx; }
+.content { padding: 30rpx; }

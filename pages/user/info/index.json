@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "用户信息",
+  "usingComponents": {
+    "userbrief": "/components/user/userbrief",
+    "userBaseInfo": "/components/user/base_info",
+    "userBodyInfo": "/components/user/body_info",
+    "userEducationExpInfo": "/components/user/education_exp_info",
+    "vInput": "/components/inputModal",
+    "viewimage": "/components/viewimage"
+  }
+}

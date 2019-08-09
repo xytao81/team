@@ -1,0 +1,3 @@
+<picker bindchange="confirm" value="{{ valueIndex }}" range="{{ nationalities }}" range-key="name">
+    <slot bindtap="show"></slot>
+</picker>

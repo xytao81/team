@@ -1,0 +1,29 @@
+
+<view style="background: #fff;">
+  <view class="show-container" style="margin: 0 30rpx 0;">
+    <view class="show-row">
+      <view class="show-title">
+        <view class="f-l tit">
+            <text class="title-name">身材鞋码</text>
+        </view>
+        <view class="f-r">
+          <slot></slot>
+        </view>
+      </view>
+    </view>
+  
+    <view class="show-row">
+        <view class="show-label">身高</view>
+        <view class="show-content">{{ info.height ? info.height + ' CM' : '-' }}</view>
+    </view>
+    <view class="show-row">
+        <view class="show-label">体重</view>
+        <view class="show-content">{{ info.weight ? info.weight + ' KG' : '-' }}</view>
+    </view>
+    <view class="show-row">
+        <view class="show-label">鞋码</view>
+        <view class="show-content">{{ info.shoese_sizes ? info.shoese_sizes + ' 码' : '-' }}</view>
+    </view>
+
+  </view>
+</view>

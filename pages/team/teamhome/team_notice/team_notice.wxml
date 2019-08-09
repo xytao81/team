@@ -1,0 +1,5 @@
+<view class="mt notice" hidden="{{ !noticeVisible }}" bindtap='gotoNoticeDetail'>
+  <view class="icon"></view>
+  <navigator url="" class="text f-small">{{info.title}}</navigator>
+  <view class="close" decode="true" bindtap="removeNotice"></view>
+</view>

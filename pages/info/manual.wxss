@@ -1,0 +1,47 @@
+.tips { padding: 0 30rpx; background: #fff; }
+.tips .tip { border-bottom: 1px solid #e0e0e0; background: #fff; }
+.tips .tip .tip-title { line-height: 90rpx; padding-right: 18rpx; position: relative; }
+.tips .tip .tip-content { line-height: 42rpx; border-top: 1rpx solid #efefef; padding: 20rpx; color: #808892; }
+
+.top {
+ position: absolute;
+ top: 6rpx;
+ right: 50rpx;
+}
+.top:before, .top:after{
+ position: absolute;
+ content: '';
+ border-top: 20rpx transparent dashed;
+ border-left: 20rpx transparent dashed;
+ border-right: 20rpx transparent dashed;
+ border-bottom: 20rpx #fff solid;
+}
+.top:before{
+ border-bottom: 20rpx #bbb solid;
+}
+.top:after{
+ top: 2rpx; /*覆盖并错开1px*/
+ border-bottom: 20rpx #fff solid;
+}
+
+.bottom {
+ position: absolute;
+ top: 70rpx;
+ right: 10rpx;
+ transform:rotate(180deg)
+}
+.bottom:before, .bottom:after{
+ position: absolute;
+ content: '';
+ border-top: 20rpx transparent dashed;
+ border-left: 20rpx transparent dashed;
+ border-right: 20rpx transparent dashed;
+ border-bottom: 20rpx #fff solid;
+}
+.bottom:before{
+ border-bottom: 20rpx #bbb solid;
+}
+.bottom:after{
+ top: 2rpx; /*覆盖并错开1px*/
+ border-bottom: 20rpx #fff solid;
+}

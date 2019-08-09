@@ -1,0 +1,73 @@
+.league-list {
+  margin: 0 30rpx;
+}
+
+.league-list .item {
+  border-top: 1rpx solid #e0e0e0;
+  height: 240rpx;
+}
+
+.league-list .item .content {
+  margin-top: 30rpx;
+  height: 180rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.league-list .item .content .logo {
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.league-list .item .content .logo image {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 8rpx;
+}
+
+.league-list .item .content .logo .title {
+  font-size: 24rpx;
+  line-height: 40rpx;
+  height: 40rpx;
+  width: 180rpx;
+  text-align: center;
+  color: #fff;
+  bottom: 0rpx;
+  position: absolute;
+  background: rgba(0, 167, 242, 0.6);
+  border-bottom-left-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+}
+
+.league-list .item .content .info {
+  width: 100%;
+  margin-top: -10rpx;
+  margin-left: 30rpx;
+}
+
+.league-list .item .content .info .title {
+  font-size: 32rpx;
+  color: #333;
+  height: 118rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.league-list .item .content .info .type {
+  font-size: 24rpx;
+  color: #808892;
+  margin-top: 8rpx;
+}
+
+.league-list .item .content .info .time {
+  display: flex;
+  flex-direction: row;
+}
+
+.league-list .item .content .info .time .show_time {
+  font-size: 24rpx;
+  color: #808892;
+  margin-top: 8rpx;
+  /* margin-left: 10rpx; */
+}

@@ -1,0 +1,7 @@
+<navigator wx:if="{{teamRights!=0}}" url="/pages/team/message/applications?team_id={{ teamId }}&type=1" class="mt weui-select application">
+    <view class="icon"></view>
+    <view url="" class="text">审批通知</view>
+    <view wx:if="{{is_have}}" class="weui-badge weui-badge_dot" style="margin-top: 32rpx; margin-right: 24rpx;" />
+</navigator>
+
+<mList list="{{info.list}}" isHideLoadMore="{{info.isHideLoadMore}}" bind:onClickDetail="onClickDetail" isTeam="true"></mList>

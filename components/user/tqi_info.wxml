@@ -1,0 +1,38 @@
+
+<view style="background: #fff;" wx:if="{{ info }}">
+  <view class="show-container" style="margin: 0 30rpx 0;">
+    <view class="show-row">
+      <view class="show-title">
+        <view class="f-l tit">
+            <text class="title-name">文件资质</text>
+          </view>
+        <view class="f-r">
+          <slot></slot>
+        </view>
+      </view>
+    </view>
+  
+    <view class="show-row">
+        <view class="show-label lh-50">教练员所在单位</view>
+        <view class="show-content">{{ info.content.tqi[0].value }}</view>
+    </view>
+    <view class="show-row">
+        <view class="show-label lh-50">教练员单位聘书</view>
+        <view class="show-content" class="lh-0"><viewimage src="{{ info.content.tqi[1].value ? info.content.tqi[1].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_70,w_70" style2="width: 90rpx; height: 90rpx;"></viewimage></view>
+    </view>
+    <view class="show-row">
+        <view class="show-label lh-50">运动员健康证明</view>
+        <view class="show-content" class="lh-0"><viewimage src="{{ info.content.tqi[2].value ? info.content.tqi[2].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_70,w_70" style2="width: 90rpx; height: 90rpx;"></viewimage></view>
+    </view>
+    <view class="show-row">
+        <view class="show-label lh-50">运动意外保险单</view>
+        <view class="show-content" class="lh-0"><viewimage src="{{ info.content.tqi[3].value ? info.content.tqi[3].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}?x-oss-process=image/resize,m_fill,h_70,w_70" style2="width: 90rpx; height: 90rpx;"></viewimage></view>
+    </view>
+
+  </view>
+</view>
+
+<!-- <view class="show-row" wx:if="{{playerInfo.is_player}}">
+    <view class="show-label">场上位置</view>
+    <view class="show-content">{{ position.name ? position.name : '-' }}</view>
+</view> -->

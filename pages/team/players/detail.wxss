@@ -1,0 +1,8 @@
+.page-section {
+    margin-bottom: 20rpx;
+}
+
+.weui-badge { border-radius: 6rpx; }
+
+.weui-panel__hd { background: #fff; }
+.weui-panel__hd .tit { font-weight: bold; color: #333; height: 32rpx; line-height: 32rpx; overflow: hidden; border-left: solid 10rpx #00a7f2; margin-top: 10rpx; padding-left: 10rpx; }

@@ -1,0 +1,6 @@
+/* pages/team/teamhome/team_contact/team_contact.wxss */
+
+.show-title {border-bottom:solid 1rpx #e0e0e0;}
+.show-row {
+    border:none;
+}

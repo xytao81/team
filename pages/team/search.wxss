@@ -1,0 +1,102 @@
+@import '../../style/weui.wxss';
+
+
+.search_item{
+  height:140rpx;
+  background:#fff;
+
+  border-top:1rpx solid #e0e0e0;
+}
+
+
+.search_item .logo{
+  float: left;
+  width: 80rpx;
+  height:80rpx;
+  margin-left: 30rpx;
+  margin-top:30rpx;
+}
+
+.search_item .content{
+  float: left;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  width:420rpx;
+  height:80rpx;
+}
+
+.search_item .content .title{
+  height:40rpx;
+  line-height: 40rpx; 
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.search_item .content .desc{
+  height:40rpx;
+  line-height: 40rpx; 
+}
+
+.search_item .btn{
+  float:left;
+  width:150rpx;
+  height:54rpx;
+  margin-top: 43rpx;
+
+  border:1rpx solid #00a7f2;
+  border-radius:27rpx;
+}
+
+.search_item .btn .title{
+  text-align: center;
+  width:150rpx;
+  height:54rpx;
+  line-height: 54rpx;
+  color:#00a7f2;
+}
+
+.select-value{
+  width:127rpx;
+  color:#333;
+  text-align: center;
+  line-height:60rpx;
+  display:inline-block;
+
+}
+/* 下箭头 */
+.bottom{
+  position:absolute;
+  left:20%;
+  top:42%;
+}
+.bottom-arrow1,.bottom-arrow2{
+  width:0;
+  height:0;
+  display:block;
+  position:absolute;
+  left:0;
+  top:0;
+  border-bottom:15rpx transparent dashed;
+  border-left:15rpx transparent dashed;
+  border-right:15rpx transparent dashed;
+  border-top:15rpx white solid;
+  overflow:hidden;
+}
+.bottom-arrow1{
+  top:1px;/*重要*/
+  border-top:15rpx #808892 solid;
+}
+.bottom-arrow2{
+  border-top:15rpx #efeff4 solid;
+}
+/* .line{
+  width:0;
+  height:0;
+  border:20rpx solid transparent;
+  border-top-color:#d9d9d9;
+  display:inline-block;
+} */
+.weui-cells {
+  
+}

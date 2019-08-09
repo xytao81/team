@@ -1,0 +1,17 @@
+{
+  "navigationBarTitleText": "球队主页",
+  "usingComponents": {
+    "team_stat": "./team_stat/team_stat",
+    "team_statistics": "./team_statistics/team_statistics",
+    "team_message": "./team_message/team_message",
+    "team_my_league":"./team_my_league/team_my_league",
+    "team_notice": "./team_notice/team_notice",
+    "team_com": "./team_com/team_com",
+    "league": "./league/index",
+    "team_contact":"./team_contact/team_contact",
+    "back": "/components/back/back",
+    "vInput": "/components/inputModal",
+    "ad1":"../../../components/ad/ad1",
+    "team_album":"./team_album/team_album"
+  }
+}

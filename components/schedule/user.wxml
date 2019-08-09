@@ -1,0 +1,62 @@
+<!--components/schedule/user.wxml-->
+<view style="background: #fff;">
+    <view wx:if="{{ user.status==1 && admin==true}}" style="background:#ecf1f5;padding:20rpx 30rpx;">
+        <text class="f-gray f-normal" style="display:inline-block;margin-right:30rpx;">已签到 1</text>
+        <text class="f-gray f-normal" style="display:inline-block;margin-right:30rpx;">已请假 1</text>
+        <text class="f-gray f-normal" style="display:inline-block;">未签到 1</text>
+    </view>
+    <view bindtap="onClickUser" class="weui-select player-row" data-uid="{{ user.uid }}">
+        <view class="f-l avatar">
+            <image src="{{ user.content.person_info[0].value ? user.content.person_info[0].value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" style="width: 84rpx; height: 120rpx;"></image>
+        </view>
+        <view class="f-r right">
+            <view class="t1">
+                <view class="f-l tit" style="display: inline-block; vertical-align: middle">{{ user.content.person_info[1].value }}</view>
+                <view class="f-r badge">
+                    <view wx:if="{{user.arrive==1 && showSignedStatus }}" class="weui-badge c{{ user.status }}">已签到</view>
+                    <view wx:elif="{{user.arrive==2 && showSignedStatus }}" class="weui-badge c{{ user.arrive }}">已请假</view>
+                    <view wx:elif="{{user.status==0}}" class="weui-badge c{{ user.status }}">待审核</view>
+                    <view wx:elif="{{user.status==1}}" class="weui-badge c{{ user.status }}">已同意</view>
+                    <view wx:else="{{user.status==2}}" class="weui-badge c{{ user.status }}">已拒绝</view>
+                </view>
+            </view>
+            <!-- <view class="t2">{{ item.number && item.is_player ? item.number+'号 ' : ''}}{{ item.show_jobs }}</view> -->
+            <view class="t2" style="color:#808892;">{{ user.create_time }} 已报名</view>
+        </view>
+    </view>
+    <!-- 待审核的按钮 -->
+    <view wx:if="{{ user.status == 0 && isAdmin }}"class="statusBtns" style="margin:0;padding:0;background:#f8fcfe ;border-bottom:1rpx solid #e0e0e0;">
+        <view class="btn-left" style="display:inline-block;width:49%;height:100%;border-right:1rpx solid #e0e0e0;text-align: center;">
+            <button class="weui-btn f-normal" type="primary" size="mini" plain="true" bindtap="openDenyModal" style="width:50%;height:100%;border:none;color:red;margin:0;padding:0;vertical-align:-6rpx;">拒绝</button>
+        </view>
+        <view class="btn-left" style="display:inline-block;width:50%;height:100%;text-align: center;">
+            <button class="weui-btn f-normal" type="primary" size="mini" plain="true" bindtap="changePass" style="width:50%;height:100%;border:none;color:#00a7f2;margin:0;padding:0;vertical-align:-6rpx;">同意</button> 
+        </view>    
+    </view>
+    <!-- 已同意的按钮-->
+    <view wx:if="{{ user.status == 1 && user.arrive == 0 && isAdmin }}" class="statusBtns" style="margin:0;padding:0;background:#f8fcfe ;border-bottom:1rpx solid #e0e0e0;">
+        <view class="btn-left" style="display:inline-block;width:49%;height:100%;border-right:1rpx solid #e0e0e0;text-align: center;">
+            <button class="weui-btn f-normal" type="primary" size="mini" plain="true" bindtap="leave" style="width:50%;height:100%;border:none;color:red;margin:0;padding:0;vertical-align:-6rpx;">请假</button>
+        </view>
+        <view class="btn-left" style="display:inline-block;width:50%;height:100%;text-align: center;">
+            <button class="weui-btn f-normal" type="primary" size="mini" plain="true" bindtap="signin" style="width:50%;height:100%;border:none;color:#00a7f2;margin:0;padding:0;vertical-align:-6rpx;">签到</button> 
+        </view>    
+    </view>
+</view>
+
+
+<!-- 审核不通过的弹框 -->
+<view class="mask" catchtouchmove="preventTouchMove" hidden="{{ !denyModalVisible }}"></view>
+<view class="reason modalDlg" hidden="{{ !denyModalVisible }}">
+    <view class="reason-title shadow">    
+        <text class="text" style="margin-left:110rpx;">拒绝理由</text>
+        <image bindtap="hideDenyModal" style="width:60rpx;height:60rpx;padding-top:10rpx; float:right;padding-right:30rpx;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NUQ2MUI4MjA1NDY1MTFFOUJFNEREQjdGQjE2MzEzMjkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUIwN0M1ODY1NDREMTFFOUJFNEREQjdGQjE2MzEzMjkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjM1MjAyNUVEMkYyRjExRTg5RDhDODc3QjIxMDk4ODJBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjM1MjAyNUVFMkYyRjExRTg5RDhDODc3QjIxMDk4ODJBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+awCwLgAAAglJREFUeNrsmE1LAkEYx9VELE8eij5AXaJLb1Ak9HLpUwiiN6EsNAiCTnUIMlDSuukh6jN069ahEgTpkJXdejvmffsPPQPLsi+zO6N42IEfuPu8/R12Z57ZoKZpgUEeocCAD1+gL9AX2GOBi6ACWkAz0CLbkkyBoMd1cAOcgGm6fgH34Juux8ACmKBrJrYAblxXYgJdUtP+RxcUQNzGN04+XYqpua3nxjkKHqjQGYi4iI1QjEY5or0Q2KQCKQ+zzklRjqZqgXVKnJEQx8lQrroqgQlKWFEgjlOlnMsqBHbALwgZ7q+DTYH4LbBmuBeinG+yAmfon+ZNbAWylW3iK+SzbWLLk21ORuA5JYlZ2EtkL9mIK1rExshelRH4DtoOPiWTmXQSx3klPAtk40rgOeMi98GBoDjGNfla+oQFNptPAZ8c+AGHdL0HjgXiPvrZzQzpfoc9xJgOkUTjAj6sa8nSzLGiR9Qw5BziRmWbBfaSPDv48BfiVHevbPN262k7rYVOAi+o0IiDuKLLJUjZMjNrs1DvmsycET6TO71aqO22OrZ9ZQXimc+KxVbXGdRmgT8aCdXtVlqBuLTqdsvYsCYlxCV71bAyhkFDQcvfoFzKBao4NNXd1lN17GyDR/ClO3bOg0nZY2dQ8vsgO7gnwSqYMtiewC24BHf9Prj732Z8gb5AX6Dg+BNgACAYee2Pic3/AAAAAElFTkSuQmCC" ></image>    
+    </view>
+    <view class="reason-contant">
+        <textarea class="textarea-bg f-normal" value="{{ refusalReason }}" bindinput="onReasonChange" placeholder="对不起，您不符合我们的要求。" />
+        <view class="btn modalBtn clearfix" style="display:flex;">
+            <!-- <button class="btn f-normal candel" type="primary" bindtap="hideDenyModal">取消</button> -->
+            <button class="weui-btn f-normal confirm" type="primary" plain="true" bindtap="changeDeny" style="color:#00a7f2;background:#fff;border:none;">拒绝</button>
+        </view>
+    </view>        
+</view>

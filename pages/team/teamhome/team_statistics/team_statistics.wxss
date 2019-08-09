@@ -1,0 +1,4 @@
+.team-statistics { padding: 20rpx 0; }
+.team-statistics .col { width: 171rpx; height: 212rpx; border-right: 1rpx solid #e0e0e0; }
+.team-statistics .col .col-center { width: 116rpx; margin: 0 auto; }
+.team-statistics .mt { margin-top: 10rpx; }

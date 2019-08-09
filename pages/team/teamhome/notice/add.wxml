@@ -1,0 +1,33 @@
+<!-- <form bindsubmit="bindSubmit">
+  <input class="form-input" placeholder="公告标题" name="title" value="{{ notice.title }}" focus />
+  <textarea maxlength="256" placeholder="公告内容" name="content" value="{{ notice.content }}" />
+  <button form-type="submit">提交</button>
+</form> -->
+
+
+<view class="page">
+  <view class="page__bd">
+    <view class="mt form-container" style=" background: #fff;">
+      <view class="form-row">
+          <view class="form-label" style="padding-left:30rpx;">标题 <text class="f-red">*</text></view>
+          <view class="form-content">
+            <input class="form-input" placeholder="请输入公告标题" value="{{ notice.title }}" bindinput="bindTitleChange" />
+          </view>
+      </view>
+      <view class="form-row" style="padding: 30rpx 0;">
+        <view class="form-label" style="padding-left:30rpx;line-height: 40rpx;">正文 <text class="f-red">*</text></view>
+        <view class="form-content" style="line-height: 40rpx;">
+          <textarea class="weui-textarea" placeholder="请输入公告内容" maxlength="500" value="{{ notice.content }}" controlled bindinput="bindContentChange" style="height: 160rpx;" />
+          <view class="weui-textarea-counter" style="padding-right: 6rpx;">{{ count }}/500</view>
+        </view>
+      </view>
+      <!-- <view class="form-row" style="margin: 0 30rpx; line-height: 40rpx; padding-bottom: 20rpx;">
+          <textarea class="weui-textarea" placeholder="请输入公告内容" maxlength="256" value="{{ notice.content }}" controlled bindinput="bindContentChange" style="height: 150rpx;" />
+          <view class="weui-textarea-counter">{{ count }}/256</view>
+      </view> -->
+    </view>
+  </view>
+  <view class="footer-buttons">
+      <button class="footer-btn full-btn" type="primary" bindtap="bindSubmit">发布</button>
+  </view>
+</view>

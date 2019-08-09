@@ -1,0 +1,23 @@
+<view class="menus">
+
+  <view>
+    <vMenu id="player" title="队员管理" image="../../images/menu/menu_player.png" type="1" number="{{player_count}}" url="/pages/team/players/manage?team_id={{teamId}}"  bind:onClickMenu="onClickMenu"></vMenu>
+    <vMenu id="manage" title="编辑球队" image="../../images/menu/menu_manage.png" type="2" url="/pages/team/edit?team_id={{teamId}}" bind:onClickMenu="onClickMenu"></vMenu>
+    <vMenu id="schedule" title="日程管理" image="../../images/menu/menu_schedule.png" type="1" url="/pages/team/teamhome/schedule/list?team_id={{teamId}}&is_admin=1"  bind:onClickMenu="onClickMenu"></vMenu>
+    <vMenu id="notice" title="公告管理" image="../../images/menu/menu_notice.png" type="2" url="/pages/team/teamhome/notice/list?team_id={{teamId}}" is_badge="{{is_notice}}" bind:onClickMenu="onClickMenu" bind:refresh="refresh"></vMenu>
+    <vMenu id="account" title="账户中心" image="../../images/menu/menu_account.png" type="1" url="/pages/my/account/account?team_id={{teamId}}"  bind:onClickMenu="onClickMenu"></vMenu>
+    <vMenu id="league" title="参赛管理" image="../../images/menu/menu_league.png" type="1" url="/pages/team/teamhome/league/joined?team_id={{teamId}}" bind:onClickMenu="onClickMenu"></vMenu>
+    <!-- <vMenu id="album" title="相册管理" image="../../images/menu/icon_photo.png" type="1" url="/pages/web/url?url={{ photo_url }}" bind:onClickMenu="onClickMenu"></vMenu> -->
+
+    <!-- <vMenu id="notice" title="公告管理" image="../../images/menu/menu_notice.png" type="2" url="/pages/team/teamhome/notice/list?team_id={{teamId}}" is_badge="{{is_notice}}" bind:onClickMenu="onClickMenu" bind:refresh="refresh"></vMenu>
+    <vMenu id="notice" title="公告管理" image="../../images/menu/menu_notice.png" type="2" url="/pages/team/teamhome/notice/list?team_id={{teamId}}" is_badge="{{is_notice}}" bind:onClickMenu="onClickMenu" bind:refresh="refresh"></vMenu> -->
+    <!-- <vMenu id="sign" title="我的赛事" image="../../images/menu/menu_league.png" type="3" bind:onClickMenu="onClickMenu" url="/pages/league/my?team_id={{teamId}}"></vMenu> -->
+  </view>
+  <!-- <view style="margin-top: 150rpx;">
+    <vMenu id="player" title="队员管理" image="../../images/menu/menu_player.png" type="1" number="{{player_count}}" url="/pages/team/players/list?team_id={{teamId}}"  bind:onClickMenu="onClickMenu"></vMenu>
+    <vMenu id="notice" title="公告管理" image="../../images/menu/menu_notice.png" type="2" url="/pages/team/teamhome/notice/list?team_id={{teamId}}" is_badge="{{is_notice}}" bind:onClickMenu="onClickMenu" bind:refresh="refresh"></vMenu>
+    <vMenu id="notice" title="公告管理" image="../../images/menu/menu_notice.png" type="2" url="/pages/team/teamhome/notice/list?team_id={{teamId}}" is_badge="{{is_notice}}" bind:onClickMenu="onClickMenu" bind:refresh="refresh"></vMenu>
+    <vMenu id="notice" title="公告管理" image="../../images/menu/menu_notice.png" type="2" url="/pages/team/teamhome/notice/list?team_id={{teamId}}" is_badge="{{is_notice}}" bind:onClickMenu="onClickMenu" bind:refresh="refresh"></vMenu>
+  </view> -->
+
+</view>

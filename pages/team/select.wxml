@@ -1,0 +1,34 @@
+<view class="page">
+  <view style="padding-bottom: 100rpx;">
+
+    <userbrief name="{{ user.name }}" uid="{{ user.uid }}" photo="{{ user.photo ? user.photo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" settings="设置"></userbrief>
+
+    <view class="mt b-white">
+      <view class="show-container" style="margin: 0 30rpx 0;">
+        <view class="show-row">
+          <view class="show-title">
+            <view class="f-l tit">所属球队/俱乐部</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="b-white">
+      <view class="show-container" style="margin: 0 30rpx 0;">
+          <view class="show-row" wx:for="{{ myTeams }}" wx:key="id" wx:for-item="team" bindtap="selectTeam" data-id="{{ team.id }}">
+              <view class="team-box o-h" style="display: flex; align-items: center; padding: 10rpx 0;">
+                  <view class="f-l" style="width: 530rpx; line-height: 40rpx;">
+                      <view style="">{{ team.name }} <text class="f-small f-gray">ID:{{ team.id }}</text></view>
+                      <view class="f-small f-gray">{{ team.rights_name }}</view>
+                  </view>
+                  <view class="f-r weui-select" style="width: 150rpx; margin-left: 20rpx; height:80rpx;line-height: 80rpx;">
+                    <button class="weui-btn" type="primary" size="mini" plain="true" style="padding-left:70rpx;border:none;line-height: 80rpx;">进入</button>
+                  </view>
+              </view>
+          </view>
+      </view>
+    </view>
+
+  </view>
+
+</view>

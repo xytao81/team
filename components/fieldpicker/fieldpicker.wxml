@@ -1,0 +1,8 @@
+<!--components/fieldpicker/fieldpicker.wxml-->
+<slot bindtap="show"></slot>
+<superpicker show="{{ show }}" bindconfirm="confirm" bindcancel="cancel">
+    <scroll-view scroll-y style="max-height: 1046rpx;background:#ecf1f5;">
+        <fieldselect content="{{content}}" bind:fieldselectchange="onFieldselectChange"></fieldselect> 
+    </scroll-view>
+</superpicker>
+

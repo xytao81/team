@@ -1,0 +1,31 @@
+
+<view class="b-white">
+  <view class="show-container">
+    <view class="show-row" style="margin: 0 30rpx 0;">
+      <view class="show-title">
+        <view class="f-l tit">
+            <text class="title-name">紧急联系人</text>
+        </view>
+        <view class="f-r">
+          <slot></slot>
+        </view>
+      </view>
+    </view>
+    <view wx:for="{{ list }}" wx:for-index="idx" class="{{ idx > 0 ? ' mtt' : '' }}" wx:key="id">
+      <view style="margin: 0 30rpx 0;">
+        <view class="show-row">
+          <view class="show-label">姓名</view>
+          <view class="show-content">{{ item.name }}</view>
+        </view>
+        <view class="show-row">
+          <view class="show-label">关系</view>
+          <view class="show-content">{{ ['父亲','母亲','亲属','其他'][item.relation-1] }}</view>
+        </view>
+        <view class="show-row">
+          <view class="show-label">联系手机</view>
+          <view class="show-content">{{ item.phone }}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

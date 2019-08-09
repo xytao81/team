@@ -1,0 +1,30 @@
+/* components/ad/ad1.wxss */
+.ad-box {
+    margin-top: 24rpx;
+    background: #fff;
+    padding: 10rpx 0;
+}
+
+.image-box {
+    line-height:0;
+    margin: 6rpx auto;
+    width: 690rpx;
+    height: 197rpx;
+}
+.image-box image { width: 100%; height: 100%; }
+
+.ad-box .title { margin: 0 auto; width: 690rpx; color: #333; }
+.ad-box .intro { margin: 0 auto; width: 690rpx; color: #808892; }
+.ad-box .intro .right { float: right; }
+.f-big { font-size: 32rpx; }
+.f-title { font-size: 32rpx; }
+.f-normal { font-size: 28rpx; }
+.f-small { font-size: 24rpx; }
+.f-blue { color:#00a7f2; }
+.f-gray { color:#808892; }
+.f-red { color: #f00; }
+.f-gray { color:#808892; }
+.f-white { color:#fff; }
+.f-blue { color:#00a7f2; }
+.f-black { color:#333; }
+.f-green { color: green; }

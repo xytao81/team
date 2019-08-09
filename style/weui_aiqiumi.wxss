@@ -1,0 +1,30 @@
+button[type=primary] {
+  color:#FFFFFF;
+  background-color:#00a7f2;
+}
+
+button[type=primary].button-hover {
+  color:#FFFFFF;
+  background-color:#0084c2;
+}
+
+button[plain] {
+  color: #00a7f2;
+  border:1rpx solid #00a7f2;
+}
+
+button[type=primary][plain] {
+  color:#00a7f2;
+  border:1rpx solid #00a7f2;
+}
+  
+
+/* 
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+
+  background-color: #e02e24;
+  
+  border: 1rpx solid #e02e24;
+  
+  
+} */

@@ -1,0 +1,29 @@
+/* pages/team/teamhome/schedule/user_edit.wxss */
+
+/* pages/team/teamhome/schedule/user.wxss */
+
+
+page { }
+.page-section {
+    margin-bottom: 20rpx;
+}
+
+.weui-select { 
+    padding-left: 0; border-right: 0; 
+}
+/* 新添加 */
+.my-header{
+    display:flex;
+    color:red;
+}
+.info-desc{
+    flex:1;
+    vertical-align:top;
+    color:red !important;
+}
+.uesr-list{
+    margin-top:30rpx;
+}
+.user-list-first{
+    margin-top:0rpx !important;
+}

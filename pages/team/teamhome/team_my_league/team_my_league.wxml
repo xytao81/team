@@ -1,0 +1,44 @@
+<view class="league" style="background: #fff; padding: 0 30rpx ; margin-top:0rpx;">
+  <view class="content">
+    <block wx:if="{{info}}">
+      <view class="welcome">
+        <view class="league-item-box">
+          <view class='league-item' bindtap="gotoDetail">
+            <view class="logo">
+              <image wx:if="{{info.logo}}" mode='widthFix' src="{{info.logo}}" />
+              <image wx:else class="logo" mode='widthFix' src="../../../../images/league/team_logo.png" />
+              <text wx:if="{{info.status == '01' && !info.is_multi}}" class="status-name green">{{info.status_name}}</text>
+              <text wx:if="{{info.status == '00' && !info.is_multi}}" class="status-name yellow">{{info.status_name}}</text>
+              <text wx:if="{{info.status == '02' && !info.is_multi}}" class="status-name back2">{{info.status_name}}</text>
+              <text wx:if="{{info.status == '22' && !info.is_multi}}" class="status-name black">{{info.status_name}}</text>
+              <text wx:if="{{info.status == '12' && !info.is_multi}}" class="status-name blue">{{info.status_name}}</text>
+              <text wx:if="{{info.status == '11' && !info.is_multi}}" class="status-name blue">{{info.status_name}}</text>
+            </view>
+            <view class="info-box">
+              <view class="info-title">{{info.name}}</view>
+              <view class="info-desc">
+                <text>{{info.city_name ? info.city_name : '全国'}}</text>
+                <text wx:if="{{info.players_name}}">{{info.players_name}}</text>
+                <text wx:if="{{info.type_name}}">{{info.type_name}}</text>
+              </view>
+              <view class="info-box-f3" wx:if="{{info.time_desc}}">
+                <text>{{info.time_desc}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="league-more f-small" bindtap="gotoMore">查看更多 ></view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="welcome">
+      <view class="league-item-box">
+          <view class='no-data f-title'>
+              <view class="no-data-icon"></view>
+              <view class="no-data-text f-small">本球队没有报名任何赛事</view>
+          </view>
+      </view>
+      </view>
+    </block>
+  </view>
+</view>

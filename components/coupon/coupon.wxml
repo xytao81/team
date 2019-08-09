@@ -1,0 +1,34 @@
+<view>
+  <view class="card-box {{item.is_valid ? '' : 'is_valid'}}" wx:for="{{list}}" wx:key="id" data-item="{{item}}" bindtap='itemClick' id='{{index}}'>
+  <view class="coupon-item {{index == currentIndex ? 'active' : ''}}" style="background:white;">
+    <view class="info-box">
+      <view class="f-coupon f-blue">{{item.title}}</view>
+      <view class="f-coupon-detail">
+        <view class="split-line"></view>
+        <view class="content" style="margin:10px">
+          <view class="title f-normal f-black">{{ item.desc }}</view>
+          <view class="time f-small f-gray">有效期:{{item.start_time}}至{{item.end_time}}</view>
+        </view>
+        <image class="select-img {{index == currentIndex ? 'active' : ''}}" wx:if="{{select}}"></image>
+        <view class="rule" bindtap="ruleClick" data-index="{{index}}">
+          <text class="f-small f-gray">使用规则</text>
+          <image style="width:20px;height:20px;vertical-align:middle" src='./images/icon_rule.png'></image>
+        </view>
+
+      </view>
+    </view>
+    <view hidden="{{item.hidden}}" class='info-rule f-small f-gray'>{{item.rule}}</view>
+    </view>
+  </view>
+
+  <view class="footer-buttons" wx:if="{{select}}">
+    <button class="footer-btn full-btn" type="primary" bindtap='useCoupon'>确定</button>
+  </view>
+
+  <!-- 无数据 -->
+  <view wx:if="{{list.length==0}}" class="no-data">
+    <image src="./images/no-data.png" />
+    <view class="text f-big f-gray">暂无优惠券</view>
+  </view>
+
+</view>

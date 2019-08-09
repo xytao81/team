@@ -1,0 +1,11 @@
+/* pages/team/notice/list.wxss */
+
+
+.notices { margin: 20rpx 30rpx; }
+.notices .notice { padding: 20rpx 30rpx 0; background: #fff; margin-top: 20rpx; border-radius: 10rpx; }
+.notices .notice .title { color: #333; }
+.notices .notice .date { color: #808892; margin-top: 6rpx; }
+.notices .notice .content { color: #808892; margin-top: 20rpx; display: block }
+.notices .notice .buttons { border-top: solid 1rpx #e0e0e0; margin-top: 20rpx; overflow: hidden; }
+.notices .notice .buttons .btn { float: left; width: 315rpx; height: 80rpx; line-height: 80rpx; text-align: center; }
+

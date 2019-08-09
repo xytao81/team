@@ -1,0 +1,53 @@
+<view class="page">
+  <view style="padding-bottom: 120rpx;">
+
+    <userbrief name="{{ info.realname.value }}" uid="{{ info.uid }}" photo="{{ info.realphoto.value ? info.realphoto.value : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}" settings="设置" bind:tap="onUserbriefTap"></userbrief>
+
+    <userBaseInfo id="base">
+      <navigator url="/pages/my/info/edit?group=person_info" style="line-height: 0;margin-top:20rpx;">
+        <button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;margin-top:0rpx;">编辑</button>
+      </navigator>
+    </userBaseInfo>
+
+    <view class="mt">
+      <userBodyInfo id="size">
+        <navigator url="/pages/my/info/edit?group=size" style="line-height: 0;margin-top:20rpx;">
+          <button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;margin-top:0rpx;">编辑</button>
+        </navigator>
+      </userBodyInfo>
+    </view>
+
+    <view class="mt">
+      <userEducationExpInfo uid="{{ info.uid }}" id="edu">
+        <navigator url="/pages/my/info/educationexp/list" style="line-height: 0;margin-top:20rpx;">
+          <button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;margin-top:0rpx;">编辑</button>
+        </navigator>
+      </userEducationExpInfo>
+    </view>
+  
+    <view class="mt">
+      <userWorkExpInfo uid="{{ info.uid }}" id="work">
+        <navigator url="/pages/my/info/workexp/list" style="line-height: 0;margin-top:20rpx;">
+          <button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;margin-top:0rpx;">编辑</button>
+        </navigator>
+      </userWorkExpInfo>
+    </view>
+
+    <view class="mt">
+      <userContactsExpInfo uid="{{ info.uid }}" id="contacts">
+        <navigator url="/pages/my/info/contactsexp/list" style="line-height: 0;margin-top:20rpx;">
+          <button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;margin-top:0rpx;">编辑</button>
+        </navigator>
+      </userContactsExpInfo>
+    </view>
+
+    <view class="mt">
+      <userTqiInfo id="tqi">
+        <navigator url="/pages/my/info/edit?group=tqi" style="line-height: 0;margin-top:20rpx;">
+          <button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;margin-top:0rpx;">编辑</button>
+        </navigator>
+      </userTqiInfo>
+    </view>
+
+  </view>
+</view>

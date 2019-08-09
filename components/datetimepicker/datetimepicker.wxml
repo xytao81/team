@@ -1,0 +1,11 @@
+
+<picker mode="multiSelector" 
+        bindchange="bindChange" 
+        bindcolumnchange="bindColumnChange" 
+        value="{{ indexValue }}" 
+        range="{{ datetimeRange }}"
+        range-key="{{rangeKey}}"
+>
+  <slot></slot>
+</picker>
+

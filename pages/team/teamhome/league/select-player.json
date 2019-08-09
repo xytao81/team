@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "选择出场人员",
+  "usingComponents": {
+    "supermodal": "../../../components/supermodal/supermodal",
+    "select-other": "../../components/player/select_other",
+    "select-player": "../../components/player/select_player"
+  }
+}

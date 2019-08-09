@@ -1,0 +1,20 @@
+<view class="select-other">
+  <view class="content">
+    <!-- <checkbox class="select-checked" shape="square" value="{{ is_checked }}" bind:change="handleCheck" checked-color="#00a7f2"></checkbox> -->
+    <checkbox-group bindchange="handleCheck">
+      <checkbox class="select-checked" value="{{ is_checked }}" checked="{{ is_checked }}" color="#00a7f2"></checkbox>
+    </checkbox-group>
+    <view class="info">
+      <view class="name">{{member.name}}</view>
+      <view class="rights">
+        <view class="title">职务</view>
+        <view class="sub_rights">
+        <block wx:for="{{list}}" wx:key='index'>
+          <view class="btn select" wx:if='{{member.sub_rights == item.id}}' data-rights='{{item}}' bind:tap='buttonSelectAction'>{{item.name}}</view>
+          <view class="btn" wx:if='{{member.sub_rights != item.id}}' data-rights='{{item}}' bind:tap='buttonSelectAction'>{{item.name}}</view>
+        </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

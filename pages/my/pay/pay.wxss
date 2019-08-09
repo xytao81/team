@@ -1,0 +1,8 @@
+/* pages/my/pay.wxss */
+.content {
+  background-color: #fff
+}
+
+.show-title {
+  height: 56rpx
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "报名管理",
+  "usingComponents": {
+    "users": "../../../components/schedule/users"
+  }
+}

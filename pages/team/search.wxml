@@ -1,0 +1,39 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-search-bar">
+      <picker bindchange="bindTypeChange" value="{{ typeIndex }}" range="{{ ['球队名称','球队ID'] }}" style="width:185rpx;">
+          <view class="select-value f-normal">{{ ['球队名称','球队ID'][typeIndex] }}</view>
+          <view class="arrow-bottom arrow-box" >
+              <b class="bottom"><i class="bottom-arrow1"></i><i class="bottom-arrow2"></i></b>
+          </view>
+      </picker>
+      <!-- <picker mode = 'selector' bindchange="bindPickerChange" range="{{['球队名称','ID']}}">
+          <view>球队名称</view>
+      </picker> -->
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="输入球队名称/ID" value="{{search_name}}" focus="{{is_show}}" bindinput="inputSearchName" />
+          <view class="weui-icon-clear" wx:if="{{search_name.length > 0}}" bindtap="handleClearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        
+      </view>
+      <!-- <view class="weui-search-bar__cancel-btn" hidden="{{!is_show}}" bindtap="handleHideInput">取消</view> -->
+    </view>
+
+    <view wx:for="{{list}}" wx:key="{{item.id}}" wx:for-item="item" class="search_item">
+      <navigator url="/pages/team/teamhome/view?team_id={{item.id}}" class="searchbar-result" wx:if="{{list.length > 0}}" style="margin-top:0;">
+        <image class="logo" src="{{ item.logo ? item.logo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png' }}"></image>
+        <view class="content">
+          <view class="title black f-title">{{item.name}}</view>
+          <view class="desc gray f-small">ID:{{item.id}} | {{item.city_name}}</view>
+        </view>
+        <view class="btn" data-id="{{item.id}}" bindtap='handleClick'>
+          <view class="title f-normal">加入球队</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

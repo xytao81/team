@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "优惠券",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "coupon": "/components/coupon/coupon"
+  }
+}

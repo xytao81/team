@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "viewimage": "../../../components/viewimage",
+    "supermodal": "../../../components/supermodal/supermodal",
+    "back": "../../../components/back/back",
+    "users": "../../../components/schedule/users"
+  }
+}

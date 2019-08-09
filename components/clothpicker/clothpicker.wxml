@@ -1,0 +1,53 @@
+
+<slot bindtap="show"></slot>
+<superpicker show="{{ show }}" bindconfirm="confirm" bindcancel="cancel">
+    <view style="color: #999;padding-left:30rpx;">队员</view>
+    <picker-view indicator-style="height: 35px;" style="width: 100%; height: 165px;" value="{{ playerIndexes }}" bindchange="bindPlayerChange">
+        <picker-view-column>
+            <view wx:for="{{ colors }}" wx:key="id" style="line-height: 35px; text-align:center;">
+                <view class="bg-color" style="background:{{'url('+ item.color +') no-repeat'}}">
+                    <image src="./images/icon_sy.png" />
+                </view>
+            </view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{ colors }}" wx:key="id" style="line-height: 35px; text-align:center;">
+                <view class="bg-color" style="background:{{'url('+ item.color +') no-repeat'}}">
+                    <image src="./images/icon_kz.png" />
+                </view>
+            </view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{ colors }}" wx:key="id" style="line-height: 35px; text-align:center;">
+                <view class="bg-color" style="background:{{'url('+ item.color +') no-repeat'}}">
+                    <image src="./images/icon_qw.png" />
+                </view>
+            </view>
+        </picker-view-column>
+    </picker-view>
+
+    <view style="color: #999; border-top: 1rpx solid #ddd; padding-top: 20rpx; margin-top: 20rpx;padding-left:30rpx;">守门员</view>
+    <picker-view indicator-style="height: 35px;" style="width: 100%; height: 165px;" value="{{ goalkeeperIndexes }}" bindchange="bindGoalkeeperChange" >
+        <picker-view-column>
+            <view wx:for="{{ colors }}" wx:key="id" style="line-height: 35px; text-align:center;">
+                <view class="bg-color" style="background:{{'url('+ item.color +') no-repeat'}}">
+                    <image src="./images/icon_sy.png" />
+                </view>
+            </view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{ colors }}" wx:key="id" style="line-height: 35px; text-align:center;">
+                <view class="bg-color" style="background:{{'url('+ item.color +') no-repeat'}}">
+                    <image src="./images/icon_kz.png" />
+                </view>
+            </view>
+        </picker-view-column>
+        <picker-view-column>
+            <view wx:for="{{ colors }}" wx:key="id" style="line-height: 35px; text-align:center;">
+                <view class="bg-color" style="background:{{'url('+ item.color +') no-repeat'}}">
+                    <image src="./images/icon_qw.png" />
+                </view>
+            </view>
+        </picker-view-column>
+    </picker-view>
+</superpicker>

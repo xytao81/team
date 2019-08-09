@@ -1,0 +1,48 @@
+<!--components/match/header.wxml-->
+<view class="match-header-content">
+  <view class="info">
+    <span class="flag">
+      <span class="c">{{item.group_name}} {{item.schedule_round}}</span>
+    </span>
+    <span style="margin-left:20rpx;">{{item.start_time}}</span>
+    <span style="margin-left:20rpx;">场序:{{item.index}}</span>
+  </view>
+  <view class="content">
+    <view class="team-info">
+      <image wx:if="{{item.home.logo}}" src="{{item.home.logo}}"></image>
+      <image wx:else src="../../images/team_logo.png"></image>
+      <view>{{item.home.name}}</view>
+    </view>
+    <view class="team-color">
+    <span class="bg-color" style='background-image: url({{item.home.clothes.player.shirt.color}})'><image src="../../images/default-clothes.png" /></span>
+    </view>
+    <view class="score">
+      <view wx:if="{{item.result && item.result.home_score.length>0}}">
+        <view wx:if="{{item.result.home_point_score.length>0 && item.result.away_point_score.length>0}}">
+          <view style='margin-top:20rpx;line-height:48rpx;'>{{item.result.home_score}}:{{item.result.away_score}}</view>
+          <view style='margin-top:10rpx;line-height:30rpx;font-size: 24rpx;color:#808892; '>点球[{{item.result.home_point_score}}:{{item.result.away_point_score}}]</view>
+        </view>
+        <view wx:else>
+          <view>{{item.result.home_score}}:{{item.result.away_score}}</view>
+        </view>
+      </view>
+      <span wx:else>VS</span>
+    </view>
+    <view class="team-color">
+    <span class="bg-color" style='background-image: url({{item.away.clothes.player.shirt.color}})'><image src="../../images/default-clothes.png" /></span>
+    </view>
+    <view class="team-info">
+      <image wx:if="{{item.away.logo}}" src="{{item.away.logo}}"></image>
+      <image wx:else src="../../images/team_logo.png"></image>
+      <view>{{item.away.name}}</view>
+    </view>
+  </view>
+  <view class="address">
+  比赛地点 ：{{item.place.title}}
+  </view>
+
+  <view wx:if="{{item.desc && item.desc.length>0}}" class="desc">
+  比赛公告 ：{{item.desc}}
+  </view>
+  <view style='height:30rpx;width:100%' />
+</view>

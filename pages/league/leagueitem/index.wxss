@@ -1,0 +1,254 @@
+/* pages/leagueitem/index.wxss */
+.leaguedetail-container{
+  min-height: 100vh;
+  background-color:#ecf1f5;
+}
+.header {
+  background-color:#fff;
+}
+.banner{
+  width: 100%;
+}
+.header-info{
+  padding: 30rpx;
+  padding-top: 0;
+}
+.header-info-title {
+  font-size: 32rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  color: #333;
+  line-height: 48rpx;
+}
+
+.header-info-other {
+  font-size: 24rpx;
+  color: #bcbcbd;
+  margin-top: 30rpx;
+}
+
+.header-info-other .text {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #808892;
+  margin-right: 20rpx;
+}
+
+.line {
+  background-color: #ecf1f5;
+  height: 20rpx;
+}
+
+.tab-bar {
+  display: flex;
+  border-bottom: 1rpx solid #e0e0e0;
+  color:#808892;
+  background-color:#fff;
+}
+
+.tab-item {
+  text-align: center;
+  font-size: 28rpx;
+  flex: 1;
+  line-height: 64rpx;
+  margin: 0 40rpx;
+}
+
+.active {
+  border-bottom: 2px solid #000;
+  color:#333333!important;
+}
+
+.flex-box {
+  display: flex;
+}
+
+.picker-flex .flex-item {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: #333;
+  display: flex;
+  align-items: center; /*垂直居中*/
+  justify-content: center; /*水平居中*/
+}
+
+.picker text {
+  font-size: 28rpx;
+}
+
+.arrow-icon {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+
+.down-arrow {
+  margin-left: 20rpx;
+}
+
+.left-arrow {
+  margin-left: -100rpx;
+}
+
+.right-arrow {
+  margin-right: -100rpx;
+}
+
+.no-data {
+  text-align: center;
+  padding-top: 40rpx;
+}
+
+.no-data image {
+  display: inline-block;
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.no-data .text {
+  font-size: 28rpx;
+  color: #818891;
+  margin-top: 20rpx;
+}
+
+/* 赛程列表样式 */
+
+.league-flex .flex-item {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+  display: flex;
+  align-items: center; /*垂直居中*/
+  justify-content: center; /*水平居中*/
+}
+
+.schedule-item-line {
+  height: 20rpx;
+  background-color: #ecf1f5;
+}
+
+.schedule-item-info {
+  padding: 30rpx;
+  font-size: 28rpx;
+}
+
+.schedule-item .f2 {
+  padding: 40rpx 0rpx 20rpx 0rpx;
+}
+
+.f3 image {
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+  margin-right: 20rpx;
+}
+
+.schedule-item .team-name {
+  padding-top: 2rpx;
+}
+
+.schedule-item .home-box {
+  position: relative;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.schedule-item .vs-box {
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.schedule-item .away-box {
+  position: relative;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.schedule-round {
+  display: inline-block;
+  background-color: #007d36;
+  padding: 10rpx;
+  font-size: 24rpx;
+  -webkit-transform: skewX(-15deg);
+  transform: skewX(-15deg);
+  color: #fff;
+  margin-right: 30rpx;
+}
+
+.schedule-round .span {
+  display: inline-block;
+  transform: skewX(15deg);
+}
+
+.schedule-item .team-logo {
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.bg-color {
+  background-size: 100% 100% !important;
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.bg-color image {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.home-box .bg-color {
+  position: absolute;
+  right: -40rpx;
+  top: 60rpx;
+}
+
+.away-box .bg-color {
+  position: absolute;
+  left: -40rpx;
+  top: 60rpx;
+}
+
+.place-title {
+  display: inline-block;
+  width: 640rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.team-name {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 230rpx;
+}
+
+.status-name {
+  display: inline-block;
+  border: 1rpx solid #007d36;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  padding: 20rpx;
+  color: #007d36;
+  border-radius: 50rpx;
+}
+
+.kick {
+  color: #898a8e;
+  line-height: 24rpx;
+}
+.other-color{
+  color:#007d36;
+}

@@ -1,0 +1,24 @@
+/* pages/login/index.wxss */
+
+page { background: #fff; }
+
+.page-section{
+    margin-bottom: 20rpx;
+  }
+
+.flex-wrp { display: flex; }
+
+.form-container { }
+.form-row { border-bottom: solid 1rpx #e0e0e0; overflow: hidden; font-size: 28rpx; line-height: 80rpx; }
+.form-label { float: left; width: 100rpx; color: #333; }
+.form-content {float: left; width: 550rpx; position: relative; }
+.form-row .form-input { border: 0; background: 0; width: 100%; color: #333; }
+.form-row .form-right { position: absolute; right: 0; top: 0; }
+
+.form-tip { margin-left: -50rpx; padding: 30rpx 50rpx; width: 650rpx; }
+
+.form-links { overflow: hidden; }
+.form-link { display: inline-block; color: #00a7f2; }
+
+.weui-footer_fixed-bottom { bottom: 50rpx; }
+.weui-footer__text { font-size: 28rpx; color: #333; }

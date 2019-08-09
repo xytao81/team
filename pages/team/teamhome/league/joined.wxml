@@ -1,0 +1,5 @@
+<!--pages/league/index.wxml-->
+<view style="padding-bottom: 100rpx;">
+  <join-league id="joinLeague" bind:click="handleClick"></join-league>
+  <invite-league  id="inviteLeague" bind:click="handleClickToLeagueHome"></invite-league>
+</view>

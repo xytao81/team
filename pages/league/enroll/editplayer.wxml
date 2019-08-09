@@ -1,0 +1,16 @@
+
+<view class="page">
+  <view style="padding-bottom: 100rpx;">
+
+    <view class="f-small f-red" style="margin: 20rpx 30rpx;">所有字段均为必填</view>
+
+    <view class="b-white">
+    <useredit value="{{ player.content }}" job="{{ jobId }}" bindusereditchange="onUsereditChange"></useredit>
+    </view>
+  </view>
+
+  <view class="footer-buttons">
+    <button class="footer-btn full-btn" type="primary" bindtap="saveLocalPlayer">保存</button>
+  </view>
+
+</view>

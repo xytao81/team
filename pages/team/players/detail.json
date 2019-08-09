@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "队员主页",
+  "usingComponents": {
+    "viewimage": "/components/viewimage",
+    "userbrief": "/components/user/userbrief",
+    "userBaseInfo": "/components/user/base_info",
+    "userBodyInfo": "/components/user/body_info",
+    "userEducationExpInfo": "/components/user/education_exp_info"
+  }
+}

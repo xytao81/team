@@ -1,0 +1,100 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="" style="padding-bottom: 140rpx;">
+
+    <view class="team-header">
+      <view class="box">
+        <view bindtap="openInfo" class="f-l avatar">
+          <image src="{{ team.logo ? team.logo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/no_photo.png' }}" style="width: 100rpx; height: 100rpx;"></image>
+        </view>
+
+        <view class="f-l text">
+          <view bindtap="openInfo" class="t1 f-title">
+            <view style="display: inline-block; vertical-align: middle">{{ team.showname }}{{ team.name == team.showname ? '' : '...' }}</view>
+          </view>
+          <view class="t2">
+            ID:{{ team.id }}{{ team.zone_name ? ' | '+team.zone_name : '' }} | <navigator class="t2btn" style="display:inline; margin-left: 24rpx;" url="/pages/team/players/list?team_id={{team.id}}">队员{{team.player_count}}人</navigator> 
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{ team.rights}}" class="show-container" style="margin: 20rpx 0 0; background: #fff; padding: 0 30rpx;">
+      <view class="show-row">
+        <view class="show-title">
+          <view class="f-l tit">管理员控制台<text class="f-gray f-small" style="font-weight: normal;">（仅管理员可见）</text></view>
+        </view>
+      </view>
+      <view class="">
+        <team_stat id="team_stat" bind:clickMenu="statClickMenu"></team_stat>
+      </view>
+    </view>
+
+    <!-- <view class="mt">
+      <team_notice id="team_notice" bind:clickMenu="statClickMenu"></team_notice>
+    </view> -->
+
+    <view wx:if="{{ team.rights}}" class="mt">
+      <team_message id="team_message" bind:clickMenu="statClickMenu"></team_message>
+    </view>
+    <!--  参见赛事 -->
+    <view class="mt mu">
+        <view class="show-row" style="border-bottom: none;padding-left:30rpx;">
+            <view class="show-title">
+                <view class="f-l tit">
+                    <text class="title-name">参加赛事</text> 
+                </view>
+            </view>
+        </view>
+        <team_my_league id="team_my_league" bind:clickMenu="statClickMenu"></team_my_league>
+    </view>
+    <!--球队相册  -->
+    <!-- <view class="mt mu">
+        <view class="show-row" style="border-bottom: none;padding-left:30rpx;">
+            <view class="show-title">
+                <view class="f-l tit">
+                    <text class="title-name">球队相册</text> 
+                </view>
+            </view>
+        </view>
+        <team_album id="team_my_album" bind:clickMenu="statClickMenu" user_team_rights="{{team.rights}}" to_team_id="{{team.id}}"></team_album>
+    </view> -->
+          
+    <!-- 数据 -->
+    <view class="mt b-white" style="padding: 0 30rpx;">
+      <team_statistics teamid="{{ team.id }}" bindtap="vsstatClick"></team_statistics>
+    </view>
+
+    <view class="show-container" style="margin: 20rpx 0 0; background: #fff; padding: 0 30rpx;">
+      <team_contact id="team_contact" contactName="{{ team.contact_name}}" contactPhone="{{ team.contact_phone }}" contactWx="{{ team.contact_wx }}" expand="{{ false }}"></team_contact>
+    </view>
+
+    <view class="show-container" style="margin: 20rpx 0 0; background: #fff; padding: 0 30rpx;">
+      <team_com id="team_com" photo="{{ team.photo }}" desc="{{ team.desc }}" contactName="{{ team.contact_name}}" contactPhone="{{ team.contact_phone }}" contactWx="{{ team.contact_wx }}" expand="{{ true }}"></team_com>
+    </view>
+
+    <!-- 爱球迷广告位 -->
+    <view>
+      <ad1></ad1>
+    </view>
+
+    <!-- 腾讯广告位 -->
+    <view class="mt b-white" style="padding: 30rpx;">
+      <ad unit-id="adunit-5b7a3351cb8f709b"></ad>
+    </view>
+
+
+    <!-- <league id="team_league"></league> -->
+
+    <view class="footer-buttons" wx:if="{{ !team.rights }}">
+      <button class="full-btn" type="primary" bindtap="bindJoinTeam">申请加入</button>
+      <!-- <button class="full-btn orange-btn" type="primary" bindtap="bindJoinTeam">审核中</button> -->
+      <!-- <button class="full-btn gray-btn" type="primary" bindtap="bindJoinTeam">已拒绝</button> -->
+    </view>
+
+    <vInput id="input" title="输入入队理由" bindcancel="cancelJoinTeam" bind:onInpueDone="onInpueDone"></vInput>
+
+    <!-- 返回首页 -->
+    <back wx:if="{{ isShare }}"></back>
+
+  </view>
+</view>

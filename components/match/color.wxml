@@ -1,0 +1,16 @@
+<view class="match-color">
+  <view style='padding-top:30rpx;'>
+    <view class="content">
+      <view class="title">队员</view>
+      <image src="../../images/sy.png" style='margin-left:90rpx;'></image>
+      <image src="../../images/kz.png" style='margin-left:120rpx;'></image>
+      <image src="../../images/xz.png" style='margin-left:120rpx;'></image>
+    </view>
+    <view class="content" style='margin-top:40rpx;'>
+      <view class="title">守门员</view>
+      <image src="../../images/sy.png" style='margin-left:90rpx;'></image>
+      <image src="../../images/kz.png" style='margin-left:120rpx;'></image>
+      <image src="../../images/xz.png" style='margin-left:120rpx;'></image>
+    </view>
+  </view>
+</view>

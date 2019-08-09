@@ -1,0 +1,17 @@
+<!--pages/team/teamhome/team_contact/team_contact.wxml-->
+<view class="">
+    <view class="show-row">
+        <view class="show-title">
+            <view class="f-l tit">
+                <text class="title-name">联系球队</text>    
+            </view>
+        </view>
+    </view>
+    <view style="padding: 20rpx 0; background: #fff;" class="f-normal f-black bb">
+        <view style="margin-top:0rpx;"><text style="width:160rpx;display:inline-block">球队联系人</text><text style="color:#808892">{{contactName ? contactName : '暂无'}}</text></view>
+        <view style="margin-top:20rpx;"><text style="width:160rpx;display:inline-block">联系电话 </text><text style="color:#808892">{{contactPhone ? contactPhone : '暂无'}}</text></view>
+        <view style="margin-top:20rpx;"><text style="width:160rpx;display:inline-block">联系微信</text><text style="color:#808892">{{contactWx ? contactWx : '暂无'}}</text></view>
+    </view>
+</view>
+
+

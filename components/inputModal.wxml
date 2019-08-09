@@ -1,0 +1,30 @@
+<!-- components/inputModal.wxml
+<form bindsubmit="formSubmit" report-submit>
+  <modal hidden="{{hidden}}" title="{{title}}" bindconfirm="hindleConfirm" no-cancel form-type="submit">
+    <slot name="confirm" >
+        <button>default</button>
+    </slot>
+    <textarea auto-focus value="{{value}}" bindinput="bindInputChange" />
+  </modal>
+</form> -->
+
+<view class="mask" hidden="{{hidden}}"></view>
+
+<view class="modal-box" hidden="{{hidden}}">
+  <!--弹出框开始-->
+  <view class="modal">
+    <form bindsubmit="formSubmit" report-submit>
+      <view class="body">
+        <view class="content f-normal">
+          <view style="margin-bottom: 10rpx;" class="f-gray f-normal">输入理由</view>
+          <textarea focus="{{ !hidden }}" value="{{value}}" bindinput="bindInputChange" />
+        </view>
+      </view>
+      <view class="buttons">
+        <button class="button" plain="true" style="background:#fff;border:0;" bindtap="cancel">取消</button>
+        <button class="button" form-type="submit" plain="true" style="background:#fff;border:0;width:49; border-left:solid 1rpx #e0e0e0;">发送</button>
+      </view>
+    </form>
+  </view>
+  <!--弹出框结束-->
+</view>

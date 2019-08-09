@@ -1,0 +1,19 @@
+<view class="">
+  <view class="show-row">
+    <view class="show-title">
+      <view class="f-l tit">
+          <text class="title-name">球队简介</text>
+      </view>
+    </view>
+    <view style="line-height: 0; padding-top:20rpx;" wx:if="{{ photo }}"><viewimage src="{{ photo }}" style2="width: 690rpx; height: 345rpx;"></viewimage></view>
+  </view>
+  <!-- 简介不全显示管理员很懒什么也没留下 -->
+  <view style="padding: 20rpx 0; background: #fff; max-height:76rpx; line-height: 150%; overflow:hidden;" class="f-normal {{ !shortDesc || shortDesc === '管理员很懒，什么都没留下。' || shortDesc === '管理员很懒，没有填写简介。' ? 'f-gray' : 'f-black' }} bb" wx:if="{{ !expanded }}">
+    <text decode="true">{{ shortDesc ? shortDesc : '管理员很懒，什么都没留下。' }}</text>
+  </view>
+  <view style="padding: 20rpx 0; background: #fff; line-height: 150%;" class="f-normal {{ !desc || desc === '管理员很懒，什么都没留下。' || shortDesc === '管理员很懒，没有填写简介。' ? 'f-gray' : 'f-black' }} bb" wx:if="{{ expanded }}">
+    <text decode="true" wx:if="{{ expanded }}">{{ desc ? desc : '管理员很懒，什么都没留下。' }}</text>
+  </view>
+  <view class="f-small t-c f-blue" style="line-height: 80rpx; " wx:if="{{ isLong && !expanded }}" bindtap="showDesc">查看完整介绍</view>
+  <view class="f-small t-c f-blue" style="line-height: 80rpx; " wx:if="{{ isLong && expanded }}" bindtap="hideDesc">收起介绍</view>
+</view>

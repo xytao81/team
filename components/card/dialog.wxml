@@ -1,0 +1,38 @@
+<!-- <view class="mask" hidden="{{hidden}}"></view> -->
+
+<view class="dialog {{ showDialog ? 'dialog_show' : '' }}">
+  <!-- <view class="dialog_mask" bindtap="onClickdiaView" /> -->
+  <view class="dialog_container">
+    <!--  //此区域自定义视图  -->
+    <view class="flex_Center" style="height:80rpx;background:white;">
+      <view class="f-l" style="width: 300rpx; line-height: 50px;margin-left: 20rpx">
+        <text class="f-normal f-black">单价</text>
+        <text class="f-normal f-black" style="margin-left: 20rpx">{{price}}</text>
+      </view>
+
+      <view class="stepper f-r">
+          <!-- 减号 -->
+          <image wx:if="{{num > 1}}" class="{{minusStatus}}" bindtap="bindMinus" src="./images/icon_minus_black.png"></image>
+          <image wx:else class="{{minusStatus}}" bindtap="bindMinus" src="./images/icon_minus.png"></image>
+          <!-- 数值 -->
+          <text class="f-normal f-black">{{num}}</text>
+          <!-- 加号 -->
+          <image class="normal" bindtap="bindPlus" src="./images/icon_plus.png"></image>
+        </view>
+     </view>    
+
+     <view class="flex_Center" style="height:80rpx;background:white;">
+
+      <view class="f-l" style="width: 300rpx; line-height: 50px;margin-left: 20rpx">
+        <text class="f-normal" style="color:#00a7f2;">应付合计</text>
+        <text class="f-normal" style="margin-left: 20rpx;color:#00a7f2;">{{total_num}}</text>
+      </view>
+
+      <!-- <navigator url='../pay/pay?price_id={{price_id}}&count={{num}}&team_id={{team_id}}'> -->
+          <button class="button f-r" type="primary" bindtap='payClick'>去结算</button>
+      <!-- </navigator> -->
+      
+    </view>
+
+  </view>
+</view>

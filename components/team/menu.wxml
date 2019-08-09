@@ -1,0 +1,10 @@
+<!--components/team/menu.wxml-->
+<view class="menu" bindtap="clickMenu">
+
+  <image src="{{image}}" class="logo" />
+  <view wx:if="{{is_badge}}" class="weui-badge weui-badge_dot" style="position: absolute;margin-top: 30rpx;margin-left: -15rpx;" />
+  <view class="title f-small">{{title}}
+    <span wx:if="{{number!=='-1' && false}}" class="white"> {{number}}</span>
+  </view>
+
+</view>

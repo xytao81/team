@@ -1,0 +1,16 @@
+<slot bindtap="show"></slot>
+<superpicker show="{{ show }}" bindconfirm="confirm" bindcancel="cancel">
+    <scroll-view scroll-y style="max-height: 950rpx;">
+        <block wx:for="{{ jobs }}" wx:for-item="job" wx:key="index">
+        <view class="weui-cells__title">{{ job.name }}</view>
+        <view class="weui-cells weui-cells_after-title">
+            <checkbox-group bindchange="checkboxChange" data-jobid="{{ job.id }}">
+                <label class="weui-cell weui-check__label" wx:for="{{ job.children }}" wx:for-item="subjob" wx:key="index">
+                    <view class="weui-cell__bd">{{subjob.name}}</view>
+                    <checkbox class="weui-check" value="{{subjob.id}}" checked="{{subjob.checked}}" color="#00a7f2" />
+                </label>
+            </checkbox-group>
+        </view>
+        </block>
+    </scroll-view>
+</superpicker>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "公告消息",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "mList": "../../components/message/list"
+  }
+}

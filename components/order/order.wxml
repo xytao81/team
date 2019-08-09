@@ -1,0 +1,47 @@
+<view class="content" wx:if="{{ list.length > 0 }}">
+        <block wx:for="{{list}}" wx:key="" data-item="item">
+          <view class="item">
+            <view class="title">
+              <view class="f-big">{{item.desc}}</view>
+            </view>
+            <view class="content">
+              <view class="row">
+                <view class="f-normal f-gray" style="width: 200rpx">订单编号：</view>
+                <view class="f-normal f-gray">{{item.order_number}}</view>
+              </view>
+              <view class="row">
+                <view class="f-normal f-gray" style="width: 200rpx">订单创建时间：</view>
+                <view class="f-normal f-gray">{{item.create_time}}</view>
+              </view>
+              <view class="row">
+                <view class="f-normal f-gray" style="width: 200rpx">支付渠道：</view>
+                <view class="f-normal f-gray">{{item.pay_type_name}}</view>
+              </view>
+              <view class="row" style="margin-top: 20rpx">
+                <view class="f-normal f-gray" style="width: 200rpx">单价：</view>
+                <view class="f-normal f-gray">¥ {{item.price}}</view>
+              </view>
+              <view class="row">
+                <view class="f-normal f-gray" style="width: 200rpx">购买数量：</view>
+                <view class="f-normal f-gray">x{{item.count}}</view>
+              </view>
+              <view class="row">
+                <view class="f-normal f-gray" style="width: 200rpx">已优惠：</view>
+                <view class="f-normal f-gray">- ¥ {{item.discount_price}}</view>
+              </view>
+              <view class="row">
+                <view class="f-normal f-gray" style="width: 200rpx">合计支付：</view>
+                <view class="f-big f-blue">¥ {{item.real_price}}</view>
+              </view>
+            </view>
+            <view wx:if="{{item.status == 1}}" class="buttons">
+              <view class="f-red" bindtap="deleteClick" data-item="{{item}}">删除订单</view>
+              <view class="f-blue" bindtap="payClick" style="border-left:solid 1rpx #e0e0e0;"  data-item="{{item}}">去支付</view>
+            </view>
+          </view>
+        </block>
+</view>
+<view wx:else class="no-data f-title">
+  <view class="no-data-icon"></view>
+  <view class="no-data-text">暂无数据</view>
+</view>

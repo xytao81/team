@@ -1,0 +1,33 @@
+<view class="box" style="padding-top:20rpx">
+
+  <view class="row" style="padding-left:30rpx">
+    <view class="show-title">
+      <view class="f-l tit">
+        <text class="title-name">{{team.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="row">
+    <view class="f-l tit" style="padding-left:30rpx;">
+      <text class="f-small f-gray">ID {{team_id}}</text>
+    </view>
+    <view class="f-r tit" style="padding-right:30rpx;">
+      <navigator url="/pages/my/order/index?team_id={{team_id}}">
+        <view class="f-small f-blue">查看订单 ></view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="row" style="margin-top:10rpx">
+    <view class='pay'>
+      <view class="f-title f-black">视频直播</view>
+      <view class="f-normal f-gray">手机直播&摄像机直播</view>
+      <view class="f-normal f-gray">剩余{{left_count}}个直播可用 <text wx:if="{{ left_count > 0 }}">有效期至： {{end_time}}</text></view>
+      <navigator url="/pages/my/card/list?team_id={{team_id}}">
+        <button class="button" type="primary" size="mini" style="height:50rpx; line-height: 50rpx">续费</button>
+      </navigator>
+    </view>
+  </view>
+
+</view>

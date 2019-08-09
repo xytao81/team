@@ -1,0 +1,13 @@
+<!--components/advertisement/advertisement.wxml-->
+<view class="ad-box" wx:if="{{ ad.image_url }}">
+    <view class="title f-normal">{{ ad.title }}</view>
+    <view class="image-box" bindtap="gotoAd">
+        <image src="{{ ad.image_url }}"></image>
+    </view>
+    <view>
+        <view class="intro f-small">
+            <view class="right">广告</view>
+            {{ ad.intro }}
+        </view>
+    </view>
+</view>

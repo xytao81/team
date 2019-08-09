@@ -1,0 +1,451 @@
+
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd" style="padding-bottom: 140rpx;">
+        <view wx:if="{{ schedule.live_id }}">
+            <video id="myVideo" src="{{ schedule.live.url || schedule.live.play_url }}" controls style="width:750rpx;height:422rpx;" wx:if="{{ (schedule.live.status == 2 || schedule.live.status == 5) || isAdmin }}"></video>
+            <view class="detail lh-0" wx:else>
+                <image class="detail-img" src="{{ schedule.banner_url ? schedule.banner_url : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/schedule/default_banner.png' }}?x-oss-process=image/resize,m_fill,h_211,w_375"></image>
+                <view class="video-remind f-normal" wx:if="{{ schedule.live.status == 1 }}">直播未开始</view>
+                <view class="video-remind f-normal" wx:if="{{ schedule.live.status == 3 || schedule.live.status == 6 }}">直播已结束</view>
+                <view class="video-remind f-normal" wx:if="{{ schedule.live.status == 4 }}">直播已暂停</view>
+            </view>
+        </view>
+        <view wx:else>
+            <!-- 判断是哪种详情（活动，训练，比赛） -->
+            <view class="detail lh-0" wx:if="{{ schedule.type == 1 }}">
+                <viewimage class="detail-img" src="{{ schedule.banner_url ? schedule.banner_url : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/schedule/default_banner.png' }}?x-oss-process=image/resize,m_fill,h_450,w_800"></viewimage>
+            </view>
+        </view>
+        <view class="match-desc" wx:if="{{ schedule.type == 4 }}">
+            <view class="match-desc-title f-title">{{schedule.match.league_info.name}}</view>
+            <view class="match-desc-info">{{schedule.match.league_info.zone ? schedule.match.league_info.zone :'全国'}}<text>{{schedule.match.league_info.players}} </text><text>{{schedule.match.league_info.type_name}} </text></view>
+        </view>
+        <view class="detail" wx:if="{{ schedule.type == 4 }}">
+            <view class="show-container" style="padding-left:30rpx;padding-right:30rpx;">
+                <view class="show-row" style="border-bottom: none;">
+                    <view class="show-title">
+                        <view class="f-l tit">
+                            <text class="title-name">本队赛程</text> 
+                        </view>
+                        <view class="f-r">
+                            <!-- <navigator url="/pages/my/info/edit?group=person_info" style="line-height: 0;margin-top:20rpx;"> -->
+                            <navigator url="/pages/league/leagueitem/index_h5?id={{schedule.match.league_id}}&team_id={{schedule.team_id}}" style="line-height: 0;margin-top:20rpx;">
+                                <button class="weui-btn" type="primary" size="mini" plain="true" class="show-morebtn" style="line-height: 50rpx;margin-top:0rpx;">查看赛事数据</button>
+                            </navigator>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="schedule-item">
+                <view class="schedule-item-info">
+                    <view class="f2">
+                        <view class="match-flexbox f-black">
+                            <view class="home-box" wx:if="{{ schedule.match }}">
+                                <image class="team-logo" src="{{ schedule.match.home.logo ? schedule.match.home.logo : '../../../../images/league/team_logo.png'}}"></image>
+                                <text class="team-name f-blue" wx:if="{{ schedule.is_home }}">{{ schedule.match.home.name }}</text>    
+                                <text class="team-name" wx:if="{{ !schedule.is_home }}">{{ schedule.match.home.name }}</text>    
+                            </view>
+                            <view class="vs-box">
+                                <view class="img-box-left o-h">
+                                    <view class="img-box-left2">
+                                        <view class="shirts shirts-left clothos-container lh-0"  style=" background:url('{{schedule.match.home.clothes.player.shirt.color}}') center -10rpx  no-repeat; width:30rpx; height:30rpx;" wx:if="{{ schedule.match.home.clothes.player.shirt.id != 0 }}">
+                                            <image class="clothos" src="../../../../images/yifu.png" style="width: 30rpx; height: 30rpx;"></image>     
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="name-box o-h">
+                                    <view wx:if="{{ schedule.match.result }}" style="display:inline-block">
+                                        <view class="status-box f-score">{{schedule.match.result.home_score}}:{{schedule.match.result.away_score}}</view>
+                                        <view class="f-small f-gray" wx:if="{{schedule.match.result.home_point_score && schedule.match.result.away_point_score}}">点球[{{schedule.match.result.home_point_score}}:{{schedule.match.result.away_point_score}}]</view>
+                                        <!-- <view class="f-small f-gray">点球[{{schedule.match.result.home_score}}:{{schedule.match.result.away_score}}]</view> -->
+                                    </view>
+                                    <view class="vs f-score" style="width:auto;height:100rpx;line-height:100rpx;" wx:else>VS</view>
+                                </view>
+                                <view class="img-box-right o-h">
+                                    <view class="img-box-right2">
+                                        <view class="shirts shirts-right clothos-container lh-0"  style=" background:url('{{schedule.match.away.clothes.player.shirt.color}}') center -10rpx  no-repeat; width:30rpx; height:30rpx;" wx:if="{{ schedule.match.away.clothes.player.shirt.id != 0 }}">
+                                            <image class="clothos" src="../../../../images/yifu.png" style="width: 30rpx; height: 30rpx;"></image>     
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+
+                            <view class="away-box" wx:if="{{ schedule.match }}">
+                                <image class="team-logo" src="{{ schedule.match.away.logo ? schedule.match.away.logo : '../../../../images/league/team_logo.png'}}"></image>
+                                <text class="team-name" wx:if="{{ schedule.is_home }}">{{ schedule.match.away.name }}</text>    
+                                <text class="team-name f-blue" wx:if="{{ !schedule.is_home }}">{{ schedule.match.away.name }}</text>    
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>   
+        <!-- 活动 -->
+        <!-- <image class="detail-img" src="{{ schedule.banner_url ? schedule.banner_url : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/schedule/default_banner.png' }}?x-oss-process=image/resize,m_fill,h_211,w_375"></image> -->
+        <!-- <view class="video-remind">直播已结束</view> -->
+        </view>
+        <view class="detail" wx:if="{{ schedule.type == 2 }}">
+            <view class="schedule-item">
+                <view class="schedule-item-info">
+                    <view class="f2">
+                        <view class="match-flexbox">
+                            <view class="match-flexbox">
+                                <view class="home-box" wx:if="{{ schedule.is_home }}">
+                                    <image class="team-logo" src="{{ team.logo ? team.logo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png'}}"></image>
+                                    <text class="team-name f-blue">{{ team.name }}</text>
+                                </view>
+                                <view class="home-box" wx:if="{{ !schedule.is_home }}">
+                                    <image class="team-logo" src="../../../../images/league/team_logo.png"></image>
+                                    <text class="team-name">{{ schedule.target_team_name }}</text>
+                                </view>
+                            </view>
+                            <view class="match-flexbox">
+                                <view class="vs-box">
+                                    <view class="vs t-c " style="{{ isAdmin ? 'margin-top:0;' : ''}}" wx:if="{{ (schedule.home_team_score!=''&&schedule.home_team_score!=null) || (schedule.away_team_score!=''&&schedule.away_team_score!=null) || (schedule.home_team_point_score!=''&&schedule.home_team_point_score!=null) || (schedule.away_team_point_score!=''&&schedule.away_team_point_score!=null) }}">
+                                        {{schedule.home_team_score||0}}:{{schedule.away_team_score||0}}
+                                        <view class="f-small f-gray" style="display:block;" wx:if="{{ (schedule.home_team_point_score!=''&&schedule.home_team_point_score!=null) || (schedule.away_team_point_score!=''&&schedule.away_team_point_score!=null) }}">点球[{{schedule.home_team_point_score||0}}:{{schedule.away_team_point_score||0}}]</view>
+                                    </view>
+                                    <view class="vs" wx:else>VS</view>
+                                    <view class="f-small" style="display:block;" wx:if="{{ isAdmin }}" bindtap="openScoreModal">
+                                        <button class="vs-button" type="primary" bindtap="loginSubmit">录入比分</button>
+                                    </view>
+                                </view>
+                                <view class="status-box"></view>
+                            </view>
+                            <view class="match-flexbox">
+                                <view class="away-box" wx:if="{{ schedule.is_home }}">
+                                    <image class="team-logo" src="../../../../images/league/team_logo.png"></image>
+                                    <text class="team-name">{{ schedule.target_team_name }}</text>
+                                </view>
+                                <view class="away-box" wx:if="{{ !schedule.is_home }}">
+                                    <image class="team-logo" src="{{ team.logo ? team.logo : 'https://aqm-photo.oss-cn-hangzhou.aliyuncs.com/static/default_photo.png'}}"></image>
+                                    <text class="team-name f-blue">{{ team.name }}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>   
+        <!-- 活动 -->
+        </view>
+    <!-- 中间介绍 -->
+        <view class="detail-desc f-normal">
+            <!-- 这个标题也是根据类型判断有没有（比赛没有，其他有） -->
+            <view class="detail-title f-title" wx:if="{{ schedule.type !=2 }}">{{ schedule.title }}</view>
+            <view class="detail-palnning">
+                <view class="detail-palnning-left">
+                    <text wx:if="{{ schedule.type == 1 }}">活动时间</text>
+                    <text wx:if="{{ schedule.type == 2 }}">比赛时间</text>
+                    <text wx:if="{{ schedule.type == 3 }}">训练时间</text>
+                    <text wx:if="{{ schedule.type == 4 }}">比赛时间</text>
+                </view>
+                <view class="detail-palnning-right" wx:if="{{schedule.type == 4}}">
+                    <text>{{ schedule.match.start_time }}</text>
+                </view>
+                <view wx:else class="detail-palnning-right" >
+                    <text>{{ schedule.start_time }}</text>
+                </view>       
+            </view>
+            <view class="detail-palnning" wx:if="{{ schedule.city_name }}">
+                <view class="detail-palnning-left">
+                    <text>地区</text>
+                </view>
+                <view class="detail-palnning-right">
+                    <text>{{ schedule.province_name }}-{{ schedule.city_name }}-{{ schedule.district_name }}</text>
+                </view>     
+            </view>
+            <view class="gonggao" wx:if="{{ schedule.type == 4 && schedule.match.place.title }}">
+                <view class="detail-palnning-left">
+                    <text>比赛地点</text>
+                </view>
+                <view class="match-palnning-local">
+                    <text>{{ schedule.match.place.title}}</text>
+                </view>
+
+            </view>
+            <view class="gonggao" wx:if="{{ schedule.place }}">
+                <view class="detail-palnning-left">
+                    <text wx:if="{{ schedule.type == 1 }}">活动地点</text>
+                    <text wx:if="{{ schedule.type == 2 }}">比赛地点</text>
+                    <text wx:if="{{ schedule.type == 3 }}">训练地点</text>
+                </view>
+                <view class="total-palnning-right">
+                    <text>{{ schedule.place }}</text>
+                </view>
+
+            </view>
+            
+            <view class="gonggao" wx:if="{{ schedule.type == 4 && schedule.match.desc}}">
+                <view class="detail-palnning-left">
+                    <text>公告</text>
+                </view>
+                <view class="gonggao-palnning-local">
+                    <text>{{schedule.match.desc}}</text>
+                </view>
+
+            </view>
+                <!-- 本队球衣 -->
+            <view class="detail-palnning-map" wx:if="{{ schedule.type == 4 && colors.clothes.player.shirt.id != 0 }}">
+                <view class="detail-palnning-left">
+                    <text>本队球衣</text>
+                </view>
+                <view class="detail-palnning-local">
+                    <text class="person">球员</text>
+                    <view class="clothos-container" style="background: url({{colors.clothes.player.shirt.color}}) center -10rpx  no-repeat;">
+                        <image class="clothos" src="../../../../images/icon_sy.png"></image>     
+                    </view>
+                    <view class="clothos-container" style="background: url({{colors.clothes.player.shorts.color}}) center -10rpx  no-repeat;">
+                        <image class="clothos" src="../../../../images/icon_kz.png"></image>     
+                    </view>
+                    <view class="clothos-container" style="background: url({{colors.clothes.player.shoes.color}}) center -10rpx  no-repeat;">
+                        <image class="clothos" src="../../../../images/icon_qw.png"></image>     
+                    </view>
+ 
+                    <text class=" person-right">守门员</text>
+                    <view class="clothos-container" style="background: url({{colors.clothes.goalkeeper.shirt.color}}) center -10rpx  no-repeat;">
+                        <image class="clothos" src="../../../../images/icon_sy.png"></image>     
+                    </view>
+                    <view class="clothos-container" style="background: url({{colors.clothes.goalkeeper.shorts.color}}) center -10rpx  no-repeat;">
+                        <image class="clothos" src="../../../../images/icon_kz.png"></image>     
+                    </view>
+                    <view class="clothos-container" style="background: url({{colors.clothes.goalkeeper.shoes.color}}) center -10rpx  no-repeat;">
+                        <image class="clothos" src="../../../../images/icon_qw.png"></image>     
+                    </view>
+                </view>
+            </view>
+
+            <view class="detail-palnning-map" wx:if="{{ schedule.address }}">
+                <view class="detail-palnning-left">
+                    <text>导航地址</text>
+                </view>
+                <view class="detail-palnning-right o-h">
+                    <text>{{ schedule.address }}</text>
+                </view>
+                <view class="detail-palnning-img" wx:if="{{ schedule.place_lat }}">              
+                    <image bindtap="listenerBtnGetLocation" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBM0JCQkVFRkQ2OUQxMUU4OTYwREUxRDFGRDA2OUFGRiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBM0JCQkVGMEQ2OUQxMUU4OTYwREUxRDFGRDA2OUFGRiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkEzQkJCRUVERDY5RDExRTg5NjBERTFEMUZEMDY5QUZGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkEzQkJCRUVFRDY5RDExRTg5NjBERTFEMUZEMDY5QUZGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+zLHSmQAAAmpJREFUeNpi/P//P8NgBkwMgxyw4JJgXPGZGP36QGwJxE5ArAjEvED8HYifAPERIN4PxGeA+B8+Q/5H8JLuQAIgGIirgdgQh7wBEPtA2Q+BuAuIp9EjipWA+CQQr8HjOHQgD8RTgfgaEJvS0oGOQHwTiM3IDHVNID4FxElUSYNowA6I91Ep3c8FYmYgnk2tEBQD4oNUzpyziI1uYhy4jUYlyHZqONAdiI1p5EBhIC4mpIgRV00CLAcZgdRdaPlGCGwF4qNAfAuIpaHRF0OEPlD5yAMsB7+Tk0k0iHRcMhDPwyK+EIg3ADE3gRi0AeLd5ESxHRGOS8XhOBDYA00if4go9MlKg44EDAaVaXMIqAFF+zoCaozJdaAcAYN3E5kZCJWf3OQ6kFAO/0mkA+8SkGcn14GfCBjMS0JdTCgnk+XAmwQM9iGh5YMPfCfXgQeIqPwbCKjxBWJPAmpOk+vAo0SETj0Qt+CQywDiTUSYsYjcmgSWU12IsOQmtPX8EoiFoE0ycyL0vQViUWBN8p/c5lY5EJ8lwiJ1KCYVpINa/JQ0Fs4RkRbJBZeBeC01mltRNHKgH7Xag8+hmYGaAGTeA2r2SZqIKBeJBbeh5lG90+RJJQe60qpXdx+Icyl0XDq0n0yzfvEUYvsSWMAaaGeJ5mMzwUQ0JNDBByAOpdfgEahy9yZRjze5aYLc0S3QwFAJkWrLgPgYvR0IAr1AvIyAGlCnqZuSXEXp+GA0EN/BIfcUiEMoLZOoMYAJau38xSLuhkOc7g58iKV1HccAGW5jGAwOBIEdQJwNrV8bgXgxtSptxtFB9OHuQIAAAwAjBXVplqlfkwAAAABJRU5ErkJggg=="></image>
+                </view>
+            </view>
+           
+            <view class="detail-palnning" wx:if="{{ schedule.sponsor }}">
+                <view class="detail-palnning-left">
+                    <text>主办方</text>
+                </view>
+                <view class="detail-palnning-right">
+                    <text>{{ schedule.sponsor }}</text>
+                </view>     
+            </view>
+            <view class="detail-palnning" wx:if="{{ schedule.is_enroll && schedule.enroll_start_time && schedule.enroll_end_time }}">
+                <view class="detail-palnning-left">
+                    <text>报名时间</text>
+                </view>
+                <view class="detail-palnning-right">
+                <text>{{ schedule.show_enroll_start_time }} 至 {{ schedule.show_enroll_end_time }}</text>
+                </view>     
+            </view>
+            <view class="detail-palnning" wx:if="{{ schedule.players_max > 0 && schedule.is_enroll}}">
+                <view class="detail-palnning-left">
+                    <text>报名人数</text>
+                </view>
+                <view class="detail-palnning-right">
+                <text>{{ schedule.players_max }}</text>
+                </view>     
+            </view>
+        
+        </view>
+       <!--活动简介  -->
+        <view class="abstract">
+            <view class="abstract-tilte f-title" wx:if="{{ schedule.type == 1 }}">活动简介</view>
+            <view class="abstract-tilte f-title" wx:if="{{ schedule.type == 2 }}">比赛要求</view>
+            <view class="abstract-tilte f-title" wx:if="{{ schedule.type == 3 }}">训练要求</view>
+            <view class="abstract-tilte f-title" wx:if="{{ schedule.type == 4 }}">参赛要求</view>
+            <!-- <view class="abstract-contant">{{ schedule.intro }}</view> -->
+            <!-- 查看完整简介 -->
+            <!-- <view wx:if="{{ !expanded }}" class="abstract-contant">{{ shortDesc }}</view>
+            <view wx:if="{{ expanded }}" class="abstract-contant">{{ desc }}</view> -->
+            <view class="abstract-contant f-normal">{{ desc }}</view>
+            <!-- <view class="f-small t-c f-blue" style="line-height: 80rpx; " wx:if="{{ !expanded }}" bindtap="showDesc">查看完整介绍</view>
+            <view class="f-small t-c f-blue" style="line-height: 80rpx; " wx:if="{{ expanded }}" bindtap="hideDesc">收起介绍</view> -->
+
+            <view class="abstract-img-list {{ schedule.introImagesArray.length >= 2 && imgExpanded ? 'isShow' : '' }}" style="{{schedule.introImagesArray.length ==1 ? 'max-height:100%' : 'max-height:440rpx;'}};">
+                <image class="abstract-img" mode="widthFix" src="{{ item }}?x-oss-process=image/resize,w_375" wx:for="{{ schedule.introImagesArray }}" data-src="{{ item }}" wx:key="id" bindtap="previewAll"></image>
+            </view>
+            <view class="f-small t-c f-blue" style="line-height: 80rpx; " wx:if="{{ schedule.introImagesArray.length >= 2 && !imgExpanded }}" bindtap="showImg">展开详情</view>
+            <view class="f-small t-c f-blue" style="line-height: 80rpx; " wx:if="{{ schedule.introImagesArray.length >= 2 && imgExpanded }}" bindtap="hideImg">收起详情</view>
+        </view>
+     <!-- 已报名/已签到 -->
+
+        <view class="f-normal f-gray" wx:if="{{ enrollButtonStatus != 2 && enrollButtonStatus != 4 }}" style="border: 0; line-height: 44rpx; padding-top: 30rpx; padding-bottom: 30rpx;overflow: hidden; height: 30rpx; line-height: 30rpx; background: #fff;" >
+            <view class="'tabs-item examine' + {{state==0?'to-examine':''}} f-normal" bindtap='onTabsItemTab' data-status=''>报名表</view>
+            <view class="'tabs-item agree' + {{state==1?'to-examine':''}} f-normal" bindtap='onTabsItemTab'  data-status='1'>签到表</view>   
+        </view>
+        <!-- 报名签到的统计 -->
+        <view class="count"  wx:if="{{ enrollButtonStatus != 2 && enrollButtonStatus != 4 }}" >
+            <text class="count-examine" wx-if="{{state==0}}">已报名 {{enrollCount.all }} 人</text>
+            <text class="count-agree" wx-if="{{state==0}}">已同意 {{ enrollCount.agreed }} 人</text>
+            <text class="count-info" wx-if="{{state==1}}">已签到 {{ enrollCount.arrived }} 人</text>
+            <text class="count-leave" wx-if="{{state==1}}">已请假 {{ enrollCount.vacated }} 人</text>
+        </view>
+    
+        <view class="players-detail" wx:if="{{ enrollButtonStatus != 2 && enrollButtonStatus != 4 }}">
+            <!-- 待审核 -->
+            <users list='{{ enrolls }}' isAdmin="{{ false }}" showSignedStatus="{{ state == 1 ? true : false }}" bindclickuser="onClickUser"></users>
+        </view>
+
+     <!-- 编辑 取消 报名管理-->
+        <view class="mt-30 btns" wx:if="{{ teamRights > 0 && isAdmin }}">
+            <button class="btns-group" bindtap="gotoEdit" style="margin-left:0;">
+                <image class="btn-edit" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTE1QTMxRkE0QUVEMTFFOTgwQkVCMzMwRkVDQUUwQTMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTE1QTMxRjk0QUVEMTFFOTgwQkVCMzMwRkVDQUUwQTMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjIyNkFGRTU4RjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEN0ZBRjNDRjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+wJEWAQAACm9JREFU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"></image>
+                <view class="btn-text f-normal">编辑活动</view>
+            </button>
+            <button style="margin-left:0;" class="btns-group" bindtap="confirmCancelSchedule" wx:if="{{ schedule.type != 4 }}">
+                <image class="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTE1QTMxRkU0QUVEMTFFOTgwQkVCMzMwRkVDQUUwQTMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTE1QTMxRkQ0QUVEMTFFOTgwQkVCMzMwRkVDQUUwQTMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjIyNkFGRTU4RjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEN0ZBRjNDRjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+uQ+OPAAADSBJREFU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"></image>
+                <view class="btn-text f-normal">取消活动</view>
+            </button>
+            <button class="btns-group" wx:if="{{ schedule.type == 4 }}" style="margin-left:0;">
+                <image class="" src="../../../../images/quxiao.png"></image>
+                <view class="btn-text f-normal btn-gray">取消活动</view>
+            </button>
+            <button class="btns-group" bindtap="generatePoster">
+                <!-- <view class="icon icon-poster"></view> -->
+                <image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTlDMzZGMjE1NTJDMTFFOTlENjc4ODhCMzA2QTFENDMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTlDMzZGMjA1NTJDMTFFOTlENjc4ODhCMzA2QTFENDMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNUEzMUZENEFFRDExRTk4MEJFQjMzMEZFQ0FFMEEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNUEzMUZFNEFFRDExRTk4MEJFQjMzMEZFQ0FFMEEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+ufkfcQAACKpJREFU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"></image>
+                <view class="haibao f-normal" style="color:#333;">生成海报</view>
+            </button>
+            <button style="margin-left:0;" class="btns-group" bindtap="gotoUsers" style="position:relative" wx:if="{{ schedule.is_enroll }}">
+                <image class="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjM0QzIxNzc0QUVEMTFFOTgwQkVCMzMwRkVDQUUwQTMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjM0QzIxNzY0QUVEMTFFOTgwQkVCMzMwRkVDQUUwQTMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjIyNkFGRTU4RjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJEN0ZBRjNDRjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+bmmz5gAADUVJREFU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"></image>
+                <view class="btn-text f-normal">报名管理</view>
+                <view class="weui-badge weui-badge_dot" style="position: absolute;top:5rpx;right:40rpx;" wx:if="{{ schedule.status_count.waiting > 0 }}"></view>
+            </button>
+            <button style="margin-left:0;" class="btns-group" style="position:relative" wx:if="{{ !schedule.is_enroll }}">
+                <image class="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Rjk3NjQ0NjM1OUMwMTFFOTg0MDdGMjM1MTM2NjI3MjAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Rjk3NjQ0NjI1OUMwMTFFOTg0MDdGMjM1MTM2NjI3MjAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkYzNEMyMTc2NEFFRDExRTk4MEJFQjMzMEZFQ0FFMEEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYzNEMyMTc3NEFFRDExRTk4MEJFQjMzMEZFQ0FFMEEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+TX3FCQAACZRJREFU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"></image>
+                <view class="btn-text f-normal btn-gray">报名管理</view>
+            </button>
+        </view>
+        <view class="mt-30 btns" wx:if="{{ teamRights > 0 && isAdmin && schedule.live_id }}">
+            <button style="margin-left:0;" class="btns-group" bindtap="gotoLiveControl">
+                <image class="btn-edit" src="../../../../images/zhibo.png"></image>
+                <view class="btn-text f-normal">直播管理</view>
+            </button>
+        </view>
+
+        <view class="footer-buttons" wx:if="{{ !isAdmin }}">
+        <!-- <view class="back-btn" bindtap="generatePoster">
+            <view class="icon icon-poster"></view>
+            <view class="text">生成海报</view>
+        </view> -->
+        <!--报名按钮状态 -->
+        <block wx:if="{{ enrollButtonStatus == 6 }}">
+            <button class="full-btn gray-btn" type="primary" wx:if="{{ enrollButtonStatus == 6 }}">此活动已取消</button>
+        </block>
+        <block wx:elif="{{ enroll }}">
+            <!-- 待审核按钮状态 -->
+            <block wx:if="{{ enroll.status == 0 }}">
+                <button class=" full-btn cancle" plain="true" style="display:inline-block;width:30%;" type="primary" bindtap="cancelEnrollConfirm">取消报名</button>
+                <button class="full-btn audit" plain="true" style="display:inline-block; width:70%;" type="primary" bindtap="gotoEnrollEdit">待审核 ，修改资料</button>
+            </block>
+            <!-- 请假按钮状态 -->
+            <block wx:if="{{ enroll.status == 1 }}">
+                <button class=" full-btn cancle" plain="true" style="display:inline-block;width:30%;" type="primary" bindtap="leaveConfirm" wx:if="{{ enroll.arrive == 0 }}">请假</button>
+                <button class=" full-btn cancle" plain="true" style="display:inline-block;width:30%;" type="primary" wx:if="{{ enroll.arrive == 1 }}">已签到</button>
+                <button class=" full-btn cancle" plain="true" style="display:inline-block;width:30%;" type="primary" wx:if="{{ enroll.arrive == 2 }}">已请假</button>
+                <button class="full-btn audit" plain="true" style="display:inline-block; width:70%;" type="primary" bindtap="gotoEnroll">报名已通过</button>
+            </block>
+            <!-- 未通过按钮状态 -->
+            <block wx:if="{{ enroll.status == 2 }}">
+                <button class="full-btn" type="primary" bindtap="gotoEnroll">审核未通过,重新报名</button>
+            </block>
+        </block>
+        <block wx:else>
+        <block wx:if="{{ enrollButtonStatus == 1 }}">
+            <button class="full-btn" type="primary" wx:if="{{ !enroll & schedule.type != 4}}" bindtap="gotoEnrollEdit">报名</button>
+            <button class="full-btn" type="primary" wx:if="{{ !enroll & schedule.type == 4}}" bindtap="showinfo">报名</button> 
+        </block>
+        <button class="full-btn gray-btn" type="primary" wx:if="{{ enrollButtonStatus == 2 }}">报名未开始</button>
+        <button class="full-btn gray-btn" type="primary" wx:if="{{ enrollButtonStatus == 3 }}">报名已结束</button>
+        <button class="full-btn gray-btn" type="primary" wx:if="{{ enrollButtonStatus == 4 }}">无需报名</button>
+        <button class="full-btn gray-btn" type="primary" wx:if="{{ enrollButtonStatus == 5 }}">已报满</button>
+        </block>
+        
+        </view>
+
+    
+     <!-- 弹框 -->
+        <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showPoster}}"></view>
+        <view class="reason modalDlg" wx:if="{{showPoster}}" title="">
+            <view class="close" bindtap="hidePoster">
+                <image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTdFQkNDQTFGNDgwMTFFODg2MjdFQkRGRkFBOTEwMDAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTdFQkNDQTBGNDgwMTFFODg2MjdFQkRGRkFBOTEwMDAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjM1MjAyNUYxMkYyRjExRTg5RDhDODc3QjIxMDk4ODJBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjM1MjAyNUYyMkYyRjExRTg5RDhDODc3QjIxMDk4ODJBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BFsgyAAABDZJREFUeNrsm99LFFEUxzWjfHAxqucyTPOh3EhzDVILe8l97FWDICwoeranngoCSa31B1lR7/Uf+JCQllAaPVVgpdZL+CPbNdGs7XvhDBwuM7N3Zu7d2W33wgdmd7nnnu/eOzPnnjlTmk6nSwqpbSspsFYU/L+37Ybt14I2cJSOq8FeEKHfk2ARzIKP4C0Yp2MjrdTAResIuADOgX0+bcyDZ+AxeKfVOyFYA+KP6wATaf1N2IzTGIF91THDDSABmh1magy8oWU6S0s4Sb9HaIlX05IXts44rIxX4CrZCmWGy0Ef+CPNiPg8BI4HsC36DjrYHqCxfdn261ANmJGc+Q2ug12aThNBJegh27zNkA9ZEXwCLNmcZ/UahcrU21wflsgXo4LPgjVp4E6DQmU6pbHXyCcjgmOS2J+gNYtiLVppbC46plvwQbDIBpkHTSGItWgiH/jyrtEleCeYZsZTIYvlolPMr2nyNbDgAem8acsBsXx58zYQVHAD2GIGu3JIrEUX82+LfPYlWERhU8zYZA6KtZhkfr50C0PdjMSZkQ0QzWHBUSk4ifsR/IIZ6FEcuBf8Av0Bg/0yCi2FrZuKfXqkQMiT4HrW+S+FeCqDrrN+oz5FC7FPpPu9ahjKY2/bFemU8ehix8NgVXEvMsKOL4L7Ys/tYS9TBh6B8+y7QcW+q+SrnYaMu6Wv7J9q9rgvHpVuFaozLc+saPc8rpIY67uguqQPs06ffCYDvIrWIdbiM7NRqyL4EuswEiADoipap1jBQ2anW+UcPsaOp/3mFUA3eJDhnLY7Z0X25BrZ8NN4RiSqcg6Ps38o6G7IbaZ1z6xFO7M3prKk+TlQpSnBZyfahFjBAbdrkF0HvteMaMxqjrpkJnWJFVQwu0kVwbzpDP+cROsUm1FDNh+1iLF22HxfrnkcPsamyrOlJDuOaHLC7mocJCJzaxEHLY6Cl9jxHkNiEwq3LL+tUgo3s3pbcrv1BAlDVbMg4yrn8Ht2XGdgZq2gQjU48drqHLQ4zvBl9g8NG5hZnRsOz6Flps3DrGGxJkR73jwIvrFOMcNidYr2tT20UjVWS3gYcChgUGEnus9D/wTr1+tFcFR6ROknxeM3gpJFa03xuBmY8JHEuwV+gNsBby+i7x2wAm5kI4mXj2najaBp2nxNxE/5TcQX3KMWp4dpLTkk9qTuh2lW8Uq+PC4t1yHYKmJZZsbnQGOIYhvJB6ut2EVVuksevoe0vFtobKMlDxYdUnARdlHLOvlktGzptLS8wypbWiZfQitM26Rop1KjUKswbTPMwjR+9e4PofTwbpDSQ13FpeKRZsyluPQ1FZd+AcsgRb9XgN1gPzgEGkE7fZbbFLgSZnGpHIbGC6V82ESB+AJ4aqJA3IRg+RWAU+wVgCpawhX0e4qW+Bz4QK8APM+3VwCKb7UUBRcFZ6/9E2AAhbwsTQ0x0A4AAAAASUVORK5CYII="></image>
+            </view>
+            <view class="poster-img shadow" bindtap="cancel">
+                <image mode="widthFix" src="{{ posterUrl }}"></image>
+            </view>
+            <view class="down">
+                <button class="weixin"  open-type="share">
+                    <image class="weixin-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowQ0UwMThCN0Y0NzkxMUU4ODYyN0VCREZGQUE5MTAwMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowQ0UwMThCOEY0NzkxMUU4ODYyN0VCREZGQUE5MTAwMCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkEyODZGQjlBRjQ0RDExRTg4NjI3RUJERkZBQTkxMDAwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBDRTAxOEI2RjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+CA7yUgAAEWRJREFU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"></image>
+                    <view class="shell">分享给好友</view>
+                </button>
+                <button class="friend">
+                    <image class="friend-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowQ0UwMThCRkY0NzkxMUU4ODYyN0VCREZGQUE5MTAwMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowQ0UwMThDMEY0NzkxMUU4ODYyN0VCREZGQUE5MTAwMCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjBDRTAxOEJERjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBDRTAxOEJFRjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+mF3CwQAAFNVJREFU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"></image>
+                    <view class="shell">分享至朋友圈</view>
+                </button>
+                <view class="photo" bindtap="downloadFile">
+                    <image class="photo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowQ0UwMThCQkY0NzkxMUU4ODYyN0VCREZGQUE5MTAwMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowQ0UwMThCQ0Y0NzkxMUU4ODYyN0VCREZGQUE5MTAwMCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjBDRTAxOEI5RjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBDRTAxOEJBRjQ3OTExRTg4NjI3RUJERkZBQTkxMDAwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+aUJ0HQAAC0JJREFU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"></image>
+                    <view class="shell">保存至相册</view>
+                </view>
+            </view>
+        </view>
+
+        <supermodal title="录入比分" show="{{ scoreModalVisible }}" bindcancel="saveScoreCancel" showButtons="{{ false }}">
+            <view class="score-modal f-normal">
+                <!-- <view class="o-h">
+                    <view class="f-l"></view>
+                    <view class="f-r score-right o-h">
+                        <view class="f-l r r1">主队</view>
+                        <view class="f-l r r2">VS</view>
+                        <view class="f-l r r3">客队</view>
+                    </view>
+                </view> -->
+                <view class="mt o-h">
+                    <view class="f-l score-label">正赛比分</view>
+                    <view class="f-r score-right o-h">
+                        <view class="f-l r r1"><input type="number" class="score-input" value="{{ scheduleScoreForm.homeTeamScore }}" data-key="homeTeamScore" bindinput="onScoreChange" /></view>
+                        <view class="f-l r r2">:</view>
+                        <view class="f-l r r3"><input type="number" class="score-input" value="{{ scheduleScoreForm.awayTeamScore }}" data-key="awayTeamScore" bindinput="onScoreChange" /></view>
+                    </view>
+                </view>
+                <view class="mt o-h">
+                    <view class="f-l score-label">点球决胜比分</view>
+                    <view class="f-r score-right o-h">
+                        <view class="f-l r r1"><input type="number" class="score-input" value="{{ scheduleScoreForm.homeTeamPointScore }}" data-key="homeTeamPointScore" bindinput="onScoreChange" /></view>
+                        <view class="f-l r r2">:</view>
+                        <view class="f-l r r3"><input type="number" class="score-input" value="{{ scheduleScoreForm.awayTeamPointScore }}" data-key="awayTeamPointScore" bindinput="onScoreChange" /></view>
+                    </view>
+                </view>
+                <view class="mt">
+                    <button class="score-button" type="primary" bindtap="saveScore">保存</button>
+                </view>
+            </view>
+        </supermodal>
+
+        <supermodal title="直播详情" show="{{ liveModalVisible }}" showButtons="{{ false }}" wx:if="{{ teamRights > 0 && isAdmin && schedule.live_id }}">
+            <view class="f-normal" style="padding: 30rpx;">
+                <view>
+                    <view class="" style="word-break:break-all;"><viewimage class="detail-img" src="{{ schedule.live.qrcode_url }}"></viewimage></view>     
+                    <view class="t-c" style="color: #808892;">直播二维码</view>
+                </view>
+            </view>
+            <!-- <view class="f-normal" style="padding: 30rpx;">
+                <view wx:if="{{ schedule.live.live.push_stream_url }}">
+                    <view class="f-gray">推流地址</view>
+                    <view class="" style="word-break:break-all;">{{ schedule.live.live.push_stream_url }}</view>     
+                </view>
+                <view wx:if="{{ schedule.live.live.pull_stream_url }}">
+                    <view class="mt f-gray">拉流地址</view>
+                    <view class="" style="word-break:break-all;">{{ schedule.live.live.pull_stream_url }}</view>     
+                </view>
+            </view> -->
+        </supermodal>
+
+    <!-- 返回首页 -->
+    <back wx:if="{{ isShare }}" url="{{ teamRights !== null ? '/pages/team/teamhome/view?team_id='+schedule.team_id+'&is_share=1' : '/pages/index/index' }}"></back>
+
+  </view>
+  
+</view>

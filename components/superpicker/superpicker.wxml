@@ -1,0 +1,13 @@
+
+<view class="superpicker {{ show ? 'superpicker--show' : '' }}">
+    <view class="superpicker__mask" bindtap="cancel" />
+    <view class="superpicker__container">
+        <view class="superpicker__control">
+            <view bindtap='cancel' class="superpicker-button superpicker-reset">取消</view>
+            <view bindtap='confirm' class="superpicker-button superpicker-submit">确定</view>
+        </view>
+        <view class="superpicker__main">
+            <slot></slot>
+        </view>
+    </view>
+</view>

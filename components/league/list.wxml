@@ -1,0 +1,26 @@
+<!--pages/league/components/list.wxml-->
+<view class="league-list">
+  <view wx:for="{{list}}" wx:key="item.id" wx:for-item="item" class="item">
+    <view bindtap='handleClick' data-item="{{item}}" class="content">
+      <view class="logo">
+        <image src="{{item.logo}}"></image>
+        <view class="title blue" style="background: rgba(17,149,239, 0.6);" wx:if="{{ !hideStatus && item.status_name == '进行中' }}">{{item.status_name}}</view>
+        <view class="title green" style="background: rgba(39,151,85, 0.6);" wx:elif="{{ !hideStatus && item.status_name == '报名中' }}">{{item.status_name}}</view>
+        <view class="title black" style="background: rgba(40,49,64, 0.6);" wx:elif="{{ !hideStatus && item.status_name == '已结束' }}">{{item.status_name}}</view>
+        <view class="title" wx:elif="{{ !hideStatus }}">{{item.status_name}}</view>
+      </view>
+      <view class="info">
+        <view class="title">{{item.name}}</view>
+        <view class="type">
+          <text>{{item.city_name?item.city_name: item.zone}} </text> 
+          <text wx:if="{{item.players_name}}">{{item.players_name}} </text> 
+          <text wx:if="{{item.type_name}}">{{item.type_name}}</text>
+        </view>
+        <view class="time">
+          <!-- <image style='width:24rpx;height:24rpx;margin-top:14rpx;' src="../../images/time.png"></image> -->
+          <view class="show_time">比赛时间 {{item.show_start_time}}至{{item.show_end_time}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

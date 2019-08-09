@@ -1,0 +1,17 @@
+{
+  "component": true,
+  "usingComponents": {
+    "viewimage": "../components/viewimage",
+    "cropper": "../components/cropper",
+    "regionpicker": "../components/regionpicker/regionpicker",
+    "positionpicker": "../components/positionpicker/positionpicker",
+    "degreepicker": "../components/degreepicker/degreepicker",
+    "jobpicker": "../components/jobpicker/jobpicker",
+    "subjobpicker": "../components/subjobpicker/subjobpicker",
+    "rightspicker": "../components/rightspicker/rightspicker",
+    "nationpicker":"../components/nationpicker/nationpicker",
+    "nationpicker2":"../components/nationpicker2/nationpicker2",
+    "nationalitypicker":"../components/nationalitypicker/nationalitypicker",
+    "datetimepicker":"../components/datetimepicker/datetimepicker"
+  }
+}

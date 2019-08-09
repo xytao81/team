@@ -1,0 +1,9 @@
+<view class="page b-white f-normal">
+  <view style="padding: 30rpx 30rpx 100rpx;">
+
+    <view>视频直播，指球队管理员创建活动/训练/比赛日程后，给日程详情页添加直播功能。添加后，管理员用“爱球迷助手APP”进行手机直播的拍摄，视频画面展现在小程序日程详情页中，赛后自动生成回放。视频直播和回放功能，有助于队内分享和赛后复盘总结。</view>
+    <view class="mt">如需专业团队制作直播信号，请联系：</view>
+    <view>400-006-0155</view>
+
+  </view>
+</view>

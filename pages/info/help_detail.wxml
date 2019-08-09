@@ -1,0 +1,12 @@
+
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd"> 
+
+        <view class="title f-title">{{ help.title }}</view>
+        <view class="content f-normal">
+            <rich-text nodes="{{ help.content }}"></rich-text>
+        </view>
+
+    </view>
+</view>
+

@@ -1,0 +1,22 @@
+<!--pages/team/teamhome/team_my_schedule/team_my_schedule.wxml-->
+<view class="league" style="background: #fff;">
+    <view class="content">
+       <!-- <block wx:if="{{info}}"> -->
+        <block wx:if="{{schedules.length > 0 }}">
+            <schedule_list  schedules="{{ schedules }}"></schedule_list>
+            <view class="league-more f-small" bindtap="gotoMore">查看更多 ></view>
+        </block>
+        <block wx:else>
+            <view class="welcome" style="border-top:solid 1rpx #e0e0e0;">
+                <view class="league-item-box">
+                    <view class='no-data f-title'>
+                        <view class="no-data-icon"></view>
+                        <view class="no-data-text f-small">管理员很懒，还没发布过球队日程</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+
+    </view>
+
+</view>

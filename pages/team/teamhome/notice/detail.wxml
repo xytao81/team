@@ -1,0 +1,19 @@
+
+<view class="page">
+  <view class="page__bd">
+    <view class="notice f-normal">
+        <view class="title f-title">{{ notice.title }}</view>
+        <view class="date">{{ notice.create_name }} {{ notice.create_time }}</view>
+        <text class="content">{{ notice.content }}</text>
+    </view>
+  </view>
+  <block wx:if="{{ teamRights > 0 }}">
+    <view class="footer-buttons">
+      <button class="footer-btn half-btn red-btn" type="primary" bindtap="openDeleteConfirm">删除公告</button>
+      <navigator url="/pages/team/teamhome/notice/add?team_id={{ teamId }}&notice_id={{ notice.id }}">
+      <button class="footer-btn half-btn" type="primary">编辑公告</button>
+      </navigator>
+    </view>
+  </block>
+</view>
+

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+    "userbrief": "/components/user/userbrief",
+    "formidMaker": "/components/formid_maker/formid_maker"
+  }
+}

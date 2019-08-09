@@ -1,0 +1,18 @@
+<!-- components/inputModal.wxml
+<form bindsubmit="formSubmit" report-submit>
+  <modal hidden="{{hidden}}" title="{{title}}" bindconfirm="hindleConfirm" no-cancel form-type="submit">
+    <slot name="confirm" >
+        <button>default</button>
+    </slot>
+    <textarea auto-focus value="{{value}}" bindinput="bindInputChange" />
+  </modal>
+</form> -->
+
+<view class="view-mask" hidden="{{hidden}}"></view>
+
+<view class="view-modal-box" hidden="{{hidden}}" catchtap="togglePreview">
+  <image mode="{{ mode }}" src="{{ src }}" style="width: 710rpx; margin: auto; display:block;" catchtap="togglePreview"></image>
+</view>
+
+<image src="{{ src }}" style="{{ style2 }}" mode="{{ mode }}" catchtap="togglePreview"></image>
+
